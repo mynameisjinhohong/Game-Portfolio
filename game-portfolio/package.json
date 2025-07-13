@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://mynameisjinhohong.github.io/Game-Portfoilo",
+  "homepage": "https://mynameisjinhohong.github.io/Game-Portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
