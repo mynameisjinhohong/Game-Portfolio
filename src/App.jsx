@@ -64,18 +64,22 @@ function App() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <Gamepad2 className="h-8 w-8 text-cyan-400" />
-              <h1 className="text-2xl font-bold text-white">Game Jam Portfolio</h1>
+              <h1 className="text-2xl font-bold text-white">Jinho's Games</h1>
             </div>
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="text-slate-300 hover:text-white">
-                <Github className="h-4 w-4 mr-2" />
-                GitHub
-              </Button>
-              <Button variant="ghost" size="sm" className="text-slate-300 hover:text-white">
-                <Mail className="h-4 w-4 mr-2" />
-                Contact
-              </Button>
-            </div>
+              <div className="flex items-center space-x-4">
+                <a href="https://github.com/mynameisjinhohong" target="_blank" rel="noopener noreferrer">
+                  <Button variant="ghost" size="sm" className="text-slate-300 hover:text-cyan-400 hover:bg-slate-700/50 transition-colors duration-200">
+                    <Github className="h-4 w-4 mr-2" />
+                    GitHub
+                  </Button>
+                </a>
+                <a href="mailto:ghddhksduq@naver.com">
+                  <Button variant="ghost" size="sm" className="text-slate-300 hover:text-cyan-400 hover:bg-slate-700/50 transition-colors duration-200">
+                    <Mail className="h-4 w-4 mr-2" />
+                    Contact
+                  </Button>
+                </a>
+              </div>
           </div>
         </div>
       </header>
@@ -85,16 +89,16 @@ function App() {
         <div className="container mx-auto text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              게임잼 포트폴리오
+              홍진호의 게임들
             </h2>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-              다양한 게임잼에서 제작한 창의적이고 독특한 게임들을 만나보세요. 
-              각 게임은 제한된 시간 안에서 탄생한 아이디어와 열정의 결과물입니다.
+              제가 지금까지 작업한 다양한 작업들을 소개합니다!
+              아쉽게도 프로젝트들 중, 온라인 게임들은 이곳에 없다는 점 이해해주시기 바랍니다.
             </p>
             <div className="flex items-center justify-center space-x-6 text-slate-400">
               <div className="flex items-center">
                 <Star className="h-5 w-5 mr-2 text-yellow-400" />
-                <span>{games.filter(g => g.featured).length}개의 추천 게임</span>
+                <span>{games.filter(g => g.featured).length}개의 미니게임</span>
               </div>
               <div className="flex items-center">
                 <Calendar className="h-5 w-5 mr-2 text-green-400" />
@@ -186,7 +190,7 @@ function App() {
           </div>
           <div className="mt-8 pt-8 border-t border-slate-700/50">
             <p className="text-slate-400 text-sm">
-              © 2024 Game Jam Portfolio. 모든 게임은 해당 게임잼 기간 동안 제작되었습니다.
+              봐주셔서 감사합니다 ^^
             </p>
           </div>
         </div>
