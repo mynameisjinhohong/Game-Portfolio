@@ -158,10 +158,10 @@ function App() {
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
-            Game Jam <span className="text-cyan-400">Portfolio</span>
+            홍진호의 <span className="text-cyan-400">게임들</span>
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-            다양한 게임잼에서 제작한 창의적이고 혁신적인 게임들을 만나보세요
+              제가 지금까지 만든 다양한 게임들을 소개합니다!
           </p>
         </div>
 
@@ -244,7 +244,7 @@ function App() {
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">
             <p className="text-slate-400">
-              © 2024 Jinho's Game Portfolio. All rights reserved.
+              봐주셔서 감사합니다 ^^
             </p>
           </div>
         </div>
