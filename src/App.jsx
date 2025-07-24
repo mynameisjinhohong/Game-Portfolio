@@ -4,15 +4,17 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge'
 import { ExternalLink, Github, Mail, Gamepad2, Star, Calendar, Copy, Check } from 'lucide-react'
 import './App.css'
+import cleanRoomImg from './assets/cleanRoom.png'
+
 
 const games = [
   {
     id: 1,
-    title: "Forest Adventure",
-    description: "신비로운 숲을 탐험하는 2D 플랫포머 게임",
-    image: "/src/assets/game1-thumbnail.png",
-    technologies: ["Unity", "C#", "Pixel Art"],
-    gameJam: "Global Game Jam 2024",
+    title: "방좀 치워!",
+    description: "제한 시간 내에 방을 치워야 하는 코딩 퍼즐 게임",
+    image: cleanRoomImg,  // 따옴표 제거!
+    technologies: ["Unity", "C#", "Ai Art"],
+    gameJam: "만들래 - 10분 게임 콘테스트[방치편]",
     playUrl: "https://your-username.github.io/forest-adventure",
     featured: true
   },
@@ -158,10 +160,14 @@ function App() {
       <main className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">
-            홍진호의 <span className="text-cyan-400">게임들</span>
+            홍진호의 <span className="text-cyan-400">미니 게임들</span>
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              제가 지금까지 만든 다양한 게임들을 소개합니다!
+              제가 지금까지 만든 다양한 미니게임들을 소개합니다!
+          </p>
+          <p className="text-sm text-slate-400 mt-2">
+            출시, 멀티, 볼륨이 너무 큼 등등의 이유로 여기에 없는 작품들도 많습니다.<br />
+            그런 작품들은 포트폴리오를 참고해주시길 바랍니다.
           </p>
         </div>
 
