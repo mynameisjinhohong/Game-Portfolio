@@ -69,7 +69,7 @@ ollama --version
 
 | 모델 | 크기 | 특징 | 다운로드 명령 |
 |------|------|------|--------------|
-| **llama3.2:3b** (권장) | ~2GB | 경량·빠른 응답, 맥미니 8GB RAM에 적합 | `ollama pull llama3.2:3b` |
+| **llama3.2:3b** | ~2GB | 경량·빠른 응답, 맥미니 8GB RAM에 적합 | `ollama pull llama3.2:3b` |
 | llama3.1:8b | ~5GB | 더 나은 품질, RAM 16GB 이상 권장 | `ollama pull llama3.1:8b` |
 | gemma2:2b | ~1.6GB | 최경량, 응답 품질 낮음 | `ollama pull gemma2:2b` |
 
@@ -80,6 +80,58 @@ ollama pull llama3.2:3b
 # 다운로드된 모델 목록 확인
 ollama list
 ```
+
+### ⚠️ llama3.2:3b 한국어 혼용 출력 문제
+
+**현상**: `llama3.2:3b`에 한국어로 질문하면 응답에 영어·중국어 등 다른 언어가 섞여 출력되는 경우가 있다.
+
+**원인**: `llama3.2:3b`는 경량 모델로 다국어 지시 준수 능력이 약하다. 한국어 프롬프트를 받아도 학습 가중치 상 영어 토큰을 우선 생성하는 경향이 있다.
+
+**해결 방법 (시스템 프롬프트 강제)**
+
+백엔드 API에서 Ollama를 호출할 때 `system` 필드에 한국어 전용 지시를 명시한다. 이는 AI(자동화)가 구현할 영역이며, 아래 예시를 참고한다.
+
+```json
+{
+  "model": "llama3.2:3b",
+  "system": "당신은 홍진호의 포트폴리오 챗봇입니다. 반드시 한국어로만 답변하십시오. 어떤 경우에도 영어, 중국어, 일본어 등 다른 언어를 섞지 마십시오.",
+  "prompt": "홍진호는 어떤 개발자인가요?",
+  "stream": false
+}
+```
+
+시스템 프롬프트만으로 완전히 해소되지 않으면 다음 대안을 검토한다.
+
+| 대안 | 내용 |
+|------|------|
+| 모델 업그레이드 | `llama3.1:8b` 또는 `gemma2:9b`로 교체 (RAM 16GB 이상 권장) |
+| 응답 후처리 | 서버 측에서 비한국어 문자 비율을 감지해 재시도 로직 추가 |
+| Modelfile 커스터마이징 | Ollama `Modelfile`에 `SYSTEM` 지시어를 고정해 모델 자체에 내장 |
+
+**Modelfile 예시** (시스템 프롬프트를 모델에 내장하는 방법):
+
+```dockerfile
+FROM llama3.2:3b
+SYSTEM """
+당신은 홍진호의 포트폴리오 챗봇입니다.
+항상 한국어로만 답변하십시오.
+영어·중국어·일본어 등 다른 언어는 절대 사용하지 마십시오.
+"""
+```
+
+```bash
+# Modelfile 저장 후 커스텀 모델 생성
+ollama create jihno-chatbot -f ./Modelfile
+
+# 생성 확인
+ollama list
+# jihno-chatbot 항목이 보이면 성공
+
+# 테스트
+ollama run jihno-chatbot "안녕하세요, 홍진호는 어떤 개발자인가요?"
+```
+
+Modelfile로 생성한 `jihno-chatbot` 모델 ID를 이후 자동화 작업에 전달한다.
 
 ---
 
@@ -140,10 +192,11 @@ curl http://localhost:11434/api/generate \
 | 항목 | 예시 값 | 비고 |
 |------|---------|------|
 | Ollama 엔드포인트 | `http://localhost:11434` | 기본값이면 그대로 |
-| 사용 모델 ID | `llama3.2:3b` | `ollama list`로 확인 |
+| 사용 모델 ID | `llama3.2:3b` 또는 `jihno-chatbot` | `ollama list`로 확인; Modelfile로 생성한 경우 커스텀 ID 전달 |
 | 서비스 실행 방식 | `brew services` / 수동 | 재시작 후 자동 실행 여부 |
 | 맥미니 RAM 용량 | 예: `16GB` | 모델 선택 기준 |
 | 추가 커스텀 포트 (있다면) | 예: `11435` | 기본 포트 변경 시 |
+| 한국어 혼용 해결 방식 | 시스템 프롬프트 / Modelfile / 모델 교체 | 3. 모델 다운로드 섹션의 ⚠️ 항목 참고 |
 
 ---
 
