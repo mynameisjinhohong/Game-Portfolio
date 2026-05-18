@@ -200,7 +200,46 @@ curl http://localhost:11434/api/generate \
 
 ---
 
-## 8. 이후 자동화 작업이 의존하는 전제 조건
+## 8. 설치 작업 검토 결과 (2026-05-18 기준)
+
+> 개발자가 직접 모델 응답 테스트까지 완료했음을 기준으로 작성된 검토 결과이다.
+
+| 단계 | 상태 | 비고 |
+|------|------|------|
+| Ollama 설치 | ✅ 완료 | `brew install ollama` 또는 공식 스크립트로 설치됨 |
+| 서비스 실행 | ✅ 완료 | `ollama serve` 또는 `brew services start ollama` 동작 확인 |
+| 모델 다운로드 | ✅ 완료 | `ollama list`에 대상 모델 존재 확인 |
+| 포트 11434 응답 | ✅ 완료 | `curl http://localhost:11434` → "Ollama is running" 확인 |
+| 모델 응답 테스트 | ✅ 완료 | REST API 또는 CLI를 통해 모델 응답 정상 확인 |
+| 한국어 응답 문제 | 검토 필요 | 3번 섹션의 ⚠️ 항목 참고하여 시스템 프롬프트 or Modelfile 적용 여부 확인 |
+
+**결론**: 로컬 LLM 서버 수동 설치 단계는 완료된 것으로 판단된다.  
+이후 자동화 PR(백엔드 API 연동, 챗봇 프론트엔드)이 진행될 수 있는 상태이다.
+
+---
+
+## 9. 공유 정보 전달 방법
+
+설치 완료 후 **아래 형식을 복사해 PR 코멘트 또는 팀 채널에 붙여넣는다**.  
+AI 자동화 작업이 이 값을 기준으로 환경변수와 API 연동을 구성한다.
+
+```
+## 로컬 LLM 설치 완료 — 공유 정보
+
+- Ollama 엔드포인트: http://localhost:11434
+- 사용 모델 ID: llama3.2:3b          ← ollama list 결과로 교체
+- 서비스 실행 방식: brew services / 수동  ← 해당 항목 선택
+- 맥미니 RAM: 16GB                    ← 실제 값으로 교체
+- 커스텀 포트 (기본값이면 생략): -
+- 한국어 혼용 해결 방식: 시스템 프롬프트 / Modelfile / 모델 교체  ← 선택
+- Modelfile 커스텀 모델 ID (있다면): jihno-chatbot  ← 해당 시만 기재
+```
+
+> 값을 모를 경우: `ollama list`, `system_profiler SPHardwareDataType | grep Memory`, `curl http://localhost:11434` 명령으로 확인한다.
+
+---
+
+## 10. 이후 자동화 작업이 의존하는 전제 조건
 
 다음 PR(자동화)은 아래 조건이 모두 충족되었다고 가정하고 진행된다.
 
