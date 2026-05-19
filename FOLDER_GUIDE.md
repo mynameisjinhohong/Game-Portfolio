@@ -2,6 +2,8 @@
 
 > 상세 버전: [`docs/FOLDER_GUIDE.md`](docs/FOLDER_GUIDE.md)
 
+> **⚠️ AI 에이전트 필독**: 파일을 추가·수정·이동하기 전에 반드시 [`docs/FOLDER_GUIDE.md`](docs/FOLDER_GUIDE.md) 전체를 읽고 업데이트 절차를 따른다. 이 요약본만으로는 업데이트 지침을 파악할 수 없다.
+
 ## 폴더 구조 개요
 
 ```

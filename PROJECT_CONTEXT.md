@@ -47,5 +47,5 @@
 
 ## 폴더 구조 참고
 
-레포지토리의 폴더 구조와 파일 배치 규칙은 `FOLDER_GUIDE.md`를 참고한다.
-상세 버전은 `docs/FOLDER_GUIDE.md`에도 동일하게 존재한다.
+레포지토리의 폴더 구조와 파일 배치 규칙은 **반드시 `docs/FOLDER_GUIDE.md`를 읽는다**.
+루트의 `FOLDER_GUIDE.md`는 요약본이며, 에이전트 업데이트 절차 등 상세 규칙은 `docs/FOLDER_GUIDE.md`에만 있다.
