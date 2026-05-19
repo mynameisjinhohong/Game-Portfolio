@@ -227,12 +227,12 @@ AI 자동화 작업이 이 값을 기준으로 환경변수와 API 연동을 구
 ## 로컬 LLM 설치 완료 — 공유 정보
 
 - Ollama 엔드포인트: http://localhost:11434
-- 사용 모델 ID: llama3.2:3b          ← ollama list 결과로 교체
-- 서비스 실행 방식: brew services / 수동  ← 해당 항목 선택
-- 맥미니 RAM: 16GB                    ← 실제 값으로 교체
+- 사용 모델 ID: llama3.2:3b
+- 서비스 실행 방식: brew services
+- 맥미니 RAM: 32GB
 - 커스텀 포트 (기본값이면 생략): -
-- 한국어 혼용 해결 방식: 시스템 프롬프트 / Modelfile / 모델 교체  ← 선택
-- Modelfile 커스텀 모델 ID (있다면): jihno-chatbot  ← 해당 시만 기재
+- 한국어 혼용 해결 방식: 시스템 프롬프트
+- Modelfile 커스텀 모델 ID (있다면):
 ```
 
 > 값을 모를 경우: `ollama list`, `system_profiler SPHardwareDataType | grep Memory`, `curl http://localhost:11434` 명령으로 확인한다.
