@@ -9,7 +9,7 @@ export default function Home() {
         color: "var(--color-fg-primary)",
       }}
     >
-      {/* 헤더 — 테마 토글 노출 */}
+      {/* 헤더 */}
       <header
         style={{
           display: "flex",
@@ -19,6 +19,9 @@ export default function Home() {
           borderBottom: "1px solid var(--color-border)",
           backgroundColor: "var(--color-bg-surface)",
           boxShadow: "var(--shadow-sm)",
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
         }}
       >
         <span
@@ -31,7 +34,29 @@ export default function Home() {
         >
           홍진호
         </span>
-        <ThemeToggle />
+        <nav style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <a
+            href="#about"
+            style={{
+              color: "var(--color-fg-secondary)",
+              textDecoration: "none",
+              fontSize: "0.9rem",
+            }}
+          >
+            소개
+          </a>
+          <a
+            href="#projects"
+            style={{
+              color: "var(--color-fg-secondary)",
+              textDecoration: "none",
+              fontSize: "0.9rem",
+            }}
+          >
+            프로젝트
+          </a>
+          <ThemeToggle />
+        </nav>
       </header>
 
       {/* 히어로 */}
@@ -41,7 +66,7 @@ export default function Home() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "6rem 2rem",
+          padding: "8rem 2rem",
           gap: "1.5rem",
           textAlign: "center",
         }}
@@ -61,88 +86,149 @@ export default function Home() {
             fontSize: "clamp(1rem, 2vw, 1.25rem)",
             color: "var(--color-fg-secondary)",
             maxWidth: "40rem",
+            lineHeight: 1.7,
           }}
         >
           Unity · C# · 인터랙티브 경험 설계
+          <br />
+          재미있는 경험을 코드로 구현합니다.
         </p>
-        <a
-          href="#projects"
-          style={{
-            display: "inline-block",
-            padding: "0.75rem 2rem",
-            backgroundColor: "var(--color-orange)",
-            color: "#ffffff",
-            borderRadius: "0.5rem",
-            fontWeight: 600,
-            textDecoration: "none",
-            boxShadow: "var(--shadow-md)",
-          }}
-        >
-          프로젝트 보기
-        </a>
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
+          <a
+            href="#projects"
+            style={{
+              display: "inline-block",
+              padding: "0.75rem 2rem",
+              backgroundColor: "var(--color-orange)",
+              color: "#ffffff",
+              borderRadius: "0.5rem",
+              fontWeight: 600,
+              textDecoration: "none",
+              boxShadow: "var(--shadow-md)",
+            }}
+          >
+            프로젝트 보기
+          </a>
+          <a
+            href="#about"
+            style={{
+              display: "inline-block",
+              padding: "0.75rem 2rem",
+              backgroundColor: "transparent",
+              color: "var(--color-teal)",
+              borderRadius: "0.5rem",
+              fontWeight: 600,
+              textDecoration: "none",
+              border: "2px solid var(--color-teal)",
+            }}
+          >
+            소개 보기
+          </a>
+        </div>
       </section>
 
-      {/* 컬러 토큰 확인용 팔레트 (개발 중 시각화) */}
+      {/* 소개 */}
       <section
-        id="projects"
+        id="about"
         style={{
-          padding: "3rem 2rem",
+          padding: "4rem 2rem",
           maxWidth: "48rem",
           margin: "0 auto",
         }}
       >
         <h2
           style={{
-            fontSize: "1.5rem",
+            fontSize: "1.75rem",
             fontWeight: 700,
-            marginBottom: "1.5rem",
+            marginBottom: "1rem",
             color: "var(--color-game-blue)",
           }}
         >
-          테마 토큰 팔레트
+          개발자 소개
+        </h2>
+        <p
+          style={{
+            fontSize: "1rem",
+            color: "var(--color-fg-secondary)",
+            lineHeight: 1.8,
+          }}
+        >
+          Unity와 C#을 주력으로 게임 개발을 해 온 개발자입니다. 게임플레이 메카닉 설계부터
+          실제 플레이어 경험까지, 결과물 중심으로 작업합니다.
+        </p>
+      </section>
+
+      {/* 프로젝트 */}
+      <section
+        id="projects"
+        style={{
+          padding: "4rem 2rem",
+          maxWidth: "64rem",
+          margin: "0 auto",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "1.75rem",
+            fontWeight: 700,
+            marginBottom: "2rem",
+            color: "var(--color-game-blue)",
+          }}
+        >
+          게임 프로젝트
         </h2>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
-            gap: "0.75rem",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gap: "1.5rem",
           }}
         >
-          {[
-            { label: "bg-base", var: "--color-bg-base" },
-            { label: "bg-surface", var: "--color-bg-surface" },
-            { label: "bg-elevated", var: "--color-bg-elevated" },
-            { label: "fg-primary", var: "--color-fg-primary" },
-            { label: "fg-secondary", var: "--color-fg-secondary" },
-            { label: "teal", var: "--color-teal" },
-            { label: "game-blue", var: "--color-game-blue" },
-            { label: "orange", var: "--color-orange" },
-          ].map((token) => (
+          {/* 프로젝트 카드 플레이스홀더 — 추후 실제 데이터로 교체 */}
+          {[1, 2, 3].map((i) => (
             <div
-              key={token.var}
+              key={i}
               style={{
-                borderRadius: "0.5rem",
-                overflow: "hidden",
+                borderRadius: "0.75rem",
                 border: "1px solid var(--color-border)",
+                backgroundColor: "var(--color-bg-surface)",
                 boxShadow: "var(--shadow-sm)",
+                overflow: "hidden",
               }}
             >
               <div
                 style={{
-                  height: "3rem",
-                  backgroundColor: `var(${token.var})`,
-                  border: "1px solid var(--color-border-strong)",
-                }}
-              />
-              <div
-                style={{
-                  padding: "0.5rem 0.75rem",
-                  fontSize: "0.75rem",
-                  color: "var(--color-fg-secondary)",
+                  height: "10rem",
                   backgroundColor: "var(--color-bg-elevated)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "var(--color-fg-muted)",
+                  fontSize: "0.875rem",
                 }}
               >
-                {token.label}
+                게임 스크린샷
+              </div>
+              <div style={{ padding: "1.25rem" }}>
+                <h3
+                  style={{
+                    fontSize: "1.1rem",
+                    fontWeight: 700,
+                    color: "var(--color-fg-primary)",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  프로젝트 {i}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.875rem",
+                    color: "var(--color-fg-secondary)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  게임 설명이 들어갑니다. 사용 기술, 역할, 배운 점 등.
+                </p>
               </div>
             </div>
           ))}
