@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --color-cream: #FAF7F2;
+  --color-teal: #2A9D8F;
+  --color-graphite: #2D3142;
+  --color-orange-accent: #F4A261;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-graphite);
+  font-family: 'Inter', sans-serif;
+}
+
+/* HUD 스타일 테두리 장식 */
+.hud-corner::before,
+.hud-corner::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--color-teal);
+  border-style: solid;
+}
+
+.hud-corner-tl::before {
+  top: 0;
+  left: 0;
+  border-width: 2px 0 0 2px;
+}
+
+.hud-corner-br::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 2px 2px 0;
+}
