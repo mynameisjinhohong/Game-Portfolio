@@ -8,4 +8,5 @@ export interface ChatMessage {
 export interface SampleQuestion {
   id: string;
   text: string;
+  icon?: string;
 }

@@ -7,9 +7,9 @@ import { ChatbotSampleQuestions } from "./ChatbotSampleQuestions";
 import { ChatbotInputArea } from "./ChatbotInputArea";
 
 const SAMPLE_QUESTIONS: SampleQuestion[] = [
-  { id: "q1", text: "Tell me about your games" },
-  { id: "q2", text: "What tech do you use?" },
-  { id: "q3", text: "About you" },
+  { id: "q1", text: "Tell me about your games", icon: "🎮" },
+  { id: "q2", text: "What tech do you use?", icon: "💻" },
+  { id: "q3", text: "About you", icon: "👤" },
 ];
 
 export function ChatbotPanel() {

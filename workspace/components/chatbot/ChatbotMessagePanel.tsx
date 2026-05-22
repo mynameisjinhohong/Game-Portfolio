@@ -9,16 +9,16 @@ interface ChatbotMessagePanelProps {
 export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
   return (
     <div
-      className="flex-1 overflow-y-auto min-h-0 px-4 py-4 space-y-3"
+      className="flex-1 overflow-y-auto min-h-0 px-4 py-4 flex flex-col gap-3"
       aria-label="대화 내용"
       aria-live="polite"
     >
-      {/* 봇 인사 메시지 (항상 표시) */}
-      <div className="flex gap-2 items-start">
-        <div className="w-6 h-6 bg-hud-teal/20 border border-hud-teal/40 rounded flex-shrink-0 flex items-center justify-center mt-0.5">
-          <span className="text-hud-teal text-[10px]">🤖</span>
+      {/* 봇 아바타 + 인사 (항상 표시, 중앙 정렬) */}
+      <div className="flex flex-col items-center gap-3 py-4">
+        <div className="w-14 h-14 bg-hud-teal/20 border-2 border-hud-teal/50 rounded-full flex items-center justify-center shadow-[0_0_16px_rgba(0,201,167,0.2)]">
+          <span className="text-2xl">🤖</span>
         </div>
-        <div className="bg-hud-bg border border-hud-border rounded px-3 py-2 max-w-xs">
+        <div className="bg-hud-bg border border-hud-border rounded-lg px-4 py-3 max-w-[280px] text-center">
           <p className="text-sm text-hud-text leading-relaxed">
             Hello! 👋<br />
             I&apos;m Jinho&apos;s Portfolio Bot.<br />
@@ -27,20 +27,20 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
         </div>
       </div>
 
-      {/* 사용자 메시지 렌더링 */}
+      {/* 사용자 & 봇 메시지 렌더링 */}
       {messages.map((msg) => (
         <div
           key={msg.id}
           className={`flex gap-2 items-start ${msg.role === "user" ? "flex-row-reverse" : ""}`}
         >
-          <div className={`w-6 h-6 rounded flex-shrink-0 flex items-center justify-center mt-0.5 border text-[10px] ${
+          <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center border text-xs ${
             msg.role === "user"
               ? "bg-hud-orange/20 border-hud-orange/40 text-hud-orange"
               : "bg-hud-teal/20 border-hud-teal/40 text-hud-teal"
           }`}>
             {msg.role === "user" ? "U" : "🤖"}
           </div>
-          <div className={`rounded px-3 py-2 max-w-xs border ${
+          <div className={`rounded-lg px-3 py-2 max-w-[240px] border ${
             msg.role === "user"
               ? "bg-hud-orange/10 border-hud-orange/30"
               : "bg-hud-bg border-hud-border"
@@ -49,7 +49,6 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
           </div>
         </div>
       ))}
-      {/* 후속 작업: 스트리밍 응답 및 로딩 인디케이터 연결 위치 */}
     </div>
   );
 }
