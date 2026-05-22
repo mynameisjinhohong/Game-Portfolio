@@ -7,16 +7,17 @@ import { ChatbotSampleQuestions } from "./ChatbotSampleQuestions";
 import { ChatbotInputArea } from "./ChatbotInputArea";
 
 const SAMPLE_QUESTIONS: SampleQuestion[] = [
-  { id: "q1", text: "어떤 게임을 만들었나요?" },
-  { id: "q2", text: "주로 사용하는 기술 스택은?" },
-  { id: "q3", text: "가장 자랑스러운 프로젝트는?" },
-  { id: "q4", text: "어떤 개발자가 되고 싶으신가요?" },
+  { id: "q1", text: "Tell me about your games" },
+  { id: "q2", text: "What tech do you use?" },
+  { id: "q3", text: "About you" },
 ];
 
 export function ChatbotPanel() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [started, setStarted] = useState(false);
 
   function handleSubmit(text: string) {
+    setStarted(true);
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
       role: "user",
@@ -31,20 +32,25 @@ export function ChatbotPanel() {
     handleSubmit(question);
   }
 
-  return (
-    /* HUD 스타일 패널 컨테이너 */
-    <div className="relative flex flex-col h-[480px] md:h-[560px] bg-white/70 backdrop-blur-sm
-                    rounded-lg border border-teal/20 shadow-sm overflow-hidden">
-      {/* HUD 코너 장식 — 상단 좌 */}
-      <span className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-teal rounded-tl-lg" />
-      {/* HUD 코너 장식 — 하단 우 */}
-      <span className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-teal rounded-br-lg" />
+  function handleStartChat() {
+    setStarted(true);
+  }
 
+  return (
+    <div className="hud-panel rounded flex flex-col h-full min-h-[520px]">
       {/* 패널 헤더 */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-teal/20 bg-teal/5">
-        <span className="font-mono text-xs text-teal tracking-widest">CHAT_SESSION</span>
-        <span className="flex items-center gap-1.5 text-xs text-graphite/40 font-mono">
-          <span className="w-1.5 h-1.5 rounded-full bg-teal/60" />
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-hud-border">
+        <div className="flex items-center gap-2">
+          {/* 봇 아이콘 */}
+          <div className="w-6 h-6 bg-hud-teal/20 border border-hud-teal/40 rounded flex items-center justify-center">
+            <span className="text-hud-teal text-xs">🤖</span>
+          </div>
+          <span className="font-mono text-xs text-hud-teal tracking-widest">
+            PORTFOLIO_BOT
+          </span>
+        </div>
+        <span className="flex items-center gap-1.5 font-mono text-[10px] text-hud-text-dim">
+          <span className="w-1.5 h-1.5 rounded-full bg-hud-green animate-pulse" />
           ONLINE
         </span>
       </div>
@@ -62,6 +68,21 @@ export function ChatbotPanel() {
 
       {/* 입력 영역 */}
       <ChatbotInputArea onSubmit={handleSubmit} />
+
+      {/* Start Chat CTA — 대화 시작 전 표시 */}
+      {!started && (
+        <div className="px-4 pb-4 pt-2 border-t border-hud-border">
+          <button
+            onClick={handleStartChat}
+            className="w-full py-3 bg-hud-orange hover:opacity-90 active:opacity-80
+                       text-white font-semibold text-sm rounded transition-opacity
+                       flex items-center justify-center gap-2"
+          >
+            <span>▶</span>
+            Start Chat
+          </button>
+        </div>
+      )}
     </div>
   );
 }

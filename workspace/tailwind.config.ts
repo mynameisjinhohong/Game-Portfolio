@@ -18,6 +18,17 @@ const config: Config = {
         orange: {
           accent: "#F4A261",
         },
+        hud: {
+          bg: "#0B1622",
+          panel: "#0E1F30",
+          border: "#1A3A50",
+          teal: "#00C9A7",
+          "teal-dim": "#007A65",
+          orange: "#FF7A2F",
+          text: "#C8E6EF",
+          "text-dim": "#5A7A8A",
+          green: "#4ADE80",
+        },
       },
       fontFamily: {
         mono: ["'JetBrains Mono'", "monospace"],
