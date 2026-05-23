@@ -14,10 +14,8 @@ const SAMPLE_QUESTIONS: SampleQuestion[] = [
 
 export function ChatbotPanel() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [started, setStarted] = useState(false);
 
   function handleSubmit(text: string) {
-    setStarted(true);
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
       role: "user",
@@ -30,10 +28,6 @@ export function ChatbotPanel() {
 
   function handleSampleSelect(question: string) {
     handleSubmit(question);
-  }
-
-  function handleStartChat() {
-    setStarted(true);
   }
 
   return (
@@ -68,21 +62,6 @@ export function ChatbotPanel() {
 
       {/* 입력 영역 */}
       <ChatbotInputArea onSubmit={handleSubmit} />
-
-      {/* Start Chat CTA — 대화 시작 전 표시 */}
-      {!started && (
-        <div className="px-4 pb-4 pt-2 border-t border-hud-border">
-          <button
-            onClick={handleStartChat}
-            className="w-full py-3 bg-hud-orange hover:opacity-90 active:opacity-80
-                       text-white font-semibold text-sm rounded transition-opacity
-                       flex items-center justify-center gap-2"
-          >
-            <span>▶</span>
-            Start Chat
-          </button>
-        </div>
-      )}
     </div>
   );
 }
