@@ -36,6 +36,7 @@ export function ChatbotInputArea({ onSubmit, isLoading = false }: ChatbotInputAr
           className="flex-1 bg-hud-bg border border-hud-border rounded px-3 py-2
                      text-sm text-hud-text placeholder:text-hud-text-dim
                      focus:outline-none focus:border-hud-teal/60 transition-colors font-sans"
+          id="chatbot-input"
           aria-label="메시지 입력"
           disabled={isLoading}
         />
