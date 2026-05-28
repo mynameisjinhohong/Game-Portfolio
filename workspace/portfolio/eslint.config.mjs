@@ -1,13 +1,14 @@
-import nextPlugin from 'eslint-config-next/core-web-vitals';
+import coreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
 
 const eslintConfig = [
   {
     ignores: ['node_modules/**', '.next/**', 'out/**', 'dist/**', 'build/**'],
   },
-  ...nextPlugin,
+  ...coreWebVitals,
+  ...nextTypescript,
   {
     rules: {
-      // useCallback으로 래핑된 setState 호출은 의도된 패턴
       'react-hooks/set-state-in-effect': 'warn',
     },
   },

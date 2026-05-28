@@ -1,239 +1,167 @@
-import ThemeToggle from '@/components/ThemeToggle';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Hong Jinho | Game Developer',
+  description: '홍진호 게임 개발자 포트폴리오',
+};
+
+const STATS = [
+  { label: 'Creativity', value: 85 },
+  { label: 'Problem Solving', value: 78 },
+  { label: 'Teamwork', value: 72 },
+];
+
+const FEATURED_GAMES = [
+  { title: 'Skybound Quest', subtitle: 'Platformer · Unity', color: '#4A90D9' },
+  { title: 'Mech Battle', subtitle: 'Action · Unity', color: '#E76F51' },
+  { title: 'Arcane Gate', subtitle: 'Puzzle · Unity', color: '#9B59B6' },
+];
+
+const TECH_ICONS = [
+  { label: 'Unity', bg: '#333' },
+  { label: 'C#', bg: '#512BD4' },
+  { label: 'Git', bg: '#F1502F' },
+  { label: 'Blender', bg: '#EA7600' },
+  { label: 'Ps', bg: '#31A8FF' },
+  { label: 'Notion', bg: '#444' },
+];
+
+const SUGGESTIONS = [
+  { icon: '🎮', text: 'Tell me about your games' },
+  { icon: '🔧', text: 'What tech do you use?' },
+  { icon: '👤', text: 'About you' },
+];
 
 export default function Home() {
   return (
-    <main
-      style={{
-        minHeight: '100vh',
-        backgroundColor: 'var(--color-bg-base)',
-        color: 'var(--color-fg-primary)',
-      }}
-    >
-      {/* 헤더 */}
-      <header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '1rem 2rem',
-          borderBottom: '1px solid var(--color-border)',
-          backgroundColor: 'var(--color-bg-surface)',
-          boxShadow: 'var(--shadow-sm)',
-          position: 'sticky',
-          top: 0,
-          zIndex: 100,
-        }}
-      >
-        <span
-          style={{
-            fontSize: '1.125rem',
-            fontWeight: 700,
-            color: 'var(--color-teal)',
-            letterSpacing: '-0.01em',
-          }}
-        >
-          홍진호
-        </span>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-          <a
-            href="#about"
-            style={{
-              color: 'var(--color-fg-secondary)',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-            }}
-          >
-            소개
-          </a>
-          <a
-            href="#projects"
-            style={{
-              color: 'var(--color-fg-secondary)',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-            }}
-          >
-            프로젝트
-          </a>
-          <ThemeToggle />
-        </nav>
-      </header>
-
-      {/* 히어로 */}
-      <section
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '8rem 2rem',
-          gap: '1.5rem',
-          textAlign: 'center',
-        }}
-      >
-        <h1
-          style={{
-            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-            fontWeight: 800,
-            color: 'var(--color-fg-primary)',
-            lineHeight: 1.15,
-          }}
-        >
-          게임을 만드는 개발자
-        </h1>
-        <p
-          style={{
-            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-            color: 'var(--color-fg-secondary)',
-            maxWidth: '40rem',
-            lineHeight: 1.7,
-          }}
-        >
-          Unity · C# · 인터랙티브 경험 설계
-          <br />
-          재미있는 경험을 코드로 구현합니다.
-        </p>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <a
-            href="#projects"
-            style={{
-              display: 'inline-block',
-              padding: '0.75rem 2rem',
-              backgroundColor: 'var(--color-orange)',
-              color: '#ffffff',
-              borderRadius: '0.5rem',
-              fontWeight: 600,
-              textDecoration: 'none',
-              boxShadow: 'var(--shadow-md)',
-            }}
-          >
-            프로젝트 보기
-          </a>
-          <a
-            href="#about"
-            style={{
-              display: 'inline-block',
-              padding: '0.75rem 2rem',
-              backgroundColor: 'transparent',
-              color: 'var(--color-teal)',
-              borderRadius: '0.5rem',
-              fontWeight: 600,
-              textDecoration: 'none',
-              border: '2px solid var(--color-teal)',
-            }}
-          >
-            소개 보기
-          </a>
+    <div className="hud-root">
+      {/* Browser-style tab bar */}
+      <div className="tab-bar">
+        <div className="tab-active">
+          <span>🎮</span>
+          <span>Hong Jinho | Game Developer</span>
         </div>
-      </section>
+        <div className="address-bar">hongjinho.dev</div>
+      </div>
 
-      {/* 소개 */}
-      <section
-        id="about"
-        style={{
-          padding: '4rem 2rem',
-          maxWidth: '48rem',
-          margin: '0 auto',
-        }}
-      >
-        <h2
-          style={{
-            fontSize: '1.75rem',
-            fontWeight: 700,
-            marginBottom: '1rem',
-            color: 'var(--color-game-blue)',
-          }}
-        >
-          개발자 소개
-        </h2>
-        <p
-          style={{
-            fontSize: '1rem',
-            color: 'var(--color-fg-secondary)',
-            lineHeight: 1.8,
-          }}
-        >
-          Unity와 C#을 주력으로 게임 개발을 해 온 개발자입니다. 게임플레이 메카닉 설계부터 실제
-          플레이어 경험까지, 결과물 중심으로 작업합니다.
-        </p>
-      </section>
+      {/* Three-column HUD layout */}
+      <main className="hud-layout">
+        {/* ── LEFT: Character card ── */}
+        <aside className="hud-panel panel-left">
+          <div className="panel-corner tl" />
+          <div className="panel-corner tr" />
+          <div className="panel-corner bl" />
+          <div className="panel-corner br" />
 
-      {/* 프로젝트 */}
-      <section
-        id="projects"
-        style={{
-          padding: '4rem 2rem',
-          maxWidth: '64rem',
-          margin: '0 auto',
-        }}
-      >
-        <h2
-          style={{
-            fontSize: '1.75rem',
-            fontWeight: 700,
-            marginBottom: '2rem',
-            color: 'var(--color-game-blue)',
-          }}
-        >
-          게임 프로젝트
-        </h2>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: '1.5rem',
-          }}
-        >
-          {/* 프로젝트 카드 플레이스홀더 — 추후 실제 데이터로 교체 */}
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              style={{
-                borderRadius: '0.75rem',
-                border: '1px solid var(--color-border)',
-                backgroundColor: 'var(--color-bg-surface)',
-                boxShadow: 'var(--shadow-sm)',
-                overflow: 'hidden',
-              }}
-            >
-              <div
-                style={{
-                  height: '10rem',
-                  backgroundColor: 'var(--color-bg-elevated)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--color-fg-muted)',
-                  fontSize: '0.875rem',
-                }}
-              >
-                게임 스크린샷
-              </div>
-              <div style={{ padding: '1.25rem' }}>
-                <h3
-                  style={{
-                    fontSize: '1.1rem',
-                    fontWeight: 700,
-                    color: 'var(--color-fg-primary)',
-                    marginBottom: '0.5rem',
-                  }}
-                >
-                  프로젝트 {i}
-                </h3>
-                <p
-                  style={{
-                    fontSize: '0.875rem',
-                    color: 'var(--color-fg-secondary)',
-                    lineHeight: 1.6,
-                  }}
-                >
-                  게임 설명이 들어갑니다. 사용 기술, 역할, 배운 점 등.
-                </p>
-              </div>
+          <div className="level-badge">Lv. 18</div>
+
+          <div className="avatar-wrap">
+            <div className="avatar-frame">
+              <span className="avatar-emoji">🧑‍💻</span>
             </div>
-          ))}
-        </div>
-      </section>
-    </main>
+          </div>
+
+          <div className="char-name">Hong Jinho</div>
+          <div className="char-class">Game Developer</div>
+
+          <p className="char-bio">
+            I build playful experiences
+            <br />
+            and systems that players
+            <br />
+            love to explore.
+          </p>
+
+          <div className="stat-list">
+            {STATS.map(({ label, value }) => (
+              <div key={label} className="stat-row">
+                <span className="stat-icon">⚡</span>
+                <div className="stat-info">
+                  <span className="stat-label">{label}</span>
+                  <div className="stat-track">
+                    <div className="stat-fill" style={{ width: `${value}%` }} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        {/* ── CENTER: Chatbot ── */}
+        <section className="hud-panel panel-center">
+          <div className="panel-corner tl" />
+          <div className="panel-corner tr" />
+          <div className="panel-corner bl" />
+          <div className="panel-corner br" />
+
+          <div className="bot-header">
+            <div className="bot-avatar">🤖</div>
+            <div className="bot-online" />
+          </div>
+
+          <div className="chat-bubble">
+            Hello! 👋
+            <br />
+            I&apos;m Jinho&apos;s Portfolio Bot.
+            <br />
+            What would you like to know?
+          </div>
+
+          <div className="suggestion-list">
+            {SUGGESTIONS.map(({ icon, text }) => (
+              <button key={text} className="suggestion-btn" type="button">
+                <span>{icon}</span>
+                <span>{text}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="chat-input-row">
+            <input className="chat-input" type="text" placeholder="Ask me anything..." readOnly />
+            <button className="send-btn" type="button">
+              ➤
+            </button>
+          </div>
+
+          <button className="start-chat-btn" type="button">
+            💬 Start Chat
+          </button>
+        </section>
+
+        {/* ── RIGHT: Featured Games + Tech Stack ── */}
+        <aside className="hud-panel panel-right">
+          <div className="panel-corner tl" />
+          <div className="panel-corner tr" />
+          <div className="panel-corner bl" />
+          <div className="panel-corner br" />
+
+          <h3 className="panel-heading">Featured Games</h3>
+          <div className="game-list">
+            {FEATURED_GAMES.map(({ title, subtitle, color }) => (
+              <div key={title} className="game-item">
+                <div className="game-thumb" style={{ background: color }}>
+                  🎮
+                </div>
+                <div className="game-meta">
+                  <div className="game-title">{title}</div>
+                  <div className="game-sub">{subtitle}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="panel-heading" style={{ marginTop: '1.25rem' }}>
+            Tech Stack
+          </h3>
+          <div className="tech-grid">
+            {TECH_ICONS.map(({ label, bg }) => (
+              <div key={label} className="tech-chip" style={{ background: bg }}>
+                {label}
+              </div>
+            ))}
+          </div>
+        </aside>
+      </main>
+    </div>
   );
 }
