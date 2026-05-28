@@ -1,0 +1,16 @@
+# 환경 변수 (실제 값이 담긴 파일은 커밋하지 않음)
+.env
+.env.local
+.env.*.local
+
+# 노드 모듈
+node_modules/
+
+# 빌드 아웃풋
+dist/
+.next/
+out/
+
+# OS 파일
+.DS_Store
+Thumbs.db
