@@ -53,15 +53,28 @@ cp config/llm/context.example.txt config/llm/context.txt
 
 이후 `context.txt`의 이메일 등 개인 정보를 실제 값으로 교체하세요.
 
-## 컨텍스트 문서 상세 참조
+## context.example.txt 내용 범위 및 출처
 
-`context.txt`는 요약 정보만 포함합니다. 구체적인 내용은 아래 문서를 참조하세요.
+`context.example.txt`는 챗봇이 대부분의 질문에 단독으로 답할 수 있도록 GP-51 포지셔닝 분석 문서의 핵심 내용을 직접 포함합니다.
+
+포함된 정보 출처:
+
+| 포함 항목 | 원본 문서 |
+|-----------|-----------|
+| 핵심 포지셔닝 5가지 강점 | `docs/research/developer-positioning.md` (GP-51) |
+| 게임 프로젝트 상세 설명 | `docs/content/section-content-map.md` (GP-50/GP-52 반영) |
+| 수상·경력·교육 이력 | GP-51 포지셔닝 분석 |
+| FAQ (면접관 예상 질문) | GP-51 포지셔닝 분석 |
+
+### context.txt 업데이트 시 참고 문서
+
+`data/games.ts`가 추가되거나 상세 게임 정보가 변경되면 context.txt의 게임 프로젝트 섹션도 함께 업데이트하세요.
 
 | 문서 | 내용 |
 |------|------|
-| `docs/research/developer-positioning.md` | 개발자 강점·포지셔닝 분석 (GP-51) |
+| `docs/research/developer-positioning.md` | 개발자 강점·포지셔닝 분석 전문 (GP-51) |
 | `docs/content/section-content-map.md` | 섹션별 콘텐츠·챗봇 타입 정의 (GP-52, GP-50 반영) |
-| `data/games.ts` | 게임별 상세 데이터 |
+| `data/games.ts` | 게임별 상세 데이터 (구현 후 참조) |
 
 ## 챗봇 연동 코드 작성 시 참고
 
