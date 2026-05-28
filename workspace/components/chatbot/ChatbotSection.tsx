@@ -1,7 +1,6 @@
 "use client";
 
 import { CharacterPanel } from "./CharacterPanel";
-import { ChatbotHeader } from "./ChatbotHeader";
 import { ChatbotPanel } from "./ChatbotPanel";
 import { FeaturedGamesPanel } from "./FeaturedGamesPanel";
 
@@ -13,11 +12,8 @@ export function ChatbotSection() {
       className="w-full max-w-7xl mx-auto px-4 py-6 md:py-10"
       style={{ minHeight: "calc(100vh - 52px)" }}
     >
-      {/* 섹션 헤더 — 모바일에서도 노출 */}
-      <ChatbotHeader />
-
       {/* 3컬럼 그리드: 캐릭터 | 챗봇 | 게임 */}
-      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_220px] gap-4 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_220px] gap-4 items-center">
         {/* 왼쪽: 캐릭터 패널 */}
         <div className="hidden md:block">
           <CharacterPanel />
