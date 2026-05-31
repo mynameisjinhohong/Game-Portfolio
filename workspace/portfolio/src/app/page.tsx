@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import ChatbotPanel from '@/components/ChatbotPanel';
 
 export const metadata: Metadata = {
   title: 'Hong Jinho | Game Developer',
@@ -24,12 +25,6 @@ const TECH_ICONS = [
   { label: 'Blender', bg: '#EA7600' },
   { label: 'Ps', bg: '#31A8FF' },
   { label: 'Notion', bg: '#444' },
-];
-
-const SUGGESTIONS = [
-  { icon: '🎮', text: 'Tell me about your games' },
-  { icon: '🔧', text: 'What tech do you use?' },
-  { icon: '👤', text: 'About you' },
 ];
 
 export default function Home() {
@@ -93,39 +88,7 @@ export default function Home() {
           <div className="panel-corner tr" />
           <div className="panel-corner bl" />
           <div className="panel-corner br" />
-
-          <div className="bot-header">
-            <div className="bot-avatar">🤖</div>
-            <div className="bot-online" />
-          </div>
-
-          <div className="chat-bubble">
-            Hello! 👋
-            <br />
-            I&apos;m Jinho&apos;s Portfolio Bot.
-            <br />
-            What would you like to know?
-          </div>
-
-          <div className="suggestion-list">
-            {SUGGESTIONS.map(({ icon, text }) => (
-              <button key={text} className="suggestion-btn" type="button">
-                <span>{icon}</span>
-                <span>{text}</span>
-              </button>
-            ))}
-          </div>
-
-          <div className="chat-input-row">
-            <input className="chat-input" type="text" placeholder="Ask me anything..." readOnly />
-            <button className="send-btn" type="button">
-              ➤
-            </button>
-          </div>
-
-          <button className="start-chat-btn" type="button">
-            💬 Start Chat
-          </button>
+          <ChatbotPanel />
         </section>
 
         {/* ── RIGHT: Featured Games + Tech Stack ── */}
