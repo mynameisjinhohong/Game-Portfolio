@@ -1,0 +1,101 @@
+# 로컬 LLM 준비 상태 검증 가이드
+
+챗봇 UI 개발에 앞서 로컬 LLM 서버(Ollama)가 올바르게 설정됐는지 확인하는 절차를 설명한다.
+
+---
+
+## 사전 조건
+
+| 항목 | 확인 방법 |
+|---|---|
+| Ollama 설치 | `ollama --version` |
+| 모델 다운로드 | `ollama list` |
+| 서버 실행 | `ollama serve` (별도 터미널) |
+
+---
+
+## 빠른 검증 (스크립트)
+
+```bash
+# 기본 실행 (localhost:11434, 모델 llama3)
+bash scripts/check-llm.sh
+
+# 서버 주소·모델 지정
+bash scripts/check-llm.sh --url http://localhost:11434 --model llama3
+
+# 환경 변수로 지정
+LLM_BASE_URL=http://localhost:11434 LLM_MODEL=llama3 bash scripts/check-llm.sh
+```
+
+스크립트는 다음 5단계를 순서대로 검증하고 결과를 출력한다.
+
+| 단계 | 검증 항목 | 실패 시 조치 |
+|---|---|---|
+| 1 | 서버 실행 여부 | `ollama serve` 실행 |
+| 2 | 모델 목록 조회 | 서버 재시작 |
+| 3 | 지정 모델 존재 | `ollama pull <model>` |
+| 4 | 추론 응답 수신 | `ollama run <model>` 으로 직접 확인 |
+| 5 | .env 설정 유효성 | `.env.example` 참고해 `.env` 작성 |
+
+모든 단계가 통과([OK])되면 챗봇 개발을 시작할 수 있다.
+
+---
+
+## 수동 확인 절차
+
+스크립트 없이 curl 로 직접 확인하는 방법이다.
+
+### 1. 서버 헬스체크
+
+```bash
+curl http://localhost:11434/api/tags
+# 응답 예: {"models":[{"name":"llama3:latest",...}]}
+# 연결 실패 시: curl: (7) Failed to connect
+```
+
+### 2. 모델 목록 확인
+
+```bash
+ollama list
+# NAME              ID              SIZE    MODIFIED
+# llama3:latest     365c0bd3c000    4.7 GB  ...
+```
+
+### 3. 추론 응답 테스트
+
+```bash
+curl http://localhost:11434/api/generate \
+  -H "Content-Type: application/json" \
+  -d '{"model":"llama3","prompt":"Reply with only: OK","stream":false}'
+# {"model":"llama3","response":"OK",...}
+```
+
+### 4. .env 설정 확인
+
+```bash
+# .env 파일이 없으면 예시 파일로부터 생성
+cp workspace/portfolio/.env.example workspace/portfolio/.env
+
+# NEXT_PUBLIC_CHATBOT_API_URL 이 Ollama 서버 주소와 일치하는지 확인
+grep NEXT_PUBLIC_CHATBOT_API_URL workspace/portfolio/.env
+```
+
+---
+
+## 검증 결과 해석
+
+| 상태 | 의미 |
+|---|---|
+| 모든 항목 [OK] | 챗봇 API 연동 개발 시작 가능 |
+| 1번 [NG] | Ollama 서버 미실행 — `ollama serve` 로 시작 |
+| 3번 [NG] | 모델 미설치 — `ollama pull llama3` 실행 |
+| 4번 [NG] | 모델 로딩 지연 또는 오류 — 터미널에서 `ollama run llama3` 으로 직접 확인 |
+| 5번 [NG] | .env 미작성 — `.env.example` 복사 후 값 수정 |
+
+---
+
+## 후속 챗봇 개발 전 체크리스트
+
+- [ ] `bash scripts/check-llm.sh` 결과 전 항목 통과
+- [ ] `workspace/portfolio/.env` 에 `NEXT_PUBLIC_CHATBOT_API_URL` 설정 완료
+- [ ] 선택한 모델명을 챗봇 API 호출 코드에 동일하게 반영
