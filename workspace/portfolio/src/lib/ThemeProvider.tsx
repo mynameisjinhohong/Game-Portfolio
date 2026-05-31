@@ -1,12 +1,6 @@
-"use client";
+'use client';
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import {
   type Theme,
   applyTheme,
@@ -14,11 +8,11 @@ import {
   getSystemTheme,
   resolveTheme,
   setStoredTheme,
-} from "./theme";
+} from './theme';
 
 interface ThemeContextValue {
   theme: Theme;
-  resolvedTheme: "light" | "dark";
+  resolvedTheme: 'light' | 'dark';
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
@@ -26,8 +20,8 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("system");
-  const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
+  const [theme, setThemeState] = useState<Theme>('system');
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
   const applyAndSet = useCallback((t: Theme) => {
     const resolved = resolveTheme(t);
@@ -38,13 +32,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const stored = getStoredTheme();
-    applyAndSet(stored ?? "system");
+    applyAndSet(stored ?? 'system');
 
-    if (!stored || stored === "system") {
-      const mq = window.matchMedia("(prefers-color-scheme: dark)");
-      const handler = () => applyAndSet("system");
-      mq.addEventListener("change", handler);
-      return () => mq.removeEventListener("change", handler);
+    if (!stored || stored === 'system') {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const handler = () => applyAndSet('system');
+      mq.addEventListener('change', handler);
+      return () => mq.removeEventListener('change', handler);
     }
   }, [applyAndSet]);
 
@@ -57,7 +51,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 
   const toggleTheme = useCallback(() => {
-    const next = resolvedTheme === "dark" ? "light" : "dark";
+    const next = resolvedTheme === 'dark' ? 'light' : 'dark';
     setTheme(next);
   }, [resolvedTheme, setTheme]);
 
@@ -70,6 +64,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useTheme(): ThemeContextValue {
   const ctx = useContext(ThemeContext);
-  if (!ctx) throw new Error("useTheme must be used within ThemeProvider");
+  if (!ctx) throw new Error('useTheme must be used within ThemeProvider');
   return ctx;
 }

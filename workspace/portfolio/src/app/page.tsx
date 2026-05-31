@@ -1,35 +1,35 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Hong Jinho | Game Developer",
-  description: "홍진호 게임 개발자 포트폴리오",
+  title: 'Hong Jinho | Game Developer',
+  description: '홍진호 게임 개발자 포트폴리오',
 };
 
 const STATS = [
-  { label: "Creativity", value: 85 },
-  { label: "Problem Solving", value: 78 },
-  { label: "Teamwork", value: 72 },
+  { label: 'Creativity', value: 85 },
+  { label: 'Problem Solving', value: 78 },
+  { label: 'Teamwork', value: 72 },
 ];
 
 const FEATURED_GAMES = [
-  { title: "Skybound Quest", subtitle: "Platformer · Unity", color: "#4A90D9" },
-  { title: "Mech Battle", subtitle: "Action · Unity", color: "#E76F51" },
-  { title: "Arcane Gate", subtitle: "Puzzle · Unity", color: "#9B59B6" },
+  { title: 'Skybound Quest', subtitle: 'Platformer · Unity', color: '#4A90D9' },
+  { title: 'Mech Battle', subtitle: 'Action · Unity', color: '#E76F51' },
+  { title: 'Arcane Gate', subtitle: 'Puzzle · Unity', color: '#9B59B6' },
 ];
 
 const TECH_ICONS = [
-  { label: "Unity", bg: "#333" },
-  { label: "C#", bg: "#512BD4" },
-  { label: "Git", bg: "#F1502F" },
-  { label: "Blender", bg: "#EA7600" },
-  { label: "Ps", bg: "#31A8FF" },
-  { label: "Notion", bg: "#444" },
+  { label: 'Unity', bg: '#333' },
+  { label: 'C#', bg: '#512BD4' },
+  { label: 'Git', bg: '#F1502F' },
+  { label: 'Blender', bg: '#EA7600' },
+  { label: 'Ps', bg: '#31A8FF' },
+  { label: 'Notion', bg: '#444' },
 ];
 
 const SUGGESTIONS = [
-  { icon: "🎮", text: "Tell me about your games" },
-  { icon: "🔧", text: "What tech do you use?" },
-  { icon: "👤", text: "About you" },
+  { icon: '🎮', text: 'Tell me about your games' },
+  { icon: '🔧', text: 'What tech do you use?' },
+  { icon: '👤', text: 'About you' },
 ];
 
 export default function Home() {
@@ -46,7 +46,6 @@ export default function Home() {
 
       {/* Three-column HUD layout */}
       <main className="hud-layout">
-
         {/* ── LEFT: Character card ── */}
         <aside className="hud-panel panel-left">
           <div className="panel-corner tl" />
@@ -66,8 +65,10 @@ export default function Home() {
           <div className="char-class">Game Developer</div>
 
           <p className="char-bio">
-            I build playful experiences<br />
-            and systems that players<br />
+            I build playful experiences
+            <br />
+            and systems that players
+            <br />
             love to explore.
           </p>
 
@@ -116,13 +117,10 @@ export default function Home() {
           </div>
 
           <div className="chat-input-row">
-            <input
-              className="chat-input"
-              type="text"
-              placeholder="Ask me anything..."
-              readOnly
-            />
-            <button className="send-btn" type="button">➤</button>
+            <input className="chat-input" type="text" placeholder="Ask me anything..." readOnly />
+            <button className="send-btn" type="button">
+              ➤
+            </button>
           </div>
 
           <button className="start-chat-btn" type="button">
@@ -141,7 +139,9 @@ export default function Home() {
           <div className="game-list">
             {FEATURED_GAMES.map(({ title, subtitle, color }) => (
               <div key={title} className="game-item">
-                <div className="game-thumb" style={{ background: color }}>🎮</div>
+                <div className="game-thumb" style={{ background: color }}>
+                  🎮
+                </div>
                 <div className="game-meta">
                   <div className="game-title">{title}</div>
                   <div className="game-sub">{subtitle}</div>
@@ -150,7 +150,9 @@ export default function Home() {
             ))}
           </div>
 
-          <h3 className="panel-heading" style={{ marginTop: "1.25rem" }}>Tech Stack</h3>
+          <h3 className="panel-heading" style={{ marginTop: '1.25rem' }}>
+            Tech Stack
+          </h3>
           <div className="tech-grid">
             {TECH_ICONS.map(({ label, bg }) => (
               <div key={label} className="tech-chip" style={{ background: bg }}>
@@ -159,7 +161,6 @@ export default function Home() {
             ))}
           </div>
         </aside>
-
       </main>
     </div>
   );
