@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 # 로컬 LLM 서버(Ollama) 준비 상태 검증 스크립트
 # 사용법: bash scripts/check-llm.sh [--url <base_url>] [--model <model_name>]
+#
+# 환경 변수 우선순위:
+#   1. 명령행 인자 (--url, --model)
+#   2. NEXT_PUBLIC_CHATBOT_API_URL / NEXT_PUBLIC_CHATBOT_MODEL 환경 변수
+#   3. 기본값 (http://localhost:11434 / llama3)
 
 set -euo pipefail
 
-BASE_URL="${LLM_BASE_URL:-http://localhost:11434}"
-MODEL="${LLM_MODEL:-llama3}"
+BASE_URL="${NEXT_PUBLIC_CHATBOT_API_URL:-http://localhost:11434}"
+MODEL="${NEXT_PUBLIC_CHATBOT_MODEL:-llama3}"
 
 # 인자 파싱
 while [[ $# -gt 0 ]]; do
@@ -104,28 +109,48 @@ else
   fail "추론 테스트 건너뜀 (서버 미실행)"
 fi
 
-# 5. .env 설정 확인 (portfolio)
-echo "[5] .env 설정 확인 (workspace/portfolio)"
+# 5. .env.local / .env 설정 확인 (portfolio)
+# Next.js 관례: .env.local 우선, 없으면 .env 검사
+echo "[5] 환경 변수 설정 확인 (workspace/portfolio)"
+ENV_LOCAL="workspace/portfolio/.env.local"
 ENV_FILE="workspace/portfolio/.env"
 ENV_EXAMPLE="workspace/portfolio/.env.example"
-if [[ -f "$ENV_FILE" ]]; then
-  ok ".env 파일 존재"
-  if grep -q "NEXT_PUBLIC_CHATBOT_API_URL" "$ENV_FILE"; then
-    CONFIGURED_URL=$(grep "NEXT_PUBLIC_CHATBOT_API_URL" "$ENV_FILE" | cut -d'=' -f2 | tr -d '"' | tr -d "'")
-    if [[ "$CONFIGURED_URL" == "$BASE_URL" ]]; then
-      ok "NEXT_PUBLIC_CHATBOT_API_URL = $CONFIGURED_URL (서버 주소 일치)"
+
+# 검사 대상 파일 결정 (.env.local 우선)
+if [[ -f "$ENV_LOCAL" ]]; then
+  ACTIVE_ENV="$ENV_LOCAL"
+  ok ".env.local 파일 존재 (Next.js 로컬 설정 파일)"
+elif [[ -f "$ENV_FILE" ]]; then
+  ACTIVE_ENV="$ENV_FILE"
+  ok ".env 파일 존재 (로컬 개발용 설정 파일)"
+  info ".env.local 을 사용하면 git 에 실수로 커밋되는 위험을 줄일 수 있습니다"
+else
+  ACTIVE_ENV=""
+  if [[ -f "$ENV_EXAMPLE" ]]; then
+    fail "환경 설정 파일 없음 (.env.example 은 존재)"
+    echo "  → cp $ENV_EXAMPLE $ENV_LOCAL  후 값을 수정하세요"
+  else
+    fail ".env.local / .env / .env.example 모두 없음"
+  fi
+fi
+
+if [[ -n "$ACTIVE_ENV" ]]; then
+  # NEXT_PUBLIC_CHATBOT_API_URL 검사
+  if grep -q "NEXT_PUBLIC_CHATBOT_API_URL" "$ACTIVE_ENV"; then
+    CONFIGURED_URL=$(grep "NEXT_PUBLIC_CHATBOT_API_URL" "$ACTIVE_ENV" | grep -v '^#' | head -1 | cut -d'=' -f2- | tr -d '"' | tr -d "'" | tr -d ' ')
+    if [[ -z "$CONFIGURED_URL" ]]; then
+      fail "NEXT_PUBLIC_CHATBOT_API_URL 키가 존재하지만 값이 비어 있음"
+      echo "  → $ACTIVE_ENV 에서 NEXT_PUBLIC_CHATBOT_API_URL 값을 입력하세요"
+    elif [[ "$CONFIGURED_URL" == "$BASE_URL" ]]; then
+      ok "NEXT_PUBLIC_CHATBOT_API_URL = $CONFIGURED_URL (검증 대상 서버 주소 일치)"
     else
       fail "NEXT_PUBLIC_CHATBOT_API_URL=$CONFIGURED_URL 와 검증 대상 서버 $BASE_URL 가 다름"
+      echo "  → 일치시키려면: --url $CONFIGURED_URL 옵션으로 재실행하거나, $ACTIVE_ENV 값을 수정하세요"
     fi
   else
-    fail ".env 에 NEXT_PUBLIC_CHATBOT_API_URL 미설정"
-    echo "  → .env.example 을 참고해 .env 를 작성하세요"
+    fail "$ACTIVE_ENV 에 NEXT_PUBLIC_CHATBOT_API_URL 미설정"
+    echo "  → .env.example 을 참고해 NEXT_PUBLIC_CHATBOT_API_URL 를 추가하세요"
   fi
-elif [[ -f "$ENV_EXAMPLE" ]]; then
-  fail ".env 파일 없음 (.env.example 은 존재)"
-  echo "  → cp $ENV_EXAMPLE $ENV_FILE 후 값을 수정하세요"
-else
-  fail ".env 및 .env.example 모두 없음"
 fi
 
 # 결과 요약
