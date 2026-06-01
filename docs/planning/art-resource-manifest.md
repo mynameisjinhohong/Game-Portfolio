@@ -30,11 +30,24 @@ public/
 | 규칙 | 예시 |
 |------|------|
 | 소문자 + 하이픈 구분 | `hero-featured.webp` |
-| 게임 카드: `<slug>-thumbnail` | `gravity-flip-thumbnail.webp` |
-| 스크린샷: `<slug>-screenshot-<n>` | `gravity-flip-screenshot-01.webp` |
+| 게임 카드 더미: `<slug>-thumbnail-dummy` | `gravity-flip-thumbnail-dummy.webp` |
+| 스크린샷 더미: `<slug>-screenshot-<n>-dummy` | `gravity-flip-screenshot-01-dummy.webp` |
 | 배경: `bg-<용도>` | `bg-hero.webp`, `bg-section.webp` |
 | 장식: `deco-<설명>` | `deco-pixel-star.png` |
 | UI 아이콘: `icon-<이름>` | `icon-unity.svg` |
+
+### 더미 이미지 규칙
+
+> 게임 썸네일·스크린샷처럼 실제 게임 결과물 기반이어야 하는 이미지는 AI로 생성하지 않는다.  
+> 대신 **`-dummy` 접미사**가 붙은 자리표시자 이미지를 생성하고, 사람이 나중에 실제 이미지로 교체한다.
+
+| 구분 | 생성 방식 | 네이밍 |
+|------|-----------|--------|
+| 게임 썸네일 | 더미 (사람이 교체) | `thumbnail-dummy.webp` |
+| 게임 스크린샷 | 더미 (사람이 교체) | `screenshot-01-dummy.webp` |
+| 히어로 배경 | AI 생성 가능 | `bg-hero.webp` |
+| 대표 게임 피처드 | AI 생성 가능 (실제 스크린샷 없을 때) | `hero-featured.webp` |
+| 공용 배경·장식 | AI 생성 가능 | 각 섹션 명세 참조 |
 
 ### 포맷 선택 기준
 
@@ -73,7 +86,7 @@ public/
 | 투명 배경 | 불필요 |
 | 저장 경로 | `public/images/hero/hero-featured.webp` |
 | 이미지 특성 | 대표 게임(Gravity Flip 또는 가장 완성도 높은 게임) 스크린샷 또는 키아트 |
-| 추가 참고 | 실제 게임 스크린샷을 우선 사용, 없으면 AI 생성 키아트 |
+| 추가 참고 | **실제 게임 스크린샷을 사람이 직접 교체**하는 것이 원칙. 초기 구현에서는 더미 이미지(`hero-featured-dummy.webp`)를 사용한다. |
 
 ### 1-3. 프로필 이미지 (선택)
 
@@ -146,13 +159,17 @@ public/
 
 각 게임마다 1장의 썸네일이 필요하다.
 
+> **⚠️ 더미 이미지 정책**: 게임 썸네일은 실제 게임 스크린샷을 기반으로 해야 하므로 AI로 생성하지 않는다.  
+> 초기 구현에서는 `-dummy` 접미사가 붙은 자리표시자 이미지를 배치하고, 사람이 나중에 실제 게임 캡처로 교체한다.
+
 | 항목 | 내용 |
 |------|------|
 | 용도 | 게임 카드 상단 이미지 (목록 페이지 기본 노출) |
 | 권장 크기 | 640×360px (16:9) |
 | 포맷 | WebP (손실, 품질 85) |
 | 투명 배경 | 불필요 |
-| 저장 경로 | `public/images/games/<slug>/thumbnail.webp` |
+| 초기 저장 경로 | `public/images/games/<slug>/thumbnail-dummy.webp` |
+| 최종 저장 경로 | `public/images/games/<slug>/thumbnail.webp` (사람이 교체 후 rename) |
 | 이미지 특성 | 게임의 핵심 플레이 장면 또는 타이틀 화면, 밝고 식별하기 쉬운 구성 |
 
 #### 필요한 게임 슬러그 목록
@@ -170,13 +187,17 @@ public/
 
 상세 페이지 또는 모달에서 표시되는 추가 스크린샷.
 
+> **⚠️ 더미 이미지 정책**: 실제 게임 플레이 캡처로만 의미가 있으므로 AI 생성 금지.  
+> 초기 구현에서는 `-dummy` 접미사 자리표시자를 배치하고, 사람이 교체한다.
+
 | 항목 | 내용 |
 |------|------|
 | 용도 | 게임 상세 뷰에서 여러 장면 보여주기 |
 | 권장 크기 | 1280×720px (16:9) |
 | 포맷 | WebP (손실, 품질 85) |
 | 투명 배경 | 불필요 |
-| 저장 경로 | `public/images/games/<slug>/screenshot-01.webp` ~ `screenshot-04.webp` |
+| 초기 저장 경로 | `public/images/games/<slug>/screenshot-01-dummy.webp` ~ `screenshot-04-dummy.webp` |
+| 최종 저장 경로 | `public/images/games/<slug>/screenshot-01.webp` ~ `screenshot-04.webp` (사람이 교체 후 rename) |
 | 이미지 특성 | 플레이 장면, UI 포함 가능, 게임 분위기 전달 |
 | 수량 | 게임당 최소 1장, 최대 4장 권장 |
 
@@ -207,14 +228,23 @@ public/
 
 후속 `codex_imagegen` 작업에서 아래 순서로 생성을 진행한다.
 
+> **중요**: 게임 썸네일·스크린샷은 AI 생성 대상이 아니다. 해당 항목은 더미 이미지 생성 작업으로 별도 처리한다.
+
+### AI 생성 대상
+
 | 우선순위 | 리소스 | 이유 |
 |----------|--------|------|
 | 1 | 히어로 배경 (`bg-hero.webp`) | 사이트 첫 인상에 직결 |
-| 2 | 게임 썸네일 (전 게임) | 게임 갤러리 기능에 필수 |
-| 3 | 대표 게임 피처드 (`hero-featured.webp`) | 히어로 섹션 완성도 |
-| 4 | 게임 스크린샷 (각 게임 2–3장) | 상세 페이지 충실도 |
-| 5 | 공용 배경·장식 | 전체 일관성 |
-| 6 | 기술 스택 아이콘 | Simpleicons 또는 Devicons 외부 소스로 대체 가능 |
+| 2 | 공용 배경·장식 | 전체 일관성 |
+| 3 | 기술 스택 아이콘 | Simpleicons 또는 Devicons 외부 소스로 대체 가능 |
+
+### 더미 이미지 생성 대상 (사람이 교체 필요)
+
+| 리소스 | 더미 경로 | 교체 방법 |
+|--------|-----------|-----------|
+| 게임 썸네일 (전 게임) | `games/<slug>/thumbnail-dummy.webp` | 실제 게임 캡처로 교체 |
+| 게임 스크린샷 (각 게임 2–4장) | `games/<slug>/screenshot-0n-dummy.webp` | 실제 플레이 장면으로 교체 |
+| 대표 게임 피처드 | `hero/hero-featured-dummy.webp` | 대표 게임 키아트 또는 스크린샷으로 교체 |
 
 ---
 
@@ -235,21 +265,21 @@ public/
 - [ ] `deco-pixel-star.png` — 픽셀 장식 (선택)
 - [ ] `section-divider.svg` — 섹션 구분선
 
-### 게임 카드 (gravity-flip)
+### 게임 카드 (gravity-flip) — 더미 이미지, 사람이 교체 필요
 
-- [ ] `games/gravity-flip/thumbnail.webp`
-- [ ] `games/gravity-flip/screenshot-01.webp`
-- [ ] `games/gravity-flip/screenshot-02.webp`
+- [ ] `games/gravity-flip/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
+- [ ] `games/gravity-flip/screenshot-01-dummy.webp` → 최종: `screenshot-01.webp`
+- [ ] `games/gravity-flip/screenshot-02-dummy.webp` → 최종: `screenshot-02.webp`
 
-### 게임 카드 (zombie-survival)
+### 게임 카드 (zombie-survival) — 더미 이미지, 사람이 교체 필요
 
-- [ ] `games/zombie-survival/thumbnail.webp`
-- [ ] `games/zombie-survival/screenshot-01.webp`
-- [ ] `games/zombie-survival/screenshot-02.webp`
+- [ ] `games/zombie-survival/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
+- [ ] `games/zombie-survival/screenshot-01-dummy.webp` → 최종: `screenshot-01.webp`
+- [ ] `games/zombie-survival/screenshot-02-dummy.webp` → 최종: `screenshot-02.webp`
 
-### 게임 카드 (추가 게임)
+### 게임 카드 (추가 게임) — 더미 이미지, 사람이 교체 필요
 
-- [ ] `games/<slug>/thumbnail.webp` × N
+- [ ] `games/<slug>/thumbnail-dummy.webp` × N → 최종: `thumbnail.webp`
 
 ### UI 아이콘
 
