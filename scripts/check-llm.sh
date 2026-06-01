@@ -24,8 +24,8 @@ done
 PASS=0
 FAIL=0
 
-ok()   { echo "  [OK]  $*"; ((PASS++)); }
-fail() { echo "  [NG]  $*"; ((FAIL++)); }
+ok()   { echo "  [OK]  $*"; PASS=$((PASS + 1)); }
+fail() { echo "  [NG]  $*"; FAIL=$((FAIL + 1)); }
 info() { echo "  [--]  $*"; }
 
 echo ""
