@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --color-hud-bg: #0B1622;
+  --color-hud-panel: #0E1F30;
+  --color-hud-border: #1A3A50;
+  --color-hud-teal: #00C9A7;
+  --color-hud-orange: #FF7A2F;
+  --color-hud-text: #C8E6EF;
+}
+
+body {
+  background-color: var(--color-hud-bg);
+  color: var(--color-hud-text);
+  font-family: 'Inter', sans-serif;
+}
+
+/* HUD 패널 공통 테두리 스타일 */
+.hud-panel {
+  background-color: var(--color-hud-panel);
+  border: 1px solid var(--color-hud-border);
+  position: relative;
+}
+
+.hud-panel::before,
+.hud-panel::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--color-hud-teal);
+  border-style: solid;
+  z-index: 1;
+}
+
+.hud-panel::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.hud-panel::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* 스킬 바 애니메이션 */
+@keyframes fillBar {
+  from { width: 0; }
+  to { width: var(--fill); }
+}
+
+.skill-bar-fill {
+  animation: fillBar 1s ease-out forwards;
+}
