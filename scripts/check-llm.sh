@@ -9,6 +9,17 @@
 
 set -euo pipefail
 
+# 루트 .env 파일이 있으면 자동으로 읽어 환경 변수를 설정한다
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+if [[ -f "$ROOT_DIR/.env" ]]; then
+  # export 되지 않은 KEY=VALUE 형식만 읽고, 주석·빈 줄은 건너뜀
+  set -a
+  # shellcheck disable=SC1091
+  source "$ROOT_DIR/.env"
+  set +a
+fi
+
 BASE_URL="${NEXT_PUBLIC_CHATBOT_API_URL:-http://localhost:11434}"
 MODEL="${NEXT_PUBLIC_CHATBOT_MODEL:-llama3}"
 

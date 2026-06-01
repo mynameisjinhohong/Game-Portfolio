@@ -17,15 +17,20 @@
 ## 빠른 검증 (스크립트)
 
 ```bash
-# 기본 실행 (localhost:11434, 모델 llama3)
+# .env 파일을 루트에 생성한 뒤 실행 (권장)
+cp .env.example .env
+# NEXT_PUBLIC_CHATBOT_MODEL 값을 올바른 모델명으로 수정 후:
 bash scripts/check-llm.sh
 
-# 서버 주소·모델 지정
-bash scripts/check-llm.sh --url http://localhost:11434 --model llama3
+# 서버 주소·모델을 직접 지정
+bash scripts/check-llm.sh --url http://localhost:11434 --model gemma3
 
-# 환경 변수로 지정 (프로젝트 변수명과 동일)
-NEXT_PUBLIC_CHATBOT_API_URL=http://localhost:11434 NEXT_PUBLIC_CHATBOT_MODEL=llama3 bash scripts/check-llm.sh
+# 환경 변수로 지정 (one-liner)
+NEXT_PUBLIC_CHATBOT_API_URL=http://localhost:11434 NEXT_PUBLIC_CHATBOT_MODEL=gemma3 bash scripts/check-llm.sh
 ```
+
+> 루트 `.env` 파일이 있으면 스크립트가 자동으로 읽어 서버 주소·모델명 기본값으로 사용한다.
+> 설치된 모델은 `ollama list` 로 확인하고 `NEXT_PUBLIC_CHATBOT_MODEL` 값을 그 모델명으로 수정하면 된다.
 
 스크립트는 다음 5단계를 순서대로 검증하고 결과를 출력한다.
 
