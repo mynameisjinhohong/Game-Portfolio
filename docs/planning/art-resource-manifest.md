@@ -2,7 +2,8 @@
 
 > 작성 기준: GP-54 (GP-53 아트 리소스 제작 하위 작업)  
 > 목적: 메인 페이지 시안을 기준으로 필요한 아트 리소스를 구분·목록화하고, 후속 이미지 생성 작업에서 바로 참조할 수 있는 기준을 제공한다.  
-> 참조: `docs/content/section-content-map.md` (GP-52), `docs/planning/portfolio-foundation-plan.md`
+> 참조: `docs/content/section-content-map.md` (GP-52), `docs/planning/portfolio-foundation-plan.md`  
+> 이미지 생성 프롬프트: `workspace/assets/prompts/` | 참조 이미지: `workspace/assets/references/`
 
 ---
 
