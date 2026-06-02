@@ -20,6 +20,7 @@
 |---|---|
 | 현재 개발 코드 | `workspace/src/` |
 | A-04 기반 문서·이미지 | `workspace/docs/`, `workspace/assets/a-04/` |
+| 이미지 생성 프롬프트·참조 자료 | `workspace/assets/prompts/`, `workspace/assets/references/` |
 | 프로젝트 계획·로드맵 | `docs/planning/` |
 | 브레인스토밍·탐색 자료 | `archive/brainstorming/`, `archive/concepts/` |
 

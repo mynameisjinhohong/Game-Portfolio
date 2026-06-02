@@ -13,7 +13,9 @@
 .
 ├── workspace/                  # [활성] A-04 기반 개발 작업 공간
 │   ├── assets/
-│   │   └── a-04/              # A-04 컨셉 기반 시각 자료
+│   │   ├── a-04/              # A-04 컨셉 기반 시각 자료 (디자인 시안)
+│   │   ├── prompts/           # codex_imagegen 작업용 이미지 생성 프롬프트
+│   │   └── references/        # 스타일 참조 이미지 및 색상 팔레트 메모
 │   ├── docs/                  # A-04 기반 설계·분석 문서
 │   └── src/                   # 실제 소스 코드
 │
@@ -38,6 +40,8 @@
 | 하위 경로 | 두는 자료 |
 |---|---|
 | `workspace/assets/a-04/` | A-04 컨셉 이미지, 디자인 시안 |
+| `workspace/assets/prompts/` | codex_imagegen 작업용 이미지 생성 프롬프트 텍스트 파일 |
+| `workspace/assets/references/` | 스타일 참조 이미지 또는 색상 팔레트 메모 |
 | `workspace/docs/` | A-04 기반 컨셉 분석, 구현 계획, 기술 결정 근거, 컴포넌트 설계 |
 | `workspace/src/` | 실제 구현 소스 코드 |
 
@@ -126,3 +130,4 @@ AI 에이전트(Codex, Claude 등)가 작업을 수행할 때 폴더 구조에 �
 - **GP-16**: 레포지토리 작업 영역 구조 초안 확정
 - **GP-17**: 기존 자료를 workspace/archive 구조로 재배치 실행
 - **GP-18**: 이 운영 가이드 문서 추가
+- **GP-54**: `workspace/assets/` 하위에 `prompts/`, `references/` 폴더 추가 (이미지 생성 프롬프트 및 참조 자료 보관)
