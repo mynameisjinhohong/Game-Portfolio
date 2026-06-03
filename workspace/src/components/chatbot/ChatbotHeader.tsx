@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export function ChatbotHeader() {
   return (
@@ -17,8 +17,8 @@ export function ChatbotHeader() {
       </h2>
 
       <p className="text-sm text-hud-text-dim max-w-md leading-relaxed">
-        AI 챗봇이 홍진호의 경험, 프로젝트, 기술 스택에 대해 답변합니다.
-        아래 견본 질문으로 시작하거나 직접 입력해보세요.
+        AI 챗봇이 홍진호의 경험, 프로젝트, 기술 스택에 대해 답변합니다. 아래 견본 질문으로
+        시작하거나 직접 입력해보세요.
       </p>
     </div>
   );

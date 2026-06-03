@@ -1,16 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
 :root {
-  --color-hud-bg: #0B1622;
-  --color-hud-panel: #0E1F30;
-  --color-hud-border: #1A3A50;
-  --color-hud-teal: #00C9A7;
-  --color-hud-orange: #FF7A2F;
-  --color-hud-text: #C8E6EF;
+  --color-hud-bg: #0b1622;
+  --color-hud-panel: #0e1f30;
+  --color-hud-border: #1a3a50;
+  --color-hud-teal: #00c9a7;
+  --color-hud-orange: #ff7a2f;
+  --color-hud-text: #c8e6ef;
 }
 
 body {
@@ -51,8 +51,12 @@ body {
 
 /* 스킬 바 애니메이션 */
 @keyframes fillBar {
-  from { width: 0; }
-  to { width: var(--fill); }
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--fill);
+  }
 }
 
 .skill-bar-fill {

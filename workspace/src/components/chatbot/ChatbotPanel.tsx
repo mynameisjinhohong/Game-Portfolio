@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import type { ChatMessage, SampleQuestion } from "@/types/chatbot";
-import { ChatbotMessagePanel } from "./ChatbotMessagePanel";
-import { ChatbotSampleQuestions } from "./ChatbotSampleQuestions";
-import { ChatbotInputArea } from "./ChatbotInputArea";
+import { useState } from 'react';
+import type { ChatMessage, SampleQuestion } from '@/types/chatbot';
+import { ChatbotMessagePanel } from './ChatbotMessagePanel';
+import { ChatbotSampleQuestions } from './ChatbotSampleQuestions';
+import { ChatbotInputArea } from './ChatbotInputArea';
 
 const SAMPLE_QUESTIONS: SampleQuestion[] = [
-  { id: "q1", text: "Tell me about your games", icon: "🎮" },
-  { id: "q2", text: "What tech do you use?", icon: "💻" },
-  { id: "q3", text: "About you", icon: "👤" },
+  { id: 'q1', text: 'Tell me about your games', icon: '🎮' },
+  { id: 'q2', text: 'What tech do you use?', icon: '💻' },
+  { id: 'q3', text: 'About you', icon: '👤' },
 ];
 
 export function ChatbotPanel() {
@@ -18,7 +18,7 @@ export function ChatbotPanel() {
   function handleSubmit(text: string) {
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
-      role: "user",
+      role: 'user',
       content: text,
       timestamp: new Date(),
     };
@@ -37,7 +37,9 @@ export function ChatbotPanel() {
         {/* 왼쪽: 하트 (HP) 공간 */}
         <div className="flex items-center gap-1 min-w-[60px]">
           {[0, 1, 2].map((i) => (
-            <span key={i} className="text-red-400/30 text-sm leading-none">♥</span>
+            <span key={i} className="text-red-400/30 text-sm leading-none">
+              ♥
+            </span>
           ))}
         </div>
         {/* 오른쪽: 배터리 공간 */}
@@ -56,9 +58,7 @@ export function ChatbotPanel() {
           <div className="w-6 h-6 bg-hud-teal/20 border border-hud-teal/40 rounded flex items-center justify-center">
             <span className="text-hud-teal text-xs">🤖</span>
           </div>
-          <span className="font-mono text-xs text-hud-teal tracking-widest">
-            PORTFOLIO_BOT
-          </span>
+          <span className="font-mono text-xs text-hud-teal tracking-widest">PORTFOLIO_BOT</span>
         </div>
         <span className="flex items-center gap-1.5 font-mono text-[10px] text-hud-text-dim">
           <span className="w-1.5 h-1.5 rounded-full bg-hud-green animate-pulse" />
@@ -71,10 +71,7 @@ export function ChatbotPanel() {
 
       {/* 견본 질문 — 대화가 없을 때만 표시 */}
       {messages.length === 0 && (
-        <ChatbotSampleQuestions
-          questions={SAMPLE_QUESTIONS}
-          onSelect={handleSampleSelect}
-        />
+        <ChatbotSampleQuestions questions={SAMPLE_QUESTIONS} onSelect={handleSampleSelect} />
       )}
 
       {/* 입력 영역 */}

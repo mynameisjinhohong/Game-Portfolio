@@ -120,12 +120,12 @@ else
   fail "추론 테스트 건너뜀 (서버 미실행)"
 fi
 
-# 5. .env.local / .env 설정 확인 (portfolio)
+# 5. .env.local / .env 설정 확인 (workspace)
 # Next.js 관례: .env.local 우선, 없으면 .env 검사
-echo "[5] 환경 변수 설정 확인 (workspace/portfolio)"
-ENV_LOCAL="workspace/portfolio/.env.local"
-ENV_FILE="workspace/portfolio/.env"
-ENV_EXAMPLE="workspace/portfolio/.env.example"
+echo "[5] 환경 변수 설정 확인 (workspace)"
+ENV_LOCAL="workspace/.env.local"
+ENV_FILE="workspace/.env"
+ENV_EXAMPLE="workspace/.env.example"
 
 # 검사 대상 파일 결정 (.env.local 우선)
 if [[ -f "$ENV_LOCAL" ]]; then

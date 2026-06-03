@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import type { ChatMessage } from "@/types/chatbot";
+import type { ChatMessage } from '@/types/chatbot';
 
 interface ChatbotMessagePanelProps {
   messages: ChatMessage[];
@@ -20,8 +20,10 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
         </div>
         <div className="bg-hud-bg border border-hud-border rounded-lg px-4 py-3 max-w-[280px] text-center">
           <p className="text-sm text-hud-text leading-relaxed">
-            Hello! 👋<br />
-            I&apos;m Jinho&apos;s Portfolio Bot.<br />
+            Hello! 👋
+            <br />
+            I&apos;m Jinho&apos;s Portfolio Bot.
+            <br />
             What would you like to know?
           </p>
         </div>
@@ -31,20 +33,24 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
       {messages.map((msg) => (
         <div
           key={msg.id}
-          className={`flex gap-2 items-start ${msg.role === "user" ? "flex-row-reverse" : ""}`}
+          className={`flex gap-2 items-start ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
         >
-          <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center border text-xs ${
-            msg.role === "user"
-              ? "bg-hud-orange/20 border-hud-orange/40 text-hud-orange"
-              : "bg-hud-teal/20 border-hud-teal/40 text-hud-teal"
-          }`}>
-            {msg.role === "user" ? "U" : "🤖"}
+          <div
+            className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center border text-xs ${
+              msg.role === 'user'
+                ? 'bg-hud-orange/20 border-hud-orange/40 text-hud-orange'
+                : 'bg-hud-teal/20 border-hud-teal/40 text-hud-teal'
+            }`}
+          >
+            {msg.role === 'user' ? 'U' : '🤖'}
           </div>
-          <div className={`rounded-lg px-3 py-2 max-w-[240px] border ${
-            msg.role === "user"
-              ? "bg-hud-orange/10 border-hud-orange/30"
-              : "bg-hud-bg border-hud-border"
-          }`}>
+          <div
+            className={`rounded-lg px-3 py-2 max-w-[240px] border ${
+              msg.role === 'user'
+                ? 'bg-hud-orange/10 border-hud-orange/30'
+                : 'bg-hud-bg border-hud-border'
+            }`}
+          >
             <p className="text-sm text-hud-text leading-relaxed">{msg.content}</p>
           </div>
         </div>

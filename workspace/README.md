@@ -2,11 +2,13 @@
 
 홍진호의 게임 개발 포트폴리오 사이트입니다.
 
+이 레포지토리의 활성 개발 코드는 `workspace/src/`에 둡니다. `workspace/portfolio/` 같은 중첩 Next.js 앱을 새로 만들지 말고, Next.js 앱 루트는 항상 `workspace/` 하나만 사용합니다.
+
 ## 기술 스택
 
-- **Framework**: Next.js 16 (App Router)
+- **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
+- **Styling**: Tailwind CSS
 - **Lint**: ESLint (next/core-web-vitals)
 - **Format**: Prettier
 
@@ -36,25 +38,26 @@ npm run dev
 
 ## 주요 스크립트
 
-| 명령어                 | 설명                      |
-| ---------------------- | ------------------------- |
-| `npm run dev`          | 개발 서버 실행            |
-| `npm run build`        | 프로덕션 빌드             |
-| `npm run start`        | 프로덕션 서버 실행        |
-| `npm run lint`         | ESLint 검사               |
-| `npm run format`       | Prettier 포맷 적용        |
-| `npm run format:check` | Prettier 포맷 검사 (CI용) |
+| 명령어                 | 설명               |
+| ---------------------- | ------------------ |
+| `npm run dev`          | 개발 서버 실행     |
+| `npm run build`        | 프로덕션 빌드      |
+| `npm run start`        | 프로덕션 서버 실행 |
+| `npm run lint`         | ESLint 검사        |
+| `npm run format`       | Prettier 포맷 적용 |
+| `npm run format:check` | Prettier 포맷 검사 |
 
 ## 프로젝트 구조
 
-```
-portfolio/
-├── src/
-│   └── app/          # Next.js App Router 페이지
+```text
+workspace/
+├── assets/           # A-04 기반 이미지, 프롬프트, 참조 자료
+├── docs/             # A-04 기반 설계/분석 문서
+├── src/              # Next.js App Router 소스 코드
 ├── .env.example      # 환경 변수 예시
 ├── .prettierrc       # Prettier 설정
 ├── eslint.config.mjs # ESLint 설정
-└── tailwind.config.* # Tailwind 설정
+└── package.json      # 단일 Next.js 앱 루트
 ```
 
 ## 배포 가이드 (Mac mini 웹서버)
@@ -64,13 +67,13 @@ portfolio/
 ### 프로덕션 빌드 및 실행
 
 ```bash
-# 프로덕션 빌드
 npm run build
-
-# 프로덕션 서버 실행 (기본 포트 3000)
 npm run start
+```
 
-# 특정 포트로 실행
+특정 포트로 실행하려면 다음처럼 지정합니다.
+
+```bash
 npm run start -- -p 8080
 ```
 
@@ -79,12 +82,8 @@ npm run start -- -p 8080
 `.env.local`에서 아래 값을 실제 환경에 맞게 수정합니다.
 
 ```env
-# 구매한 도메인으로 변경
 NEXT_PUBLIC_SITE_URL=https://your-domain.com
-
-# Ollama가 Mac mini에서 실행 중인 경우
 NEXT_PUBLIC_CHATBOT_API_URL=http://localhost:11434
-
 NODE_ENV=production
 ```
 

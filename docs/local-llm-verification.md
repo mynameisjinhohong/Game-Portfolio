@@ -81,10 +81,10 @@ Next.js 프로젝트는 `.env.local` 을 로컬 전용 환경 파일로 사용�
 
 ```bash
 # .env.local 파일이 없으면 예시 파일로부터 생성
-cp workspace/portfolio/.env.example workspace/portfolio/.env.local
+cp workspace/.env.example workspace/.env.local
 
 # NEXT_PUBLIC_CHATBOT_API_URL 이 Ollama 서버 주소와 일치하는지 확인
-grep NEXT_PUBLIC_CHATBOT_API_URL workspace/portfolio/.env.local
+grep NEXT_PUBLIC_CHATBOT_API_URL workspace/.env.local
 ```
 
 **환경 변수 명명 규칙:**
@@ -113,5 +113,5 @@ grep NEXT_PUBLIC_CHATBOT_API_URL workspace/portfolio/.env.local
 ## 후속 챗봇 개발 전 체크리스트
 
 - [ ] `bash scripts/check-llm.sh` 결과 전 항목 통과
-- [ ] `workspace/portfolio/.env.local` 에 `NEXT_PUBLIC_CHATBOT_API_URL` 설정 완료 (`.env.example` 참고)
+- [ ] `workspace/.env.local` 에 `NEXT_PUBLIC_CHATBOT_API_URL` 설정 완료 (`.env.example` 참고)
 - [ ] 선택한 모델명을 챗봇 API 호출 코드에 동일하게 반영
