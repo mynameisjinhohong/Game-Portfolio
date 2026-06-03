@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { FEATURED_GAMES } from '@/data/games';
 
 export const metadata: Metadata = {
   title: 'Hong Jinho | Game Developer',
@@ -9,12 +10,6 @@ const STATS = [
   { label: 'Creativity', value: 85 },
   { label: 'Problem Solving', value: 78 },
   { label: 'Teamwork', value: 72 },
-];
-
-const FEATURED_GAMES = [
-  { title: 'Skybound Quest', subtitle: 'Platformer · Unity', color: '#4A90D9' },
-  { title: 'Mech Battle', subtitle: 'Action · Unity', color: '#E76F51' },
-  { title: 'Arcane Gate', subtitle: 'Puzzle · Unity', color: '#9B59B6' },
 ];
 
 const TECH_ICONS = [
