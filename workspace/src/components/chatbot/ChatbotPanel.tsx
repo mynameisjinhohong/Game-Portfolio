@@ -12,18 +12,40 @@ const SAMPLE_QUESTIONS: SampleQuestion[] = [
   { id: 'q3', text: 'About you', icon: '👤' },
 ];
 
+const BOT_REPLIES: Record<string, string> = {
+  'Tell me about your games':
+    "I've built games with Unity and C# — try Skybound Quest, Mech Battle, or Arcane Gate from the Featured Games panel. 🎮",
+  'What tech do you use?':
+    'My core stack is Unity + C# for gameplay, Git for version control, and Blender/Photoshop for art assets. 💻',
+  'About you':
+    "I'm Hong Jinho, a game developer who loves building playful, systems-driven experiences. 👤",
+};
+
+const DEFAULT_REPLY =
+  "Thanks for the question! I'm still wiring up real answers — try one of the sample questions below for now. 🤖";
+
+function getBotReply(text: string): string {
+  return BOT_REPLIES[text] ?? DEFAULT_REPLY;
+}
+
 export function ChatbotPanel() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   function handleSubmit(text: string) {
+    const now = Date.now();
     const userMessage: ChatMessage = {
-      id: crypto.randomUUID(),
+      id: `u-${now}-${crypto.randomUUID()}`,
       role: 'user',
       content: text,
-      timestamp: new Date(),
+      timestamp: new Date(now),
     };
-    setMessages((prev) => [...prev, userMessage]);
-    // 후속 작업: AI 응답 연결 위치
+    const botMessage: ChatMessage = {
+      id: `b-${now}-${crypto.randomUUID()}`,
+      role: 'assistant',
+      content: getBotReply(text),
+      timestamp: new Date(now + 1),
+    };
+    setMessages((prev) => [...prev, userMessage, botMessage]);
   }
 
   function handleSampleSelect(question: string) {
