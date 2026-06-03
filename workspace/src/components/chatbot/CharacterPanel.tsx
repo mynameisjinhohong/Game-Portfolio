@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
 const SKILLS = [
-  { label: "Creativity", value: 85 },
-  { label: "Problem Solving", value: 78 },
-  { label: "Teamwork", value: 72 },
+  { label: 'Creativity', value: 85 },
+  { label: 'Problem Solving', value: 78 },
+  { label: 'Teamwork', value: 72 },
 ];
 
 export function CharacterPanel() {
@@ -17,7 +17,9 @@ export function CharacterPanel() {
         <span className="flex gap-1">
           {/* HP 하트 3개 */}
           {[0, 1, 2].map((i) => (
-            <span key={i} className="text-red-400 text-sm">♥</span>
+            <span key={i} className="text-red-400 text-sm">
+              ♥
+            </span>
           ))}
         </span>
       </div>
@@ -79,8 +81,10 @@ export function CharacterPanel() {
 
       {/* 한 줄 소개 */}
       <p className="font-mono text-[10px] text-hud-text-dim leading-relaxed mt-auto">
-        I build playful experiences<br />
-        and systems that players<br />
+        I build playful experiences
+        <br />
+        and systems that players
+        <br />
         love to explore.
       </p>
     </div>

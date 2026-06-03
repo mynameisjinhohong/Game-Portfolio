@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, type KeyboardEvent } from "react";
+import { useState, type KeyboardEvent } from 'react';
 
 interface ChatbotInputAreaProps {
   onSubmit: (message: string) => void;
@@ -8,17 +8,17 @@ interface ChatbotInputAreaProps {
 }
 
 export function ChatbotInputArea({ onSubmit, isLoading = false }: ChatbotInputAreaProps) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
 
   function handleSubmit() {
     const trimmed = value.trim();
     if (!trimmed || isLoading) return;
     onSubmit(trimmed);
-    setValue("");
+    setValue('');
   }
 
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       handleSubmit();
     }
