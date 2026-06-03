@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
 const FEATURED_GAMES = [
   {
-    id: "g1",
-    title: "Skybound Quest",
-    genre: "Puzzle Platformer",
-    color: "#1A3A50",
+    id: 'g1',
+    title: 'Skybound Quest',
+    genre: 'Puzzle Platformer',
+    color: '#1A3A50',
   },
   {
-    id: "g2",
-    title: "Mech Buster",
-    genre: "Action Shooter",
-    color: "#1A2E40",
+    id: 'g2',
+    title: 'Mech Buster',
+    genre: 'Action Shooter',
+    color: '#1A2E40',
   },
   {
-    id: "g3",
-    title: "Arcane Core",
-    genre: "Roguelike RPG",
-    color: "#1E2A40",
+    id: 'g3',
+    title: 'Arcane Core',
+    genre: 'Roguelike RPG',
+    color: '#1E2A40',
   },
 ];
 
-const TECH_ICONS = ["U", "C#", "Ps", "Bl", "Gi", "X"];
+const TECH_ICONS = ['U', 'C#', 'Ps', 'Bl', 'Gi', 'X'];
 
 export function FeaturedGamesPanel() {
   return (
@@ -46,9 +46,7 @@ export function FeaturedGamesPanel() {
                 <p className="text-xs font-semibold text-hud-text truncate leading-tight">
                   {game.title}
                 </p>
-                <p className="font-mono text-[10px] text-hud-text-dim truncate">
-                  {game.genre}
-                </p>
+                <p className="font-mono text-[10px] text-hud-text-dim truncate">{game.genre}</p>
               </div>
             </div>
           ))}
@@ -66,9 +64,7 @@ export function FeaturedGamesPanel() {
               key={icon}
               className="h-8 bg-hud-bg border border-hud-border rounded flex items-center justify-center"
             >
-              <span className="font-mono text-[10px] text-hud-text-dim font-semibold">
-                {icon}
-              </span>
+              <span className="font-mono text-[10px] text-hud-text-dim font-semibold">{icon}</span>
             </div>
           ))}
         </div>

@@ -19,9 +19,10 @@
 | 자료 유형 | 위치 |
 |---|---|
 | 현재 개발 코드 | `workspace/src/` |
+| Next.js 앱 루트·실행 설정 | `workspace/` |
 | A-04 기반 문서·이미지 | `workspace/docs/`, `workspace/assets/a-04/` |
 | 이미지 생성 프롬프트·참조 자료 | `workspace/assets/prompts/`, `workspace/assets/references/` |
 | 프로젝트 계획·로드맵 | `docs/planning/` |
 | 브레인스토밍·탐색 자료 | `archive/brainstorming/`, `archive/concepts/` |
 
-자세한 배치 기준과 혼용 방지 규칙은 [`docs/FOLDER_GUIDE.md`](docs/FOLDER_GUIDE.md)를 참고한다.
+자세한 배치 기준과 혼용 방지 규칙은 [`docs/FOLDER_GUIDE.md`](docs/FOLDER_GUIDE.md)를 참고한다. `workspace/portfolio/`처럼 `workspace` 아래에 별도 앱 루트를 중첩해서 만들지 않는다.
