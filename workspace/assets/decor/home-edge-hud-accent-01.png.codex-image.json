@@ -1,0 +1,9 @@
+{
+  "prompt": "Use case: stylized-concept\nAsset type: portfolio website decorative bitmap object\nPrimary request: 메인 페이지 여러 섹션의 모서리나 구분부에 얹어 쓸 수 있는 절제된 SF 장식 오브젝트. 히어로를 방해하지 않는 보조 요소로, 얇은 HUD 원호, 스캐닝 라인, 작은 입자광, 드래프팅 마커가 결합된 반투명 장식 패널 느낌. 단독 오브젝트처럼 읽히되 과하게 무겁지 않고 배경과 자연스럽게 섞일 수 있어야 한다.\nScene/backdrop: dark neutral field suitable for extracting a decorative plate-like object\nSubject: one elegant sci-fi corner ornament / HUD cluster\nStyle/medium: sleek digital interface art, premium game portfolio accent graphic\nComposition/framing: centered object with generous negative space around it, readable silhouette, suitable for placement near section edges\nLighting/mood: subdued cool glow, precise and technical\nColor palette: deep navy, cyan, blue-white, tiny amber accents\nMaterials/textures: translucent glassy panel hints, fine linework, particle glints, schematic marks\nConstraints: no text, no emblem, no character, no weapon, no thick frame, no loud hotspot\nAvoid: clutter, purple palette, fantasy ornament, cartoon rendering, watermark",
+  "summary": "섹션 모서리와 구분선 주변에 덧붙일 수 있는 반투명 HUD 계열 장식 클러스터 비트맵.",
+  "generation_notes": [
+    "내장 image_gen 도구 기본 모드로 생성했다.",
+    "배경 파일과 같은 색감과 SF 드래프팅 문법을 유지해 스타일 충돌을 줄였다.",
+    "단독 포인트 장식으로 쓰기 쉽도록 정사각 비율의 비교적 응축된 오브젝트로 확정했다."
+  ]
+}

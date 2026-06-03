@@ -1,0 +1,9 @@
+{
+  "prompt": "Use case: stylized-concept\nAsset type: portfolio website shared section background bitmap\nPrimary request: 게임 포트폴리오 웹사이트용 공용 배경 장식 에셋. 어두운 바탕 위에 미세한 그리드, HUD 스타일 라인, 레벨 디자인 스케치 잔상, 입자성 빛 번짐이 절제되어 배치된 넓은 배경 이미지. 정보 전달을 방해하지 않도록 중앙부는 상대적으로 정돈되어 있고 가장자리로 갈수록 시각 요소가 풍부해진다. 메인 히어로와 어울리는 세련된 SF 감성, 과장된 캐릭터나 텍스트 없음, 사이트 섹션 배경으로 반복 사용 가능한 품질.\nScene/backdrop: wide futuristic dark interface field, subtle atmospheric depth, no focal character\nSubject: reusable section background texture with restrained sci-fi drafting marks\nStyle/medium: polished cinematic digital environment art, premium web background, understated game UI influence\nComposition/framing: 3:2 landscape, clean central reading zone, richer detail density toward the outer edges and corners, seamless-looking wide composition for repeated section use\nLighting/mood: low-key, cool luminous accents, refined and calm, sophisticated SF mood\nColor palette: charcoal, blue-gray, cyan highlights, faint amber sparks only in tiny amounts\nMaterials/textures: soft grain, faint grid, thin HUD lines, ghosted level-design sketch traces, subtle bloom particles\nConstraints: no text, no logos, no characters, no weapons, no large bright hotspots, no heavy vignette, preserve strong readability for foreground copy\nAvoid: cluttered center, noisy contrast, comic-book style, photobashed objects, purple-dominant palette, watermark",
+  "summary": "메인 페이지 여러 섹션에 재사용할 수 있도록 중앙은 비워 두고 가장자리에만 SF HUD 디테일을 얹은 어두운 공용 배경 비트맵.",
+  "generation_notes": [
+    "내장 image_gen 도구 기본 모드로 생성했다.",
+    "원본 생성본은 $HOME/.codex/generated_images 아래에 보존되고, 최종 사용본만 workspace/assets/backgrounds로 복사했다.",
+    "본문 가독성을 위해 중앙 대비를 낮추고 가장자리 장식 밀도를 높이는 방향으로 프롬프트를 구성했다."
+  ]
+}
