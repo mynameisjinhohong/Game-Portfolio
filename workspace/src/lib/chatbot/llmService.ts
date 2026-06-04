@@ -25,7 +25,7 @@ function getConfig(): LLMServiceConfig {
     model: process.env.LLM_MODEL ?? 'llama3',
     systemPrompt:
       process.env.LLM_SYSTEM_PROMPT ??
-      'You are a helpful assistant for Hong Jinho\'s portfolio. Answer questions about his experience, projects, and skills.',
+      "You are a helpful assistant for Hong Jinho's portfolio. Answer questions about his experience, projects, and skills.",
   };
 }
 

@@ -13,9 +13,14 @@
 .
 ├── workspace/                  # [활성] A-04 기반 개발 작업 공간
 │   ├── assets/
-│   │   └── a-04/              # A-04 컨셉 기반 시각 자료
+│   │   ├── a-04/              # A-04 컨셉 기반 시각 자료 (디자인 시안)
+│   │   ├── prompts/           # codex_imagegen 작업용 이미지 생성 프롬프트
+│   │   └── references/        # 스타일 참조 이미지 및 색상 팔레트 메모
 │   ├── docs/                  # A-04 기반 설계·분석 문서
-│   └── src/                   # 실제 소스 코드
+│   ├── src/                   # 실제 소스 코드
+│   ├── package.json           # 단일 Next.js 앱 루트
+│   ├── .env.example           # 환경 변수 예시
+│   └── README.md              # workspace 실행·배포 안내
 │
 ├── archive/                    # [보관] 브레인스토밍 단계 자료 (수정 금지)
 │   ├── brainstorming/         # 초기 아이디어·탐색 문서
@@ -38,10 +43,17 @@
 | 하위 경로 | 두는 자료 |
 |---|---|
 | `workspace/assets/a-04/` | A-04 컨셉 이미지, 디자인 시안 |
+| `workspace/assets/prompts/` | codex_imagegen 작업용 이미지 생성 프롬프트 텍스트 파일 |
+| `workspace/assets/references/` | 스타일 참조 이미지 또는 색상 팔레트 메모 |
 | `workspace/docs/` | A-04 기반 컨셉 분석, 구현 계획, 기술 결정 근거, 컴포넌트 설계 |
 | `workspace/src/` | 실제 구현 소스 코드 |
+| `workspace/package.json` | 단일 Next.js 앱의 스크립트와 의존성 |
+| `workspace/.env.example` | 로컬 LLM 및 사이트 URL 환경 변수 예시 |
 
 **배치 기준**: "지금 개발에 참조하거나 수정해야 하는가?" → YES이면 `workspace/`
+
+> `workspace/portfolio/`처럼 `workspace` 아래에 별도 Next.js 앱 루트를 중첩해서 만들지 않는다.
+> 앱 루트는 `workspace/` 하나이며, 라우트와 컴포넌트는 `workspace/src/` 아래에 둔다.
 
 ### `archive/` — 브레인스토밍 보관 자료
 
@@ -92,6 +104,7 @@
 | `archive/` 내 파일 수정 | 보관 자료는 당시 맥락을 원본 그대로 보존해야 함 |
 | A-04 외 컨셉 비교 문서를 `workspace/docs/`에 두기 | A-04 기반 자료만 workspace에 배치 |
 | 신규 컨셉 이미지를 `archive/concepts/`에 추가 | archive는 보관 전용, 새 자료는 workspace에 |
+| `workspace/portfolio/` 같은 중첩 앱 루트 생성 | 실행 기준과 PR 작업 범위가 갈라져 같은 화면을 두 번 구현하게 됨 |
 
 ---
 
@@ -126,3 +139,5 @@ AI 에이전트(Codex, Claude 등)가 작업을 수행할 때 폴더 구조에 �
 - **GP-16**: 레포지토리 작업 영역 구조 초안 확정
 - **GP-17**: 기존 자료를 workspace/archive 구조로 재배치 실행
 - **GP-18**: 이 운영 가이드 문서 추가
+- **GP-54**: `workspace/assets/` 하위에 `prompts/`, `references/` 폴더 추가 (이미지 생성 프롬프트 및 참조 자료 보관)
+- **workspace-structure-cleanup**: 중첩 Next.js 앱(`workspace/portfolio`)을 제거하고 `workspace/` 단일 앱 루트로 정리
