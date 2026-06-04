@@ -14,6 +14,8 @@
 ├── workspace/                  # [활성] A-04 기반 개발 작업 공간
 │   ├── assets/
 │   │   ├── a-04/              # A-04 컨셉 기반 시각 자료 (디자인 시안)
+│   │   ├── backgrounds/       # 메인 페이지 공용 배경 텍스처 비트맵
+│   │   ├── decor/             # 섹션 보조용 장식 오브젝트 비트맵
 │   │   ├── prompts/           # codex_imagegen 작업용 이미지 생성 프롬프트
 │   │   └── references/        # 스타일 참조 이미지 및 색상 팔레트 메모
 │   ├── docs/                  # A-04 기반 설계·분석 문서
@@ -43,6 +45,8 @@
 | 하위 경로 | 두는 자료 |
 |---|---|
 | `workspace/assets/a-04/` | A-04 컨셉 이미지, 디자인 시안 |
+| `workspace/assets/backgrounds/` | 메인 페이지 등에서 재사용하는 공용 배경 텍스처 비트맵과 사이드카 메타데이터 |
+| `workspace/assets/decor/` | 섹션 보조 역할의 장식 오브젝트 비트맵과 사이드카 메타데이터 |
 | `workspace/assets/prompts/` | codex_imagegen 작업용 이미지 생성 프롬프트 텍스트 파일 |
 | `workspace/assets/references/` | 스타일 참조 이미지 또는 색상 팔레트 메모 |
 | `workspace/docs/` | A-04 기반 컨셉 분석, 구현 계획, 기술 결정 근거, 컴포넌트 설계 |
@@ -141,3 +145,4 @@ AI 에이전트(Codex, Claude 등)가 작업을 수행할 때 폴더 구조에 �
 - **GP-18**: 이 운영 가이드 문서 추가
 - **GP-54**: `workspace/assets/` 하위에 `prompts/`, `references/` 폴더 추가 (이미지 생성 프롬프트 및 참조 자료 보관)
 - **workspace-structure-cleanup**: 중첩 Next.js 앱(`workspace/portfolio`)을 제거하고 `workspace/` 단일 앱 루트로 정리
+- **GP-56**: `workspace/assets/` 하위에 `backgrounds/`, `decor/` 폴더 추가 (메인 페이지 공용 배경 텍스처 및 장식 오브젝트 비트맵 보관)
