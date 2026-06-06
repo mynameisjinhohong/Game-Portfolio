@@ -1,73 +1,60 @@
 'use client';
 
-const FEATURED_GAMES = [
-  {
-    id: 'g1',
-    title: 'Skybound Quest',
-    genre: 'Puzzle Platformer',
-    color: '#1A3A50',
-  },
-  {
-    id: 'g2',
-    title: 'Mech Buster',
-    genre: 'Action Shooter',
-    color: '#1A2E40',
-  },
-  {
-    id: 'g3',
-    title: 'Arcane Core',
-    genre: 'Roguelike RPG',
-    color: '#1E2A40',
-  },
-];
+import { FEATURED_GAMES } from '@/data/games';
 
-const TECH_ICONS = ['U', 'C#', 'Ps', 'Bl', 'Gi', 'X'];
+const TECH_ICONS = ['Unity', 'C#', 'Photon', 'Blender', 'Git', 'Xcode'];
 
 export function FeaturedGamesPanel() {
   return (
-    <div className="flex flex-col gap-4 h-full">
+    <div className="flex h-full flex-col gap-4">
       {/* Featured Games */}
-      <div className="hud-panel rounded p-4 flex-1">
-        <p className="font-mono text-[10px] text-hud-teal tracking-widest mb-3 uppercase">
+      <div className="hud-panel flex-1 rounded p-4">
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent">
           Featured Games
         </p>
-        <div className="flex flex-col gap-2">
+        <ul className="flex flex-col gap-2">
           {FEATURED_GAMES.map((game) => (
-            <div
-              key={game.id}
-              className="flex items-center gap-2 p-2 rounded border border-hud-border hover:border-hud-teal/40 transition-colors cursor-pointer"
-              style={{ backgroundColor: game.color }}
-            >
-              {/* 게임 썸네일 자리 */}
-              <div className="w-12 h-8 bg-hud-bg rounded flex-shrink-0 border border-hud-border/50 flex items-center justify-center">
-                <span className="text-hud-teal/40 text-xs">▶</span>
-              </div>
-              <div className="min-w-0">
-                <p className="text-xs font-semibold text-hud-text truncate leading-tight">
-                  {game.title}
-                </p>
-                <p className="font-mono text-[10px] text-hud-text-dim truncate">{game.genre}</p>
-              </div>
-            </div>
+            <li key={game.slug}>
+              <a
+                href={`#${game.slug}`}
+                className="hud-panel-clickable flex items-center gap-2 rounded border border-border bg-panel-soft p-2 transition-colors duration-150 hover:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+              >
+                <span
+                  aria-hidden="true"
+                  className="flex h-8 w-12 flex-shrink-0 items-center justify-center rounded border border-border bg-bg-sunken"
+                  style={{ backgroundColor: game.color, color: '#FFFFFF' }}
+                >
+                  <span className="text-xs opacity-80">▶</span>
+                </span>
+                <span className="min-w-0">
+                  <span className="block truncate text-xs font-semibold leading-tight text-content">
+                    {game.title}
+                  </span>
+                  <span className="block truncate font-mono text-[10px] text-content-dim">
+                    {game.genre} · {game.platform}
+                  </span>
+                </span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       {/* Tech Stack */}
       <div className="hud-panel rounded p-4">
-        <p className="font-mono text-[10px] text-hud-teal tracking-widest mb-3 uppercase">
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent">
           Tech Stack
         </p>
-        <div className="grid grid-cols-3 gap-2">
+        <ul className="grid grid-cols-3 gap-2">
           {TECH_ICONS.map((icon) => (
-            <div
+            <li
               key={icon}
-              className="h-8 bg-hud-bg border border-hud-border rounded flex items-center justify-center"
+              className="flex h-8 items-center justify-center rounded border border-border bg-bg-sunken"
             >
-              <span className="font-mono text-[10px] text-hud-text-dim font-semibold">{icon}</span>
-            </div>
+              <span className="font-mono text-[10px] font-semibold text-content-dim">{icon}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

@@ -25,29 +25,31 @@ export function ChatbotInputArea({ onSubmit, isLoading = false }: ChatbotInputAr
   }
 
   return (
-    <div className="px-4 py-3 border-t border-hud-border">
+    <div className="border-t border-border px-3 py-3 sm:px-4">
       <div className="flex items-center gap-2">
+        <label htmlFor="chatbot-input" className="sr-only">
+          메시지 입력
+        </label>
         <input
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Ask me anything..."
-          className="flex-1 min-w-0 bg-hud-bg border border-hud-border rounded px-3 py-2.5 min-h-[44px]
-                     text-base sm:text-sm text-hud-text placeholder:text-hud-text-dim
-                     focus:outline-none focus:border-hud-teal/60 transition-colors font-sans"
+          className="flex-1 min-w-0 rounded border border-border bg-bg-sunken px-3 py-2.5 min-h-[44px] font-sans text-base sm:text-sm text-content placeholder:text-content-muted transition-colors focus:border-accent focus:outline-none"
           id="chatbot-input"
-          aria-label="메시지 입력"
           disabled={isLoading}
         />
         <button
           onClick={handleSubmit}
           disabled={!value.trim() || isLoading}
-          className="shrink-0 w-11 h-11 bg-hud-teal hover:opacity-90 disabled:opacity-30
-                     disabled:cursor-not-allowed transition-opacity rounded flex items-center justify-center"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded bg-accent text-bg transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-30"
           aria-label="전송"
+          type="button"
         >
-          <span className="text-hud-bg text-sm font-bold">➤</span>
+          <span className="text-sm font-bold" aria-hidden="true">
+            ➤
+          </span>
         </button>
       </div>
     </div>

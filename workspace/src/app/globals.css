@@ -4,26 +4,92 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * 라이트 모드 — PROJECT_DIRECTION의 A-04 기본 팔레트(soft cream / teal / game-blue / orange accent / graphite)
+ * 다크 모드 — 기존 HUD 분위기를 유지하면서 토큰화
+ */
 :root {
-  --color-hud-bg: #0b1622;
-  --color-hud-panel: #0e1f30;
-  --color-hud-border: #1a3a50;
-  --color-hud-teal: #00c9a7;
-  --color-hud-orange: #ff7a2f;
-  --color-hud-text: #c8e6ef;
+  color-scheme: light;
+
+  --color-bg: #faf7f2;
+  --color-bg-elevated: #ffffff;
+  --color-bg-sunken: #f0ece3;
+  --color-panel: #ffffff;
+  --color-panel-soft: #f5f0e6;
+  --color-border: #e2d8c6;
+  --color-border-strong: #b9a98a;
+
+  --color-text: #2d3142;
+  --color-text-dim: #6c6f80;
+  --color-text-muted: #8b8b95;
+
+  --color-accent: #2a9d8f;
+  --color-accent-strong: #1f7268;
+  --color-accent-soft: rgba(42, 157, 143, 0.12);
+  --color-cta: #f4a261;
+  --color-cta-strong: #d8753a;
+  --color-cta-soft: rgba(244, 162, 97, 0.18);
+  --color-info: #4a90d9;
+  --color-success: #2f9d6b;
+  --color-danger: #e63946;
+
+  --shadow-panel: 0 4px 16px rgba(45, 49, 66, 0.08);
+  --shadow-cta: 0 4px 18px rgba(244, 162, 97, 0.32);
 }
 
+:root.dark,
+.dark {
+  color-scheme: dark;
+
+  --color-bg: #0b1622;
+  --color-bg-elevated: #0e1f30;
+  --color-bg-sunken: #07101a;
+  --color-panel: #0e1f30;
+  --color-panel-soft: #122739;
+  --color-border: #1a3a50;
+  --color-border-strong: #265a78;
+
+  --color-text: #c8e6ef;
+  --color-text-dim: #7d99a8;
+  --color-text-muted: #5a7a8a;
+
+  --color-accent: #00c9a7;
+  --color-accent-strong: #00b39a;
+  --color-accent-soft: rgba(0, 201, 167, 0.16);
+  --color-cta: #ff7a2f;
+  --color-cta-strong: #ff945a;
+  --color-cta-soft: rgba(255, 122, 47, 0.22);
+  --color-info: #4ade80;
+  --color-success: #4ade80;
+  --color-danger: #f87171;
+
+  --shadow-panel: 0 6px 22px rgba(0, 0, 0, 0.45);
+  --shadow-cta: 0 6px 24px rgba(255, 122, 47, 0.42);
+}
+
+html,
 body {
-  background-color: var(--color-hud-bg);
-  color: var(--color-hud-text);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: 'Inter', sans-serif;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
-/* HUD 패널 공통 테두리 스타일 */
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    transition: none;
+  }
+}
+
+/* 공통 HUD 카드 — 라이트/다크 양쪽에서 동작 */
 .hud-panel {
-  background-color: var(--color-hud-panel);
-  border: 1px solid var(--color-hud-border);
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
   position: relative;
+  box-shadow: var(--shadow-panel);
 }
 
 .hud-panel::before,
@@ -32,7 +98,7 @@ body {
   position: absolute;
   width: 10px;
   height: 10px;
-  border-color: var(--color-hud-teal);
+  border-color: var(--color-accent);
   border-style: solid;
   z-index: 1;
 }
@@ -61,4 +127,17 @@ body {
 
 .skill-bar-fill {
   animation: fillBar 1s ease-out forwards;
+}
+
+/* 픽셀 아트 SVG */
+.pixelated {
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+}
+
+/* 모바일에서 hover 의존을 줄이기 위한 항상 보이는 강조 변형 */
+@media (hover: none) {
+  .hud-panel-clickable {
+    border-color: var(--color-border-strong);
+  }
 }

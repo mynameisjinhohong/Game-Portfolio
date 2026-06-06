@@ -9,17 +9,19 @@ interface ChatbotMessagePanelProps {
 export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
   return (
     <div
-      className="flex-1 overflow-y-auto min-h-0 px-4 py-4 flex flex-col gap-3"
+      className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-3 py-4 sm:px-4"
       aria-label="대화 내용"
       aria-live="polite"
     >
-      {/* 봇 아바타 + 인사 (항상 표시, 중앙 정렬) */}
+      {/* 봇 아바타 + 인사 */}
       <div className="flex flex-col items-center gap-3 py-4">
-        <div className="w-14 h-14 bg-hud-teal/20 border-2 border-hud-teal/50 rounded-full flex items-center justify-center shadow-[0_0_16px_rgba(0,201,167,0.2)]">
-          <span className="text-2xl">🤖</span>
+        <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/50 bg-accent-soft shadow-[0_0_16px_var(--color-accent-soft)]">
+          <span className="text-2xl" aria-hidden="true">
+            🤖
+          </span>
         </div>
-        <div className="bg-hud-bg border border-hud-border rounded-lg px-4 py-3 w-full max-w-[320px] text-center">
-          <p className="text-sm text-hud-text leading-relaxed">
+        <div className="w-full max-w-[320px] rounded-lg border border-border bg-bg-sunken px-4 py-3 text-center">
+          <p className="text-sm leading-relaxed text-content">
             Hello! 👋
             <br />
             I&apos;m Jinho&apos;s Portfolio Bot.
@@ -30,31 +32,33 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
       </div>
 
       {/* 사용자 & 봇 메시지 렌더링 */}
-      {messages.map((msg) => (
-        <div
-          key={msg.id}
-          className={`flex gap-2 items-start ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
-        >
+      {messages.map((msg) => {
+        const isUser = msg.role === 'user';
+        return (
           <div
-            className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center border text-xs ${
-              msg.role === 'user'
-                ? 'bg-hud-orange/20 border-hud-orange/40 text-hud-orange'
-                : 'bg-hud-teal/20 border-hud-teal/40 text-hud-teal'
-            }`}
+            key={msg.id}
+            className={`flex items-start gap-2 ${isUser ? 'flex-row-reverse' : ''}`}
           >
-            {msg.role === 'user' ? 'U' : '🤖'}
+            <div
+              className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border text-xs ${
+                isUser
+                  ? 'border-cta/40 bg-cta-soft text-cta'
+                  : 'border-accent/40 bg-accent-soft text-accent'
+              }`}
+              aria-hidden="true"
+            >
+              {isUser ? 'U' : '🤖'}
+            </div>
+            <div
+              className={`max-w-[80%] sm:max-w-[260px] rounded-lg border px-3 py-2 ${
+                isUser ? 'border-cta/30 bg-cta-soft' : 'border-border bg-bg-sunken'
+              }`}
+            >
+              <p className="text-sm leading-relaxed text-content">{msg.content}</p>
+            </div>
           </div>
-          <div
-            className={`rounded-lg px-3 py-2 max-w-[80%] sm:max-w-[260px] border ${
-              msg.role === 'user'
-                ? 'bg-hud-orange/10 border-hud-orange/30'
-                : 'bg-hud-bg border-hud-border'
-            }`}
-          >
-            <p className="text-sm text-hud-text leading-relaxed">{msg.content}</p>
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

@@ -23,7 +23,6 @@ export function ChatbotPanel() {
       timestamp: new Date(),
     };
     setMessages((prev) => [...prev, userMessage]);
-    // 후속 작업: AI 응답 연결 위치
   }
 
   function handleSampleSelect(question: string) {
@@ -31,37 +30,34 @@ export function ChatbotPanel() {
   }
 
   return (
-    <div className="hud-panel rounded flex flex-col h-full min-h-[440px] sm:min-h-[520px]">
+    <div className="hud-panel flex h-full min-h-[440px] flex-col rounded sm:min-h-[520px]">
       {/* HUD 상단 바: 하트(왼쪽) / 배터리(오른쪽) — 추후 기능 연결 예정 */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-hud-border/50">
-        {/* 왼쪽: 하트 (HP) 공간 */}
-        <div className="flex items-center gap-1 min-w-[60px]">
+      <div className="flex items-center justify-between border-b border-border/60 px-3 py-2 sm:px-4">
+        <div className="flex min-w-[60px] items-center gap-1" aria-hidden="true">
           {[0, 1, 2].map((i) => (
-            <span key={i} className="text-red-400/30 text-sm leading-none">
+            <span key={i} className="text-sm leading-none text-rose-400/40">
               ♥
             </span>
           ))}
         </div>
-        {/* 오른쪽: 배터리 공간 */}
-        <div className="flex items-center gap-1 min-w-[40px] justify-end">
-          <div className="w-6 h-3 border border-hud-text-dim/30 rounded-sm relative flex items-center px-0.5">
-            <div className="h-1.5 w-2/3 bg-hud-text-dim/20 rounded-sm" />
-            <div className="absolute -right-[3px] top-1/2 -translate-y-1/2 w-[3px] h-1.5 bg-hud-text-dim/30 rounded-r-sm" />
+        <div className="flex min-w-[40px] items-center justify-end gap-1" aria-hidden="true">
+          <div className="relative flex h-3 w-6 items-center rounded-sm border border-content-dim/30 px-0.5">
+            <div className="h-1.5 w-2/3 rounded-sm bg-content-dim/20" />
+            <div className="absolute -right-[3px] top-1/2 h-1.5 w-[3px] -translate-y-1/2 rounded-r-sm bg-content-dim/30" />
           </div>
         </div>
       </div>
 
       {/* 패널 헤더 */}
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-hud-border">
+      <div className="flex items-center justify-between border-b border-border px-3 py-2.5 sm:px-4">
         <div className="flex items-center gap-2">
-          {/* 봇 아이콘 */}
-          <div className="w-6 h-6 bg-hud-teal/20 border border-hud-teal/40 rounded flex items-center justify-center">
-            <span className="text-hud-teal text-xs">🤖</span>
-          </div>
-          <span className="font-mono text-xs text-hud-teal tracking-widest">PORTFOLIO_BOT</span>
+          <span className="flex h-6 w-6 items-center justify-center rounded border border-accent/40 bg-accent-soft text-xs text-accent">
+            🤖
+          </span>
+          <span className="font-mono text-xs tracking-widest text-accent">PORTFOLIO_BOT</span>
         </div>
-        <span className="flex items-center gap-1.5 font-mono text-[10px] text-hud-text-dim">
-          <span className="w-1.5 h-1.5 rounded-full bg-hud-green animate-pulse" />
+        <span className="flex items-center gap-1.5 font-mono text-[10px] text-content-dim">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
           ONLINE
         </span>
       </div>
@@ -69,7 +65,7 @@ export function ChatbotPanel() {
       {/* 메시지 영역 */}
       <ChatbotMessagePanel messages={messages} />
 
-      {/* 견본 질문 — 대화가 없을 때만 표시 */}
+      {/* 견본 질문 */}
       {messages.length === 0 && (
         <ChatbotSampleQuestions questions={SAMPLE_QUESTIONS} onSelect={handleSampleSelect} />
       )}
