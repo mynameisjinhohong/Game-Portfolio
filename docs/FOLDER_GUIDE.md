@@ -14,6 +14,7 @@
 ├── workspace/                  # [활성] A-04 기반 개발 작업 공간
 │   ├── assets/
 │   │   ├── a-04/              # A-04 컨셉 기반 시각 자료 (디자인 시안)
+│   │   ├── cards/             # 게임 카드·썸네일 공용 프레임/오버레이 비트맵 에셋
 │   │   ├── prompts/           # codex_imagegen 작업용 이미지 생성 프롬프트
 │   │   └── references/        # 스타일 참조 이미지 및 색상 팔레트 메모
 │   ├── docs/                  # A-04 기반 설계·분석 문서
@@ -44,6 +45,7 @@
 | 하위 경로 | 두는 자료 |
 |---|---|
 | `workspace/assets/a-04/` | A-04 컨셉 이미지, 디자인 시안 |
+| `workspace/assets/cards/` | 게임 소개 카드와 썸네일에 재사용하는 프레임, 오버레이, 장식 비트맵 에셋 |
 | `workspace/assets/prompts/` | codex_imagegen 작업용 이미지 생성 프롬프트 텍스트 파일 |
 | `workspace/assets/references/` | 스타일 참조 이미지 또는 색상 팔레트 메모 |
 | `workspace/docs/` | A-04 기반 컨셉 분석, 구현 계획, 기술 결정 근거, 컴포넌트 설계 |
@@ -153,5 +155,6 @@ AI 에이전트(Codex, Claude 등)가 작업을 수행할 때 폴더 구조에 �
 - **GP-17**: 기존 자료를 workspace/archive 구조로 재배치 실행
 - **GP-18**: 이 운영 가이드 문서 추가
 - **GP-54**: `workspace/assets/` 하위에 `prompts/`, `references/` 폴더 추가 (이미지 생성 프롬프트 및 참조 자료 보관)
+- **GP-57**: `workspace/assets/cards/` 폴더를 카드 프레임 및 오버레이 비트맵 에셋 보관 경로로 추가
 - **workspace-structure-cleanup**: 중첩 Next.js 앱(`workspace/portfolio`)을 제거하고 `workspace/` 단일 앱 루트로 정리
 - **project-direction-contract**: 프로젝트 방향성 정본 `PROJECT_DIRECTION.md` 추가 및 에이전트 갱신 규칙 명시
