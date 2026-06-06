@@ -18,7 +18,7 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
         <div className="w-14 h-14 bg-hud-teal/20 border-2 border-hud-teal/50 rounded-full flex items-center justify-center shadow-[0_0_16px_rgba(0,201,167,0.2)]">
           <span className="text-2xl">🤖</span>
         </div>
-        <div className="bg-hud-bg border border-hud-border rounded-lg px-4 py-3 max-w-[280px] text-center">
+        <div className="bg-hud-bg border border-hud-border rounded-lg px-4 py-3 w-full max-w-[320px] text-center">
           <p className="text-sm text-hud-text leading-relaxed">
             Hello! 👋
             <br />
@@ -45,7 +45,7 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
             {msg.role === 'user' ? 'U' : '🤖'}
           </div>
           <div
-            className={`rounded-lg px-3 py-2 max-w-[240px] border ${
+            className={`rounded-lg px-3 py-2 max-w-[80%] sm:max-w-[260px] border ${
               msg.role === 'user'
                 ? 'bg-hud-orange/10 border-hud-orange/30'
                 : 'bg-hud-bg border-hud-border'

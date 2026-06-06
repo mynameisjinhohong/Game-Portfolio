@@ -14,7 +14,7 @@ export function ChatbotSampleQuestions({ questions, onSelect }: ChatbotSampleQue
         <button
           key={q.id}
           onClick={() => onSelect(q.text)}
-          className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-lg border border-hud-border
+          className="flex items-center gap-3 w-full text-left px-3 py-3 min-h-[44px] rounded-lg border border-hud-border
                      text-sm text-hud-text hover:border-hud-teal/50 hover:bg-hud-teal/5 transition-colors"
         >
           {q.icon && <span className="text-base flex-shrink-0">{q.icon}</span>}

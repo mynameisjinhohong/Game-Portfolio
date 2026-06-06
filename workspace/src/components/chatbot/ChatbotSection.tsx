@@ -9,24 +9,26 @@ export function ChatbotSection() {
     <section
       id="chatbot"
       aria-label="AI 챗봇 섹션"
-      className="w-full max-w-7xl mx-auto px-4 py-6 md:py-10"
-      style={{ minHeight: 'calc(100vh - 52px)' }}
+      className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 py-6 md:py-10"
     >
-      {/* 3컬럼 그리드: 캐릭터 | 챗봇 | 게임 */}
-      <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_220px] gap-4 items-center">
-        {/* 왼쪽: 캐릭터 패널 */}
-        <div className="hidden md:block">
+      {/*
+        모바일: 1열로 챗봇이 최상단, 그 아래에 캐릭터/게임 패널이 스크롤로 노출.
+        lg 이상: 3열로 화면 폭에 비례해 패널 너비가 늘어난다.
+      */}
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(220px,1fr)_minmax(0,2.4fr)_minmax(220px,1fr)] gap-4 lg:gap-6 items-stretch">
+        {/* 왼쪽: 캐릭터 패널 (모바일에서는 챗봇 아래로 이동) */}
+        <div className="order-2 lg:order-1">
           <CharacterPanel />
         </div>
 
         {/* 중앙: 챗봇 패널 */}
-        <div className="flex flex-col gap-4">
+        <div className="order-1 lg:order-2 flex flex-col gap-4">
           <ChatbotPanel />
 
           <div className="flex justify-center">
             <button
               type="button"
-              className="flex items-center gap-2.5 px-8 py-3 rounded-full font-semibold text-base text-white tracking-wide transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-hud-orange/60"
+              className="flex items-center justify-center gap-2.5 w-full sm:w-auto min-h-[48px] px-8 py-3 rounded-full font-semibold text-base text-white tracking-wide transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-hud-orange/60"
               style={{
                 background: 'linear-gradient(135deg, #FF7A2F 0%, #FF9A5A 100%)',
                 boxShadow: '0 4px 20px rgba(255,122,47,0.40)',
@@ -42,8 +44,8 @@ export function ChatbotSection() {
           </div>
         </div>
 
-        {/* 오른쪽: 게임 패널 */}
-        <div className="hidden md:block">
+        {/* 오른쪽: 게임 패널 (모바일에서는 챗봇 아래로 이동) */}
+        <div className="order-3">
           <FeaturedGamesPanel />
         </div>
       </div>
