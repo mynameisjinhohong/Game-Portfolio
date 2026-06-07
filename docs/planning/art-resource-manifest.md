@@ -1,8 +1,10 @@
 # 아트 리소스 명세서
 
-> 작성 기준: GP-54 (GP-53 아트 리소스 제작 하위 작업)  
-> 목적: 메인 페이지 시안을 기준으로 필요한 아트 리소스를 구분·목록화하고, 후속 이미지 생성 작업에서 바로 참조할 수 있는 기준을 제공한다.  
-> 참조: `docs/content/section-content-map.md` (GP-52), `docs/planning/portfolio-foundation-plan.md`  
+> 작성 기준: GP-54 (GP-53 아트 리소스 제작 하위 작업), GP-58 게임 슬러그 실데이터 정비 반영
+> 목적: 메인 페이지 시안을 기준으로 필요한 아트 리소스를 구분·목록화하고, 후속 이미지 생성 작업에서 바로 참조할 수 있는 기준을 제공한다.
+> 시각 방향: `PROJECT_DIRECTION.md` (A-04) — `soft cream` 배경 + `teal` / `game-blue` / 제한적 `orange accent` / `graphite`
+> 게임 실데이터 출처: `docs/research/raw-data-survey.md`, `workspace/docs/art-resource-manifest.md`
+> 참조: `docs/content/section-content-map.md` (GP-52), `docs/planning/portfolio-foundation-plan.md`
 > 이미지 생성 프롬프트: `workspace/assets/prompts/` | 참조 이미지: `workspace/assets/references/`
 
 ---
@@ -31,8 +33,8 @@ public/
 | 규칙 | 예시 |
 |------|------|
 | 소문자 + 하이픈 구분 | `hero-featured.webp` |
-| 게임 카드 더미: `<slug>-thumbnail-dummy` | `gravity-flip-thumbnail-dummy.webp` |
-| 스크린샷 더미: `<slug>-screenshot-<n>-dummy` | `gravity-flip-screenshot-01-dummy.webp` |
+| 게임 카드 더미: `<slug>-thumbnail-dummy` | `math-king-thumbnail-dummy.webp` |
+| 스크린샷 더미: `<slug>-screenshot-<n>-dummy` | `math-king-screenshot-01-dummy.webp` |
 | 배경: `bg-<용도>` | `bg-hero.webp`, `bg-section.webp` |
 | 장식: `deco-<설명>` | `deco-pixel-star.png` |
 | UI 아이콘: `icon-<이름>` | `icon-unity.svg` |
@@ -74,8 +76,8 @@ public/
 | 포맷 | WebP (손실, 품질 75–80) |
 | 투명 배경 | 불필요 (불투명 배경 이미지) |
 | 저장 경로 | `public/images/hero/bg-hero.webp` |
-| 이미지 특성 | 어두운 분위기(#0a0a0f 계열), 픽셀아트 또는 사이버펑크 감성, 게임 개발자 정체성 표현 |
-| 추가 참고 | 텍스트 가독성을 위해 중앙 영역은 밝기를 낮게 유지 |
+| 이미지 특성 | A-04 기반 `soft cream` 베이스에 `teal` / `game-blue` 톤의 부드러운 그라데이션, 얇은 픽셀 모티프 장식. 화려한 cinematic·사이버펑크·다크 cockpit 분위기는 피한다. |
+| 추가 참고 | 텍스트 가독성을 위해 카피 영역 주변은 한 톤 더 밝게(또는 흰색 가까운 cream으로) 유지한다. |
 
 ### 1-2. 대표 게임 피처드 이미지
 
@@ -86,7 +88,7 @@ public/
 | 포맷 | WebP (손실, 품질 85) |
 | 투명 배경 | 불필요 |
 | 저장 경로 | `public/images/hero/hero-featured.webp` |
-| 이미지 특성 | 대표 게임(Gravity Flip 또는 가장 완성도 높은 게임) 스크린샷 또는 키아트 |
+| 이미지 특성 | Featured 게임(`math-king`, `strong-rabbit`, `panda-rush` 중 가장 임팩트 있는 한 장)의 실제 스크린샷 또는 키아트 |
 | 추가 참고 | **실제 게임 스크린샷을 사람이 직접 교체**하는 것이 원칙. 초기 구현에서는 더미 이미지(`hero-featured-dummy.webp`)를 사용한다. |
 
 ### 1-3. 프로필 이미지 (선택)
@@ -115,7 +117,7 @@ public/
 | 포맷 | WebP (손실, 품질 75) |
 | 투명 배경 | 불필요 |
 | 저장 경로 | `public/images/bg/bg-games-section.webp` |
-| 이미지 특성 | 어두운 그라데이션 또는 격자 패턴, 히어로 배경과 시각적 연속성 유지 |
+| 이미지 특성 | `soft cream` 베이스에 옅은 `teal`/`game-blue` 격자 또는 가로 결 패턴. 히어로 배경과 시각적 연속성을 유지하되 카드 가독성을 해치지 않는 저채도 톤. |
 
 ### 2-2. 챗봇 섹션 배경
 
@@ -126,7 +128,7 @@ public/
 | 포맷 | WebP (손실, 품질 75) |
 | 투명 배경 | 불필요 |
 | 저장 경로 | `public/images/bg/bg-chatbot.webp` |
-| 이미지 특성 | 미래적·기술적 분위기, 파란색 또는 보라색 계열 |
+| 이미지 특성 | `soft cream` 패널 바탕에 `teal` 톤 보조 그래픽과 얇은 game-blue 라인. 파란-보라 사이버 cockpit 톤은 피하고, 채팅 가독성을 위해 채도를 낮춘다. |
 
 ### 2-3. 픽셀아트 장식 파티클 (선택)
 
@@ -175,14 +177,18 @@ public/
 
 #### 필요한 게임 슬러그 목록
 
-| 슬러그 | 게임명 | 비고 |
-|--------|--------|------|
-| `gravity-flip` | Gravity Flip | Itch.io 배포 완료 |
-| `zombie-survival` | Zombie Survival | 대표 게임 |
-| `puzzle-platformer` | Puzzle Platformer | 이름 확정 필요 |
-| `rpg-dungeon` | RPG Dungeon | 이름 확정 필요 |
+> 출처: `workspace/src/data/games.ts`, `workspace/docs/art-resource-manifest.md`, `docs/research/raw-data-survey.md`
 
-> **주의**: 게임 슬러그와 실제 게임명은 `data/games.ts` 파일 확정 후 동기화 필요
+| 슬러그 | 게임명 | 장르 | 플랫폼 | Featured | 비고 |
+|--------|--------|------|--------|----------|------|
+| `math-king` | 수학의 제왕 (HotSix) | 2D 횡스크롤 디펜스 | Android | ✅ | 웅진씽크빅 게임개발챌린지 우수상 |
+| `strong-rabbit` | 강한 토끼만이 살아남는다 (Cardungeon) | 실시간 멀티플레이 덱빌딩 서바이벌 | PC + 모바일 | ✅ | 뒤끝 게임잼 수상, 인디크래프트 입상, PlayX4 부스 출품 |
+| `panda-rush` | 판다러쉬 | 러닝게임 | Android (Google Play) | ✅ | 이븐아이 게임톤 대상, Google Play 런칭 |
+| `black-fog-red-moon` | 검은 안개, 붉은 달 (unizam) | 한국형 오컬트 턴제 전략 | PC | ❌ | UniDev 게임잼 출품, ShaderLab 기반 |
+| `universe` | Universe | 2D 메타버스 플랫폼 | PC | ❌ | 메타버스 아카데미 최종 프로젝트 |
+| `inoriter` | 아이노리터 (Inoriter) | 인터렉티브 미니게임 플랫폼 | 빔프로젝터/전자칠판 | ❌ | TV스토리 외주 납품 (PM 역할) |
+
+> **주의**: 슬러그·제목·장르·플랫폼은 `workspace/src/data/games.ts`의 `GAMES` 배열 및 `FEATURED_GAMES`와 항상 동기화 상태를 유지한다.
 
 ### 3-2. 게임 상세 스크린샷
 
@@ -211,7 +217,7 @@ public/
 | 포맷 | SVG 우선, 없으면 PNG |
 | 투명 배경 | 필요 |
 | 저장 경로 | `public/images/ui/icon-<tech-name>.svg` |
-| 항목 | `unity`, `csharp`, `blender`, `photoshop`, `github` |
+| 항목 | `unity`, `csharp`, `shaderlab`, `github`, `jenkins`, `aws`, `docker` (실데이터 기준 핵심 스택) |
 
 ### 3-4. 게임 장르 뱃지 (선택)
 
@@ -221,7 +227,7 @@ public/
 | 권장 크기 | 80×24px 텍스트 레이블 형태 또는 CSS로 처리 |
 | 포맷 | CSS/SVG (이미지 없이 처리 권장) |
 | 저장 경로 | CSS 처리 시 불필요 |
-| 이미지 특성 | "플랫포머", "RPG", "퍼즐" 등 텍스트 레이블 |
+| 이미지 특성 | "디펜스", "덱빌딩", "러닝", "오컬트 전략", "메타버스", "인터렉티브" 등 실제 게임 장르 텍스트 레이블 |
 
 ---
 
@@ -243,9 +249,9 @@ public/
 
 | 리소스 | 더미 경로 | 교체 방법 |
 |--------|-----------|-----------|
-| 게임 썸네일 (전 게임) | `games/<slug>/thumbnail-dummy.webp` | 실제 게임 캡처로 교체 |
-| 게임 스크린샷 (각 게임 2–4장) | `games/<slug>/screenshot-0n-dummy.webp` | 실제 플레이 장면으로 교체 |
-| 대표 게임 피처드 | `hero/hero-featured-dummy.webp` | 대표 게임 키아트 또는 스크린샷으로 교체 |
+| 게임 썸네일 (전 6종) | `games/<slug>/thumbnail-dummy.webp` (`math-king`, `strong-rabbit`, `panda-rush`, `black-fog-red-moon`, `universe`, `inoriter`) | 실제 게임 캡처로 교체 |
+| 게임 스크린샷 (Featured 3종 우선, 각 2–4장) | `games/<slug>/screenshot-0n-dummy.webp` (`math-king`, `strong-rabbit`, `panda-rush` 우선) | 실제 플레이 장면으로 교체 |
+| 대표 게임 피처드 | `hero/hero-featured-dummy.webp` | Featured 3종 중 한 게임의 키아트 또는 스크린샷으로 교체 |
 
 ---
 
@@ -266,27 +272,45 @@ public/
 - [ ] `deco-pixel-star.png` — 픽셀 장식 (선택)
 - [ ] `section-divider.svg` — 섹션 구분선
 
-### 게임 카드 (gravity-flip) — 더미 이미지, 사람이 교체 필요
+### 게임 카드 (math-king · 수학의 제왕) — Featured, 더미 후 실제 캡처 교체
 
-- [ ] `games/gravity-flip/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
-- [ ] `games/gravity-flip/screenshot-01-dummy.webp` → 최종: `screenshot-01.webp`
-- [ ] `games/gravity-flip/screenshot-02-dummy.webp` → 최종: `screenshot-02.webp`
+- [ ] `games/math-king/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
+- [ ] `games/math-king/screenshot-01-dummy.webp` → 최종: `screenshot-01.webp`
+- [ ] `games/math-king/screenshot-02-dummy.webp` → 최종: `screenshot-02.webp`
 
-### 게임 카드 (zombie-survival) — 더미 이미지, 사람이 교체 필요
+### 게임 카드 (strong-rabbit · 강한 토끼만이 살아남는다) — Featured, 더미 후 실제 캡처 교체
 
-- [ ] `games/zombie-survival/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
-- [ ] `games/zombie-survival/screenshot-01-dummy.webp` → 최종: `screenshot-01.webp`
-- [ ] `games/zombie-survival/screenshot-02-dummy.webp` → 최종: `screenshot-02.webp`
+- [ ] `games/strong-rabbit/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
+- [ ] `games/strong-rabbit/screenshot-01-dummy.webp` → 최종: `screenshot-01.webp`
+- [ ] `games/strong-rabbit/screenshot-02-dummy.webp` → 최종: `screenshot-02.webp`
 
-### 게임 카드 (추가 게임) — 더미 이미지, 사람이 교체 필요
+### 게임 카드 (panda-rush · 판다러쉬) — Featured, 더미 후 실제 캡처 교체
 
-- [ ] `games/<slug>/thumbnail-dummy.webp` × N → 최종: `thumbnail.webp`
+- [ ] `games/panda-rush/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
+- [ ] `games/panda-rush/screenshot-01-dummy.webp` → 최종: `screenshot-01.webp`
+- [ ] `games/panda-rush/screenshot-02-dummy.webp` → 최종: `screenshot-02.webp`
+
+### 게임 카드 (black-fog-red-moon · 검은 안개, 붉은 달) — 갤러리 노출용
+
+- [ ] `games/black-fog-red-moon/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
+
+### 게임 카드 (universe) — 갤러리 노출용
+
+- [ ] `games/universe/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
+
+### 게임 카드 (inoriter · 아이노리터) — 갤러리 노출용
+
+- [ ] `games/inoriter/thumbnail-dummy.webp` → 최종: `thumbnail.webp`
 
 ### UI 아이콘
 
 - [ ] `ui/icon-unity.svg`
 - [ ] `ui/icon-csharp.svg`
+- [ ] `ui/icon-shaderlab.svg`
 - [ ] `ui/icon-github.svg`
+- [ ] `ui/icon-jenkins.svg`
+- [ ] `ui/icon-aws.svg`
+- [ ] `ui/icon-docker.svg`
 
 ---
 
@@ -294,7 +318,7 @@ public/
 
 | 용어 | 정의 |
 |------|------|
-| 슬러그 | 게임 식별자, 소문자 하이픈 구분 (`gravity-flip`) |
+| 슬러그 | 게임 식별자, 소문자 하이픈 구분 (`math-king`, `strong-rabbit` 등) |
 | 피처드 이미지 | 히어로 섹션에서 대표로 강조 표시되는 게임 이미지 |
 | 투명 배경 | 알파 채널이 있는 PNG 또는 WebP 무손실 |
 | 키아트 | 게임의 인상을 대표하는 일러스트 또는 합성 이미지 |
