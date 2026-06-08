@@ -1,5 +1,11 @@
 {
   "prompt": "Use case: stylized-concept\nAsset type: 게임 포트폴리오 웹사이트 홈 화면 공용 배경 비트맵\nPrimary request: A-04 정본 방향의 메인 페이지 공용 배경 텍스처를 생성한다. 밝은 soft cream 베이스 위에 graphite 톤의 아주 얇은 격자와 hairline, teal과 game-blue 계열의 절제된 얇은 선, 작은 pixel motif, 종이 결 같은 미세한 텍스처를 가장자리 위주로만 배치한다. 중앙은 본문과 챗봇 UI 가독성을 위해 거의 비어 있어야 한다.\nScene/backdrop: 넓은 웹사이트 배경 텍스처 한 장, 중앙은 깨끗하고 가장자리로 갈수록 장식이 조금씩 늘어나는 구성.\nSubject: 얇은 HUD 테두리 조각, 작은 사각 픽셀 마커, 절제된 아이콘형 모티프, 섬세한 라인 장식.\nStyle/medium: polished website background bitmap, bright, playful but orderly, not a poster.\nComposition/framing: 1536x1024 landscape, strong negative space in the center, decorative density only near edges and corners.\nLighting/mood: 밝고 산뜻하며 실제 웹사이트처럼 차분한 분위기.\nColor palette: soft cream #F4ECD8 base, graphite linework, restrained teal and game-blue accents only, no orange accent.\nMaterials/textures: subtle paper grain, matte surface, crisp hairlines, restrained pixel/HUD motif.\nConstraints: readable UI backdrop, no text, no characters, no logo, no collage, no central focal object.\nAvoid: dark navy or black background, strong cyan glow, sci-fi cockpit mood, blue-only hologram, dense HUD overlay, neon effects, watermark",
   "summary": "soft cream 바탕에 중앙 여백을 크게 두고, 가장자리만 graphite·teal·game-blue 라인과 작은 pixel/HUD 모티프로 정리한 홈 공용 배경이다.",
-  "generation_notes": "built-in image_gen 기본 모드로 생성한 결과 중 중앙 가독성이 가장 높은 이미지를 선택했다. A-04 정본 팔레트만 사용하고 orange 포인트, 어두운 navy·black 배경, 강한 cyan 글로우, cockpit형 HUD 밀집 구성을 모두 제외했다."
+  "generation_notes": "built-in image_gen 기본 모드로 생성한 결과 중 중앙 가독성이 가장 높은 이미지를 선택했다. A-04 정본 팔레트만 사용하고 orange 포인트, 어두운 navy·black 배경, 강한 cyan 글로우, cockpit형 HUD 밀집 구성을 모두 제외했다.",
+  "manifest_reference": {
+    "manifest_path": "workspace/assets/a-04-asset-manifest.md",
+    "component_id": "C-01",
+    "category": "배경",
+    "note": "A-04 공용 시각 시스템 전체 명세 중 배경 카테고리에 해당하는 항목이다. 본 자산만으로 A-04 화면을 모두 구성할 수 없으며, 명세의 장식·캐릭터·HUD 아이콘 카테고리 자산이 후속 작업에서 생성되어야 한다."
+  }
 }

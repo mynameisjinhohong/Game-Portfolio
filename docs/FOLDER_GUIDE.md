@@ -48,6 +48,7 @@
 | `workspace/assets/a-04/` | A-04 컨셉 이미지, 디자인 시안 |
 | `workspace/assets/backgrounds/` | 실제 화면에 사용하는 공용 배경 비트맵 에셋 |
 | `workspace/assets/decor/` | 실제 화면에 사용하는 장식 비트맵 에셋 |
+| `workspace/assets/a-04-asset-manifest.md` | A-04 시안 공용 시각 시스템 전체 에셋 명세(컴포넌트 ID, 파일 경로, 상태) |
 | `workspace/assets/prompts/` | codex_imagegen 작업용 이미지 생성 프롬프트 텍스트 파일 |
 | `workspace/assets/references/` | 스타일 참조 이미지 또는 색상 팔레트 메모 |
 | `workspace/docs/` | A-04 기반 컨셉 분석, 구현 계획, 기술 결정 근거, 컴포넌트 설계 |
@@ -159,5 +160,6 @@ AI 에이전트(Codex, Claude 등)가 작업을 수행할 때 폴더 구조에 �
 - **GP-18**: 이 운영 가이드 문서 추가
 - **GP-54**: `workspace/assets/` 하위에 `prompts/`, `references/` 폴더 추가 (이미지 생성 프롬프트 및 참조 자료 보관)
 - **GP-60**: `workspace/assets/backgrounds/`, `workspace/assets/decor/` 폴더 추가 (A-04 기반 실제 배경·장식 에셋 보관)
+- **GP-60(rework)**: `workspace/assets/a-04-asset-manifest.md` 추가. A-04 공용 시각 시스템 전체 컴포넌트와 필요한 에셋을 정본화하고 향후 codex_imagegen 작업의 분할 기준으로 삼는다.
 - **workspace-structure-cleanup**: 중첩 Next.js 앱(`workspace/portfolio`)을 제거하고 `workspace/` 단일 앱 루트로 정리
 - **project-direction-contract**: 프로젝트 방향성 정본 `PROJECT_DIRECTION.md` 추가 및 에이전트 갱신 규칙 명시
