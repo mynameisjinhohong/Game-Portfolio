@@ -1,22 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import '../styles/tokens.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-hud-bg: #0b1622;
-  --color-hud-panel: #0e1f30;
-  --color-hud-border: #1a3a50;
-  --color-hud-teal: #00c9a7;
-  --color-hud-orange: #ff7a2f;
-  --color-hud-text: #c8e6ef;
+  /* 레거시 호환 (점진적 토큰 마이그레이션 중) */
+  --color-hud-bg: var(--color-bg-base);
+  --color-hud-panel: var(--color-bg-surface);
+  --color-hud-border: var(--color-border-default);
+  --color-hud-teal: var(--color-accent-primary);
+  --color-hud-orange: var(--color-accent-cta);
+  --color-hud-text: var(--color-text-primary);
 }
 
 body {
-  background-color: var(--color-hud-bg);
-  color: var(--color-hud-text);
-  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
 }
 
 /* HUD 패널 공통 테두리 스타일 */

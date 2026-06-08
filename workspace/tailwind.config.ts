@@ -33,8 +33,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        mono: ["'JetBrains Mono'", 'monospace'],
-        sans: ['Inter', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        heading: ['var(--font-rajdhani)', 'Inter', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', "'JetBrains Mono'", 'monospace'],
       },
     },
   },

@@ -17,7 +17,14 @@
 │   │   ├── prompts/           # codex_imagegen 작업용 이미지 생성 프롬프트
 │   │   └── references/        # 스타일 참조 이미지 및 색상 팔레트 메모
 │   ├── docs/                  # A-04 기반 설계·분석 문서
-│   ├── src/                   # 실제 소스 코드
+│   │   └── design/            # 디자인 토큰·타이포그래피 등 디자인 시스템 문서
+│   ├── src/
+│   │   ├── app/               # Next.js App Router 루트와 전역 스타일
+│   │   ├── components/        # 화면별 UI 컴포넌트
+│   │   ├── data/              # 컴포넌트가 참조하는 정적 데이터
+│   │   ├── lib/               # 공통 유틸리티
+│   │   ├── styles/            # 디자인 토큰 CSS 변수 및 글로벌 스타일 모듈
+│   │   └── types/             # 공용 타입 정의
 │   ├── package.json           # 단일 Next.js 앱 루트
 │   ├── .env.example           # 환경 변수 예시
 │   └── README.md              # workspace 실행·배포 안내
@@ -47,7 +54,9 @@
 | `workspace/assets/prompts/` | codex_imagegen 작업용 이미지 생성 프롬프트 텍스트 파일 |
 | `workspace/assets/references/` | 스타일 참조 이미지 또는 색상 팔레트 메모 |
 | `workspace/docs/` | A-04 기반 컨셉 분석, 구현 계획, 기술 결정 근거, 컴포넌트 설계 |
+| `workspace/docs/design/` | 디자인 토큰·타이포그래피 기준안 등 디자인 시스템 문서 |
 | `workspace/src/` | 실제 구현 소스 코드 |
+| `workspace/src/styles/` | 디자인 토큰 CSS 변수와 전역 스타일 모듈 |
 | `workspace/package.json` | 단일 Next.js 앱의 스크립트와 의존성 |
 | `workspace/.env.example` | 로컬 LLM 및 사이트 URL 환경 변수 예시 |
 
@@ -91,9 +100,11 @@
 
 1. 지금 개발 중인 코드인가?
    → YES: workspace/src/
+     · 디자인 토큰·전역 스타일 CSS: workspace/src/styles/
 
 2. A-04 기반으로 현재 개발에 참조할 문서·이미지인가?
-   → 문서: workspace/docs/
+   → 일반 문서: workspace/docs/
+   → 디자인 시스템(토큰·타이포 등) 문서: workspace/docs/design/
    → 이미지: workspace/assets/a-04/
 
 3. 프로젝트 계획·로드맵·요구사항 문서인가?
@@ -155,3 +166,4 @@ AI 에이전트(Codex, Claude 등)가 작업을 수행할 때 폴더 구조에 �
 - **GP-54**: `workspace/assets/` 하위에 `prompts/`, `references/` 폴더 추가 (이미지 생성 프롬프트 및 참조 자료 보관)
 - **workspace-structure-cleanup**: 중첩 Next.js 앱(`workspace/portfolio`)을 제거하고 `workspace/` 단일 앱 루트로 정리
 - **project-direction-contract**: 프로젝트 방향성 정본 `PROJECT_DIRECTION.md` 추가 및 에이전트 갱신 규칙 명시
+- **GP-44**: 디자인 토큰 CSS 변수(`workspace/src/styles/`)와 디자인 시스템 문서(`workspace/docs/design/`) 폴더 신설
