@@ -53,7 +53,7 @@ export function ChatbotPanel() {
   }
 
   return (
-    <div className="hud-panel rounded flex flex-col h-full min-h-[440px] sm:min-h-[520px]">
+    <div className="hud-panel rounded flex flex-col h-full min-h-[440px] sm:min-h-[520px] max-h-[640px] lg:max-h-[70vh]">
       {/* HUD 상단 바: 하트(왼쪽) / 배터리(오른쪽) — 추후 기능 연결 예정 */}
       <div className="flex items-center justify-between px-4 py-2 border-b border-hud-border/50">
         {/* 왼쪽: 하트 (HP) 공간 */}
