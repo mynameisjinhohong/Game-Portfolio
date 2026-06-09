@@ -53,12 +53,27 @@ npm run dev
 workspace/
 ├── assets/           # A-04 기반 이미지, 프롬프트, 참조 자료
 ├── docs/             # A-04 기반 설계/분석 문서
-├── src/              # Next.js App Router 소스 코드
+│   └── design/       # 디자인 토큰·타이포 등 디자인 시스템 문서
+├── src/
+│   ├── app/          # Next.js App Router 루트, 전역 스타일(globals.css)
+│   ├── components/   # 화면별 UI 컴포넌트
+│   ├── data/         # 컴포넌트가 참조하는 정적 데이터
+│   ├── lib/          # 공통 유틸리티
+│   ├── styles/       # 디자인 토큰 CSS 변수(tokens.css)
+│   └── types/        # 공용 타입 정의
 ├── .env.example      # 환경 변수 예시
 ├── .prettierrc       # Prettier 설정
 ├── eslint.config.mjs # ESLint 설정
 └── package.json      # 단일 Next.js 앱 루트
 ```
+
+## 디자인 토큰과 폰트
+
+전체 색상·타이포·간격 토큰의 기준안은 [`workspace/docs/design/design-tokens.md`](docs/design/design-tokens.md)에서 확인합니다.
+
+- 토큰 CSS 변수는 `src/styles/tokens.css`에 정의하고 `src/app/globals.css`에서 한 번만 import합니다. 새 컴포넌트는 직접 hex 색상을 쓰지 말고 토큰 변수(`var(--color-...)`, `var(--text-...)`)를 사용합니다.
+- 폰트는 `next/font/google`로 로딩하며(`src/app/layout.tsx`), Inter / Rajdhani / JetBrains Mono가 각각 `--font-inter`, `--font-rajdhani`, `--font-jetbrains-mono` 변수로 주입됩니다. 별도 폰트 파일은 저장소에 두지 않습니다.
+- 기존 컴포넌트가 사용하는 `--color-hud-*` 등 레거시 변수는 `globals.css`에서 신규 토큰으로 매핑되어 있어 동시 사용이 가능합니다.
 
 ## 배포 가이드 (Mac mini 웹서버)
 

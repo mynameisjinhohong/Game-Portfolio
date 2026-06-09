@@ -4,6 +4,15 @@
 **토큰 파일:** `workspace/src/styles/tokens.css`  
 **로딩 위치:** `workspace/src/app/layout.tsx`, `workspace/src/app/globals.css`
 
+> 이 문서는 새 컴포넌트를 만들거나 기존 스타일을 수정할 때의 기준안이다. 색상·간격·폰트 값을 직접 hex/px로 쓰지 말고 아래 토큰 변수를 사용한다.
+
+## 사용 흐름 요약
+
+1. `src/styles/tokens.css`에 CSS 변수를 정의한다(아래 표 참고).
+2. `src/app/globals.css` 상단에서 `@import '../styles/tokens.css';`로 한 번만 import한다.
+3. 컴포넌트는 `var(--color-bg-base)`, `var(--text-base)` 같은 변수만 참조한다.
+4. 폰트는 `src/app/layout.tsx`에서 `next/font/google`로 로딩하며, 결과 CSS 변수(`--font-inter` 등)를 토큰에서 다시 참조한다.
+
 ---
 
 ## 컬러 토큰
@@ -125,3 +134,37 @@
 | `--transition-fast` | 0.12s ease | 즉각 피드백 |
 | `--transition-normal` | 0.18s ease | 기본 hover |
 | `--transition-slow` | 0.3s ease | 페이드·슬라이드 |
+
+---
+
+## 레거시 HUD 별칭 (호환 매핑)
+
+기존 GP-45 단계에서 도입된 `--color-hud-*` 변수는 `src/app/globals.css`에서 신규 시맨틱 토큰으로 매핑된다. 이미 사용 중인 컴포넌트는 그대로 두되, **새로 추가하는 코드에서는 시맨틱 토큰을 사용한다.**
+
+| 레거시 변수 | 매핑 대상 |
+|---|---|
+| `--color-hud-bg` | `--color-bg-base` |
+| `--color-hud-panel`, `--color-hud-surface` | `--color-bg-surface` |
+| `--color-hud-border` | `--color-border-default` |
+| `--color-hud-teal`, `--color-hud-accent` | `--color-accent-primary` |
+| `--color-hud-orange` | `--color-accent-cta` |
+| `--color-hud-green` | `--color-accent-success` |
+| `--color-hud-text` | `--color-text-primary` |
+| `--color-hud-muted` | `--color-text-muted` |
+| `--color-hud-heading` | `--color-text-white` |
+
+---
+
+## 폰트 자산 운영 규칙
+
+- 폰트 패밀리는 `next/font/google`이 제공하는 최적화 파이프라인만 사용한다. 따라서 `public/fonts/`에 별도 폰트 파일을 추가하지 않는다.
+- `layout.tsx`에서 변수 이름(`--font-inter`, `--font-rajdhani`, `--font-jetbrains-mono`)을 지정하고, `<html>` className에 결합한다.
+- `tokens.css`의 `--font-sans / --font-heading / --font-mono`는 이 변수를 1차로 참조하고, 시스템 폰트는 폴백으로만 둔다.
+- 폰트 굵기는 [폰트 굵기 사용 규칙](#폰트-굵기-사용-규칙) 표에 정의된 4단계만 사용한다.
+
+## 새 토큰 추가 절차
+
+1. `workspace/src/styles/tokens.css`의 해당 섹션(컬러·타이포·간격 등)에 변수를 추가한다.
+2. 이 문서의 해당 표에 토큰 이름·값·용도를 한 줄 추가한다.
+3. 레거시 변수와 의미가 겹치면 [레거시 HUD 별칭](#레거시-hud-별칭-호환-매핑) 표를 갱신하고, `globals.css`의 별칭 매핑도 함께 수정한다.
+4. 후속 작업자가 토큰 사용을 검토할 수 있도록 PR 설명에 적용 범위를 남긴다.

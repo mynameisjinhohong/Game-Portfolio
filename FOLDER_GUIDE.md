@@ -24,6 +24,7 @@
 | Next.js 앱 루트·실행 설정 | `workspace/` |
 | A-04 기반 문서·이미지 | `workspace/docs/`, `workspace/assets/a-04/` |
 | 디자인 시스템 문서(토큰·타이포) | `workspace/docs/design/` |
+| 카드 프레임·오버레이 비트맵 에셋 | `workspace/assets/cards/` |
 | 이미지 생성 프롬프트·참조 자료 | `workspace/assets/prompts/`, `workspace/assets/references/` |
 | 프로젝트 계획·로드맵 | `docs/planning/` |
 | 브레인스토밍·탐색 자료 | `archive/brainstorming/`, `archive/concepts/` |

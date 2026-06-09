@@ -4,20 +4,166 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== A-04 HUD / Game Portfolio — Global Tokens & Base Styles ===== */
+
 :root {
   /* 레거시 호환 (점진적 토큰 마이그레이션 중) */
   --color-hud-bg: var(--color-bg-base);
   --color-hud-panel: var(--color-bg-surface);
+  --color-hud-surface: var(--color-bg-surface);
   --color-hud-border: var(--color-border-default);
   --color-hud-teal: var(--color-accent-primary);
+  --color-hud-accent: var(--color-accent-primary);
   --color-hud-orange: var(--color-accent-cta);
+  --color-hud-green: var(--color-accent-success);
   --color-hud-text: var(--color-text-primary);
+  --color-hud-muted: var(--color-text-muted);
+  --color-hud-heading: var(--color-text-white);
+}
+
+/* ── Reset / Normalize ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--leading-normal);
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background-color: var(--color-bg-base);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography base ── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-white);
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+h4 {
+  font-size: var(--text-lg);
+}
+
+h5 {
+  font-size: var(--text-md);
+}
+
+h6 {
+  font-size: var(--text-base);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0;
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+}
+
+small {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+/* ── Links ── */
+a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  transition:
+    color var(--transition-normal),
+    opacity var(--transition-normal);
+}
+
+a:hover {
+  opacity: 0.85;
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Selection ── */
+::selection {
+  background: rgba(0, 200, 255, 0.25);
+  color: var(--color-text-white);
+}
+
+::-moz-selection {
+  background: rgba(0, 200, 255, 0.25);
+  color: var(--color-text-white);
+}
+
+/* ── Media defaults ── */
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Form control defaults ── */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 /* HUD 패널 공통 테두리 스타일 */
