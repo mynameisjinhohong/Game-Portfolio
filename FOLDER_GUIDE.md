@@ -21,7 +21,9 @@
 |---|---|
 | 현재 개발 코드 | `workspace/src/` |
 | Next.js 앱 루트·실행 설정 | `workspace/` |
-| A-04 기반 문서·이미지 | `workspace/docs/`, `workspace/assets/a-04/` |
+| A-04 기반 문서·대표 시안 | `workspace/docs/`, `workspace/assets/a-04/` |
+| 실제 화면용 배경·장식 비트맵 에셋 | `workspace/assets/backgrounds/`, `workspace/assets/decor/` |
+| A-04 시안 공용 시각 시스템 에셋 명세 | `workspace/assets/a-04-asset-manifest.md` |
 | 이미지 생성 프롬프트·참조 자료 | `workspace/assets/prompts/`, `workspace/assets/references/` |
 | 프로젝트 계획·로드맵 | `docs/planning/` |
 | 브레인스토밍·탐색 자료 | `archive/brainstorming/`, `archive/concepts/` |

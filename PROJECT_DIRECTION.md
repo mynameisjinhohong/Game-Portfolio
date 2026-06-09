@@ -48,7 +48,8 @@
 - `workspace/assets/a-04/hero-first-concepts-04.png`: 현재 대표 시각 시안
 - `workspace/assets/a-04/hero-first-concepts-04.png.codex-image.json`: 대표 시안의 생성 의도, 팔레트, 금지 요소
 - `workspace/docs/concept-analysis.md`: A-04 선택 근거와 구현 권장 방향
-- `workspace/docs/art-resource-manifest.md`: 구현에 필요한 아트 리소스 명세
+- `workspace/docs/art-resource-manifest.md`: 게임 콘텐츠 단위(썸네일·배지·게임 메타) 아트 리소스 명세
+- `workspace/assets/a-04-asset-manifest.md`: A-04 시안 공용 시각 시스템(배경·장식·캐릭터·HUD 아이콘) 에셋 명세
 
 ## Direction Change Policy
 
@@ -63,3 +64,4 @@
 - 2026-05-09: 컨셉 분석 결과를 바탕으로 A-04를 현재 대표 시각 방향으로 확정했다. 출처: `workspace/docs/concept-analysis.md`
 - 2026-05-26: 실제 애플리케이션 루트를 `workspace/` 하나로 통합하고 중첩 앱 루트를 금지했다. 출처: `workspace-structure-cleanup`, `docs/FOLDER_GUIDE.md`
 - 2026-06-04: 전체 프로젝트 방향을 모든 에이전트가 공유하고 검증할 수 있도록 이 정본 문서와 변경 정책을 명시했다. 출처: 운영자 결정
+- 2026-06-07: A-04 시안의 공용 시각 시스템 전체를 정본화한 `workspace/assets/a-04-asset-manifest.md`를 정본 참조에 추가했다. 기존 `art-resource-manifest.md`는 게임 콘텐츠 단위 자산만 담당하도록 역할을 분리했다. 출처: GP-60 리뷰 피드백

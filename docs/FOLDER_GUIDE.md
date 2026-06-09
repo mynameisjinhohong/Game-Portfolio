@@ -14,6 +14,8 @@
 ├── workspace/                  # [활성] A-04 기반 개발 작업 공간
 │   ├── assets/
 │   │   ├── a-04/              # A-04 컨셉 기반 시각 자료 (디자인 시안)
+│   │   ├── backgrounds/       # 화면 공용 배경 비트맵 에셋
+│   │   ├── decor/             # HUD/픽셀 모티프 장식 비트맵 에셋
 │   │   ├── prompts/           # codex_imagegen 작업용 이미지 생성 프롬프트
 │   │   └── references/        # 스타일 참조 이미지 및 색상 팔레트 메모
 │   ├── docs/                  # A-04 기반 설계·분석 문서
@@ -44,6 +46,9 @@
 | 하위 경로 | 두는 자료 |
 |---|---|
 | `workspace/assets/a-04/` | A-04 컨셉 이미지, 디자인 시안 |
+| `workspace/assets/backgrounds/` | 실제 화면에 사용하는 공용 배경 비트맵 에셋 |
+| `workspace/assets/decor/` | 실제 화면에 사용하는 장식 비트맵 에셋 |
+| `workspace/assets/a-04-asset-manifest.md` | A-04 시안 공용 시각 시스템 전체 에셋 명세(컴포넌트 ID, 파일 경로, 상태) |
 | `workspace/assets/prompts/` | codex_imagegen 작업용 이미지 생성 프롬프트 텍스트 파일 |
 | `workspace/assets/references/` | 스타일 참조 이미지 또는 색상 팔레트 메모 |
 | `workspace/docs/` | A-04 기반 컨셉 분석, 구현 계획, 기술 결정 근거, 컴포넌트 설계 |
@@ -94,7 +99,8 @@
 
 2. A-04 기반으로 현재 개발에 참조할 문서·이미지인가?
    → 문서: workspace/docs/
-   → 이미지: workspace/assets/a-04/
+   → 대표 시안: workspace/assets/a-04/
+   → 실제 사용 비트맵 에셋: workspace/assets/backgrounds/ 또는 workspace/assets/decor/
 
 3. 프로젝트 계획·로드맵·요구사항 문서인가?
    → docs/planning/
@@ -153,5 +159,7 @@ AI 에이전트(Codex, Claude 등)가 작업을 수행할 때 폴더 구조에 �
 - **GP-17**: 기존 자료를 workspace/archive 구조로 재배치 실행
 - **GP-18**: 이 운영 가이드 문서 추가
 - **GP-54**: `workspace/assets/` 하위에 `prompts/`, `references/` 폴더 추가 (이미지 생성 프롬프트 및 참조 자료 보관)
+- **GP-60**: `workspace/assets/backgrounds/`, `workspace/assets/decor/` 폴더 추가 (A-04 기반 실제 배경·장식 에셋 보관)
+- **GP-60(rework)**: `workspace/assets/a-04-asset-manifest.md` 추가. A-04 공용 시각 시스템 전체 컴포넌트와 필요한 에셋을 정본화하고 향후 codex_imagegen 작업의 분할 기준으로 삼는다.
 - **workspace-structure-cleanup**: 중첩 Next.js 앱(`workspace/portfolio`)을 제거하고 `workspace/` 단일 앱 루트로 정리
 - **project-direction-contract**: 프로젝트 방향성 정본 `PROJECT_DIRECTION.md` 추가 및 에이전트 갱신 규칙 명시
