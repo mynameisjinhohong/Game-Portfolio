@@ -18,10 +18,11 @@ export function ChatbotInputArea({ onSubmit, isLoading = false }: ChatbotInputAr
   }
 
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      handleSubmit();
-    }
+    if (e.key !== 'Enter') return;
+    // 한국어/일본어 IME 조합 중 Enter는 조합 확정용이므로 전송을 건너뛴다.
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+    e.preventDefault();
+    handleSubmit();
   }
 
   return (
