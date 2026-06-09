@@ -10,7 +10,7 @@
  *
  * 모드 전환은 `<html>`에 `dark` 클래스가 붙는지 여부로 결정한다.
  * ThemeProvider(workspace/src/lib/theme/ThemeProvider.tsx)가 prefers-color-scheme과
- * localStorage('jhp-theme') 값을 보고 클래스를 토글한다.
+ * localStorage('portfolio-theme') 값을 보고 클래스를 토글한다.
  * 새 색상이 필요하면 `--color-*` 토큰을 추가하고 tailwind.config.ts와 함께 갱신한다.
  */
 :root {
