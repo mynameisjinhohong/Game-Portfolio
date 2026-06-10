@@ -68,7 +68,7 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
                 {isUser ? 'U' : '🤖'}
               </div>
               <div
-                className={`max-w-[80%] sm:max-w-[260px] rounded-lg border px-3 py-2 ${
+                className={`max-w-[calc(100%-2.25rem)] rounded-lg border px-3 py-2 sm:max-w-[min(80%,26rem)] ${
                   isUser ? 'border-cta/30 bg-cta-soft' : 'border-border bg-bg-sunken'
                 }`}
               >

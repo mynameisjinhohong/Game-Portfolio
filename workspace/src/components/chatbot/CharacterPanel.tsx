@@ -8,7 +8,7 @@ const SKILLS = [
 
 export function CharacterPanel() {
   return (
-    <div className="hud-panel flex h-full flex-col gap-4 rounded p-4">
+    <div className="hud-panel flex h-full flex-col gap-4 rounded p-4 sm:p-5">
       {/* 레벨 배지 */}
       <div className="flex items-center justify-between">
         <span className="rounded border border-accent/40 bg-accent-soft px-2 py-0.5 font-mono text-xs text-accent">
@@ -16,7 +16,7 @@ export function CharacterPanel() {
         </span>
         <span className="flex gap-1" aria-hidden="true">
           {[0, 1, 2].map((i) => (
-            <span key={i} className="text-sm leading-none text-rose-500">
+            <span key={i} className="text-sm leading-none text-[var(--color-heart)]">
               ♥
             </span>
           ))}
@@ -34,17 +34,17 @@ export function CharacterPanel() {
               className="pixelated"
               aria-hidden="true"
             >
-              <rect x="10" y="4" width="12" height="10" fill="#F4C68A" />
-              <rect x="12" y="7" width="2" height="2" fill="#2D3142" />
-              <rect x="18" y="7" width="2" height="2" fill="#2D3142" />
-              <rect x="13" y="11" width="6" height="1" fill="#2D3142" />
-              <rect x="10" y="4" width="12" height="3" fill="#3D2B1F" />
-              <rect x="8" y="5" width="2" height="5" fill="#3D2B1F" />
-              <rect x="9" y="14" width="14" height="10" fill="#2A5F8F" />
-              <rect x="5" y="14" width="4" height="8" fill="#2A5F8F" />
-              <rect x="23" y="14" width="4" height="8" fill="#2A5F8F" />
-              <rect x="9" y="24" width="5" height="4" fill="#1A2E3F" />
-              <rect x="18" y="24" width="5" height="4" fill="#1A2E3F" />
+              <rect x="10" y="4" width="12" height="10" fill="var(--color-avatar-skin)" />
+              <rect x="12" y="7" width="2" height="2" fill="var(--color-avatar-eye)" />
+              <rect x="18" y="7" width="2" height="2" fill="var(--color-avatar-eye)" />
+              <rect x="13" y="11" width="6" height="1" fill="var(--color-avatar-eye)" />
+              <rect x="10" y="4" width="12" height="3" fill="var(--color-avatar-hair)" />
+              <rect x="8" y="5" width="2" height="5" fill="var(--color-avatar-hair)" />
+              <rect x="9" y="14" width="14" height="10" fill="var(--color-avatar-shirt)" />
+              <rect x="5" y="14" width="4" height="8" fill="var(--color-avatar-shirt)" />
+              <rect x="23" y="14" width="4" height="8" fill="var(--color-avatar-shirt)" />
+              <rect x="9" y="24" width="5" height="4" fill="var(--color-avatar-pants)" />
+              <rect x="18" y="24" width="5" height="4" fill="var(--color-avatar-pants)" />
             </svg>
           </div>
         </div>
@@ -81,7 +81,7 @@ export function CharacterPanel() {
       </div>
 
       {/* 한 줄 소개 */}
-      <p className="mt-auto font-mono text-[10px] leading-relaxed text-content-dim">
+      <p className="mt-auto text-balance font-mono text-[10px] leading-relaxed text-content-dim">
         I build playful experiences and systems that players love to explore.
       </p>
     </div>

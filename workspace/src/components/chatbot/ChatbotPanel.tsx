@@ -58,7 +58,7 @@ export function ChatbotPanel() {
       <div className="flex items-center justify-between border-b border-border/60 px-3 py-2 sm:px-4">
         <div className="flex min-w-[60px] items-center gap-1" aria-hidden="true">
           {[0, 1, 2].map((i) => (
-            <span key={i} className="text-sm leading-none text-rose-400/40">
+            <span key={i} className="text-sm leading-none text-[var(--color-heart-soft)]">
               ♥
             </span>
           ))}
@@ -80,7 +80,7 @@ export function ChatbotPanel() {
           <span className="font-mono text-xs tracking-widest text-accent">PORTFOLIO_BOT</span>
         </div>
         <span className="flex items-center gap-1.5 font-mono text-[10px] text-content-dim">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
           ONLINE
         </span>
       </div>

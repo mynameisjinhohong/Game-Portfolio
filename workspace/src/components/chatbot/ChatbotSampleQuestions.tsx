@@ -15,18 +15,18 @@ export function ChatbotSampleQuestions({ questions, onSelect }: ChatbotSampleQue
           key={q.id}
           type="button"
           onClick={() => onSelect(q.text)}
-          className="flex w-full items-center gap-3 rounded-lg border border-border bg-panel-soft px-3 py-3 min-h-[44px] text-left text-sm text-content transition-colors hover:border-accent hover:bg-accent-soft focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+          className="interactive-card flex min-h-[44px] w-full items-start gap-3 rounded-lg border border-border bg-panel-soft px-3 py-3 text-left text-sm text-content focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
         >
           {q.icon ? (
-            <span className="flex-shrink-0 text-base" aria-hidden="true">
+            <span className="mt-0.5 flex-shrink-0 text-base" aria-hidden="true">
               {q.icon}
             </span>
           ) : (
-            <span className="flex-shrink-0 text-xs text-accent" aria-hidden="true">
+            <span className="mt-0.5 flex-shrink-0 text-xs text-accent" aria-hidden="true">
               ▸
             </span>
           )}
-          {q.text}
+          <span className="leading-relaxed">{q.text}</span>
         </button>
       ))}
     </div>

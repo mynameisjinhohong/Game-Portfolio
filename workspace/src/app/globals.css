@@ -37,6 +37,13 @@
   --color-info: #4a90d9;
   --color-success: #2f9d6b;
   --color-danger: #e63946;
+  --color-heart: #e76f51;
+  --color-heart-soft: rgba(231, 111, 81, 0.38);
+  --color-avatar-skin: #f4c68a;
+  --color-avatar-eye: #2d3142;
+  --color-avatar-hair: #6c4a2f;
+  --color-avatar-shirt: #4a90d9;
+  --color-avatar-pants: #2d3142;
 
   --shadow-panel: 0 4px 16px rgba(45, 49, 66, 0.08);
   --shadow-cta: 0 4px 18px rgba(244, 162, 97, 0.32);
@@ -103,6 +110,13 @@
   --color-info: #4ade80;
   --color-success: #4ade80;
   --color-danger: #f87171;
+  --color-heart: #ff9f7a;
+  --color-heart-soft: rgba(255, 159, 122, 0.34);
+  --color-avatar-skin: #f0c28f;
+  --color-avatar-eye: #d8eef5;
+  --color-avatar-hair: #8f6543;
+  --color-avatar-shirt: #2a9d8f;
+  --color-avatar-pants: #133246;
 
   --shadow-panel: 0 6px 22px rgba(0, 0, 0, 0.45);
   --shadow-cta: 0 6px 24px rgba(255, 122, 47, 0.42);
@@ -273,6 +287,7 @@ select {
   border: 1px solid var(--color-border);
   position: relative;
   box-shadow: var(--shadow-panel);
+  overflow: clip;
 }
 
 .hud-panel::before,
@@ -318,9 +333,26 @@ select {
   shape-rendering: crispEdges;
 }
 
+.interactive-card {
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.interactive-card:is(:hover, :focus-visible) {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+}
+
 /* 모바일에서 hover 의존을 줄이기 위한 항상 보이는 강조 변형 */
 @media (hover: none) {
   .hud-panel-clickable {
+    border-color: var(--color-border-strong);
+  }
+
+  .interactive-card {
     border-color: var(--color-border-strong);
   }
 }
