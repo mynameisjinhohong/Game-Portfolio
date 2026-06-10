@@ -14,10 +14,10 @@ GP-24(디자인 토큰 및 글로벌 스타일) 작업으로 정착한 앱 전�
 
 `workspace/src/app/layout.tsx`에서 `next/font/google`로 두 가지 폰트를 로드한다.
 
-- `Inter` → `--font-inter` (본문, UI 텍스트)
+- `Inter` → `--font-sans` (본문, UI 텍스트)
 - `JetBrains Mono` → `--font-mono` (코드, 수치 레이블, 모노스페이스 표기)
 
-`<html>` 태그에 두 폰트 변수 클래스가 자동으로 부여되며, Tailwind 설정에서 `font-sans`, `font-mono` 유틸리티가 동일한 변수를 우선 참조한다.
+`<html>` 태그에 두 폰트 변수 클래스가 자동으로 부여되며, 같은 이름의 토큰이 `globals.css` `:root`에 폴백으로 정의되어 있어 next/font 로딩이 실패해도 시스템 폰트로 대체된다. Tailwind 설정의 `font-sans`, `font-mono` 유틸리티가 동일한 변수를 우선 참조한다.
 
 사용 예:
 
@@ -27,6 +27,19 @@ GP-24(디자인 토큰 및 글로벌 스타일) 작업으로 정착한 앱 전�
 ```
 
 외부 `@import url(fonts.googleapis.com/...)` 방식은 사용하지 않는다. 폰트는 `next/font`만 통해 로드해 빌드 시 셀프 호스팅된다.
+
+## 타이포그래피 토큰 (CSS 변수)
+
+`globals.css` `:root`에는 폰트 패밀리뿐 아니라 GP-45에서 정한 반응형 텍스트 크기·굵기·줄간격·자간 토큰이 함께 정의돼 있다. 새 화면에서 직접 `font-size`, `font-weight`, `line-height` 를 적지 말고 토큰을 참조한다.
+
+| 분류 | CSS 변수 | 용도 |
+|---|---|---|
+| 크기 | `--text-xs` ~ `--text-3xl` | 본문/제목 단계별 크기 (clamp 반응형) |
+| 굵기 | `--weight-normal`, `--weight-medium`, `--weight-semibold`, `--weight-bold` | 텍스트 강조 단계 |
+| 줄간격 | `--leading-tight`, `--leading-snug`, `--leading-normal`, `--leading-relaxed` | 본문·헤딩 줄간격 |
+| 자간 | `--tracking-tight`, `--tracking-normal`, `--tracking-wide`, `--tracking-wider`, `--tracking-widest` | HUD 레이블 등 자간 강조 |
+
+`<h1>`~`<h6>`, `<p>`, `<small>`, `<code>` 같은 기본 요소는 별도 클래스 없이도 이 토큰을 자동 적용받도록 `globals.css`에 기본 스타일이 들어 있다. 추가 스타일이 필요할 때만 토큰 변수를 참조해 인라인 스타일이나 컴포넌트 CSS에 사용한다.
 
 ## 디자인 토큰 (Tailwind 색상)
 
