@@ -18,10 +18,11 @@ export function ChatbotInputArea({ onSubmit, isLoading = false }: ChatbotInputAr
   }
 
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      handleSubmit();
-    }
+    if (e.key !== 'Enter') return;
+    // 한국어/일본어 IME 조합 중 Enter는 조합 확정용이므로 전송을 건너뛴다.
+    if (e.nativeEvent.isComposing || e.keyCode === 229) return;
+    e.preventDefault();
+    handleSubmit();
   }
 
   return (
@@ -33,8 +34,8 @@ export function ChatbotInputArea({ onSubmit, isLoading = false }: ChatbotInputAr
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Ask me anything..."
-          className="flex-1 bg-hud-bg border border-hud-border rounded px-3 py-2
-                     text-sm text-hud-text placeholder:text-hud-text-dim
+          className="flex-1 min-w-0 bg-hud-bg border border-hud-border rounded px-3 py-2.5 min-h-[44px]
+                     text-base sm:text-sm text-hud-text placeholder:text-hud-text-dim
                      focus:outline-none focus:border-hud-teal/60 transition-colors font-sans"
           id="chatbot-input"
           aria-label="메시지 입력"
@@ -43,7 +44,7 @@ export function ChatbotInputArea({ onSubmit, isLoading = false }: ChatbotInputAr
         <button
           onClick={handleSubmit}
           disabled={!value.trim() || isLoading}
-          className="shrink-0 w-9 h-9 bg-hud-teal hover:opacity-90 disabled:opacity-30
+          className="shrink-0 w-11 h-11 bg-hud-teal hover:opacity-90 disabled:opacity-30
                      disabled:cursor-not-allowed transition-opacity rounded flex items-center justify-center"
           aria-label="전송"
         >

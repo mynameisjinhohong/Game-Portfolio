@@ -14,6 +14,7 @@
 ├── workspace/                  # [활성] A-04 기반 개발 작업 공간
 │   ├── assets/
 │   │   ├── a-04/              # A-04 컨셉 기반 시각 자료 (디자인 시안)
+│   │   ├── cards/             # 게임 카드·썸네일 공용 프레임/오버레이 비트맵 에셋
 │   │   ├── prompts/           # codex_imagegen 작업용 이미지 생성 프롬프트
 │   │   └── references/        # 스타일 참조 이미지 및 색상 팔레트 메모
 │   ├── docs/                  # A-04 기반 설계·분석 문서
@@ -29,7 +30,8 @@
 ├── docs/
 │   └── planning/              # 프로젝트 계획·로드맵 문서
 │
-└── PROJECT_CONTEXT.md         # 프로젝트 전반 맥락 및 목표
+├── PROJECT_CONTEXT.md         # 프로젝트 전반 맥락 및 요구사항
+└── PROJECT_DIRECTION.md       # 현재 확정된 프로젝트 방향성 정본
 ```
 
 ---
@@ -43,6 +45,7 @@
 | 하위 경로 | 두는 자료 |
 |---|---|
 | `workspace/assets/a-04/` | A-04 컨셉 이미지, 디자인 시안 |
+| `workspace/assets/cards/` | 게임 소개 카드와 썸네일에 재사용하는 프레임, 오버레이, 장식 비트맵 에셋 |
 | `workspace/assets/prompts/` | codex_imagegen 작업용 이미지 생성 프롬프트 텍스트 파일 |
 | `workspace/assets/references/` | 스타일 참조 이미지 또는 색상 팔레트 메모 |
 | `workspace/docs/` | A-04 기반 컨셉 분석, 구현 계획, 기술 결정 근거, 컴포넌트 설계 |
@@ -72,6 +75,15 @@
 로드맵, 백로그, 요구사항 등 프로젝트 전반 계획을 담는다.
 특정 개발 컨셉(A-04)에 종속되지 않는 문서를 둔다.
 
+### 루트 정본 문서
+
+| 경로 | 역할 |
+|---|---|
+| `PROJECT_CONTEXT.md` | 목표 사용자, 필수 기능, 구현 우선순위 같은 폭넓은 프로젝트 배경 |
+| `PROJECT_DIRECTION.md` | 현재 확정된 제품·디자인·아키텍처·운영 방향과 정본 참조 |
+
+모든 에이전트는 작업 전에 두 문서를 함께 읽되, 현재 방향을 판단할 때는 `PROJECT_DIRECTION.md`를 우선한다.
+
 ---
 
 ## 새 파일 배치 결정 흐름
@@ -92,6 +104,9 @@
 4. 방향 확정 이전의 탐색·아이디어 자료인가?
    → 문서: archive/brainstorming/
    → 이미지: archive/concepts/
+
+5. 프로젝트의 장기적인 제품·디자인·아키텍처·운영 방향을 변경하는 결정인가?
+   → YES: PROJECT_DIRECTION.md와 Direction Change Log를 함께 갱신
 ```
 
 ---
@@ -140,4 +155,6 @@ AI 에이전트(Codex, Claude 등)가 작업을 수행할 때 폴더 구조에 �
 - **GP-17**: 기존 자료를 workspace/archive 구조로 재배치 실행
 - **GP-18**: 이 운영 가이드 문서 추가
 - **GP-54**: `workspace/assets/` 하위에 `prompts/`, `references/` 폴더 추가 (이미지 생성 프롬프트 및 참조 자료 보관)
+- **GP-57**: `workspace/assets/cards/` 폴더를 카드 프레임 및 오버레이 비트맵 에셋 보관 경로로 추가
 - **workspace-structure-cleanup**: 중첩 Next.js 앱(`workspace/portfolio`)을 제거하고 `workspace/` 단일 앱 루트로 정리
+- **project-direction-contract**: 프로젝트 방향성 정본 `PROJECT_DIRECTION.md` 추가 및 에이전트 갱신 규칙 명시
