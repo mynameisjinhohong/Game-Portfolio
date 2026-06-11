@@ -10,7 +10,7 @@ export function CharacterPanel() {
   return (
     <div className="hud-panel flex h-full flex-col gap-4 rounded p-4 sm:p-5">
       {/* 레벨 배지 */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="rounded border border-accent/40 bg-accent-soft px-2 py-0.5 font-mono text-xs text-accent">
           Lv. 18
         </span>
@@ -53,7 +53,7 @@ export function CharacterPanel() {
       {/* 이름 및 역할 */}
       <div className="text-center">
         <p className="text-base font-semibold leading-tight text-content">Hong Jinho</p>
-        <span className="mt-1 inline-block rounded border border-cta/40 px-2 py-0.5 font-mono text-xs text-cta">
+        <span className="mt-1 inline-flex min-h-8 items-center rounded border border-cta/40 px-2 py-0.5 font-mono text-xs text-cta">
           Game Developer
         </span>
       </div>

@@ -14,15 +14,15 @@ const SAMPLE_QUESTIONS: SampleQuestion[] = [
 
 const BOT_REPLIES: Record<string, string> = {
   'Tell me about your games':
-    "I've built games with Unity and C# — try Skybound Quest, Mech Battle, or Arcane Gate from the Featured Games panel. 🎮",
+    '수학의 제왕, 강한 토끼만이 살아남는다, 판다러쉬처럼 실제로 만든 게임들을 중심으로 작업 역할과 배운 점을 소개할 수 있어요. 🎮',
   'What tech do you use?':
-    'My core stack is Unity + C# for gameplay, Git for version control, and Blender/Photoshop for art assets. 💻',
+    '주요 작업 스택은 Unity, C#, Git이고 프로젝트에 따라 Blender 같은 아트 툴과 협업 도구도 함께 사용했습니다. 💻',
   'About you':
-    "I'm Hong Jinho, a game developer who loves building playful, systems-driven experiences. 👤",
+    '홍진호는 플레이어가 탐색하고 반응하게 되는 시스템 중심 경험을 만드는 게임 개발자입니다. 👤',
 };
 
 const DEFAULT_REPLY =
-  "Thanks for the question! I'm still wiring up real answers — try one of the sample questions below for now. 🤖";
+  '아직 실시간 답변 연결을 마무리하는 중입니다. 아래 견본 질문으로 시작하면 현재 포트폴리오 내용 기준으로 안내할 수 있어요. 🤖';
 
 function getBotReply(text: string): string {
   return BOT_REPLIES[text] ?? DEFAULT_REPLY;
@@ -53,7 +53,7 @@ export function ChatbotPanel() {
   }
 
   return (
-    <div className="hud-panel flex h-full min-h-[440px] flex-col rounded sm:min-h-[520px] lg:max-h-[70vh]">
+    <div className="hud-panel flex h-full min-h-[420px] flex-col rounded sm:min-h-[500px] lg:max-h-[70vh]">
       {/* HUD 상단 바: 하트(왼쪽) / 배터리(오른쪽) — 추후 기능 연결 예정 */}
       <div className="flex items-center justify-between border-b border-border/60 px-3 py-2 sm:px-4">
         <div className="flex min-w-[60px] items-center gap-1" aria-hidden="true">

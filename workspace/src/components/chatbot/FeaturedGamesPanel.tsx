@@ -6,7 +6,7 @@ const TECH_ICONS = ['Unity', 'C#', 'Photon', 'Blender', 'Git', 'Xcode'];
 
 export function FeaturedGamesPanel() {
   return (
-    <div className="flex h-full flex-col gap-4 md:grid md:grid-cols-2 xl:flex">
+    <div className="flex h-full flex-col gap-4 lg:grid lg:grid-cols-2 xl:flex">
       {/* Featured Games */}
       <div className="hud-panel flex-1 rounded p-4 sm:p-5">
         <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent">
@@ -17,24 +17,29 @@ export function FeaturedGamesPanel() {
             <li key={game.slug}>
               <a
                 href={`#${game.slug}`}
-                className="interactive-card hud-panel-clickable flex items-start gap-3 rounded border border-border bg-panel-soft p-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                className="interactive-card hud-panel-clickable flex min-h-[88px] items-start gap-3 rounded border border-border bg-panel-soft p-2.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
               >
                 <span
                   aria-hidden="true"
-                  className="flex h-10 w-14 flex-shrink-0 items-center justify-center rounded border border-border bg-bg-sunken sm:h-8 sm:w-12"
-                  style={{ backgroundColor: game.color, color: '#FFFFFF' }}
+                  className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded border border-border bg-bg-sunken text-[var(--color-bg-elevated)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]"
+                  style={{ backgroundColor: game.color }}
                 >
                   <span className="text-xs opacity-80">▶</span>
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block text-xs font-semibold leading-tight text-content sm:truncate">
+                  <span className="block text-xs font-semibold leading-tight text-content">
                     {game.title}
                   </span>
-                  <span className="mt-1 block font-mono text-[10px] leading-relaxed text-content-dim sm:truncate">
+                  {game.subtitle ? (
+                    <span className="mt-1 inline-flex rounded-full border border-accent/25 bg-accent-soft px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-accent">
+                      {game.subtitle}
+                    </span>
+                  ) : null}
+                  <span className="mt-1 block text-balance font-mono text-[10px] leading-relaxed text-content-dim">
                     {game.genre} · {game.platform}
                   </span>
                   {game.awards?.[0] ? (
-                    <span className="mt-1 block font-mono text-[10px] leading-relaxed text-cta">
+                    <span className="mt-1 block text-balance font-mono text-[10px] leading-relaxed text-cta">
                       {game.awards[0]}
                     </span>
                   ) : null}

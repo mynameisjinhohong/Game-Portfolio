@@ -36,15 +36,15 @@ export function ChatbotInputArea({ onSubmit, isLoading = false }: ChatbotInputAr
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Ask me anything..."
-          className="min-w-0 flex-1 rounded border border-border bg-bg-sunken px-3 py-2.5 min-h-[44px] font-sans text-base text-content placeholder:text-content-muted transition-colors focus:border-accent focus:outline-none sm:text-sm"
+          placeholder="궁금한 점을 입력해보세요"
+          className="min-h-[44px] min-w-0 flex-1 rounded border border-border bg-bg-sunken px-3 py-2.5 font-sans text-base text-content placeholder:text-content-muted transition-colors focus:border-accent focus:outline-none sm:text-sm"
           id="chatbot-input"
           disabled={isLoading}
         />
         <button
           onClick={handleSubmit}
           disabled={!value.trim() || isLoading}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded bg-accent text-bg transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 disabled:cursor-not-allowed disabled:opacity-30"
+          className="flex h-11 min-w-11 shrink-0 items-center justify-center rounded bg-accent px-3 text-bg transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 disabled:cursor-not-allowed disabled:opacity-30 sm:w-11 sm:px-0"
           aria-label="전송"
           type="button"
         >

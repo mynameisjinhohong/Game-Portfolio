@@ -38,11 +38,11 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
           </div>
           <div className="w-full max-w-[320px] rounded-lg border border-border bg-bg-sunken px-4 py-3">
             <p className="text-sm leading-relaxed text-content">
-              Hello! 👋
+              안녕하세요! 👋
               <br />
-              I&apos;m Jinho&apos;s Portfolio Bot.
+              홍진호 포트폴리오 봇입니다.
               <br />
-              What would you like to know?
+              어떤 내용을 먼저 볼까요?
             </p>
           </div>
           <p className="text-xs text-content-dim">

@@ -34,6 +34,7 @@
   --color-cta: #f4a261;
   --color-cta-strong: #d8753a;
   --color-cta-soft: rgba(244, 162, 97, 0.18);
+  --color-cta-contrast: #2d3142;
   --color-info: #4a90d9;
   --color-success: #2f9d6b;
   --color-danger: #e63946;
@@ -107,6 +108,7 @@
   --color-cta: #ff7a2f;
   --color-cta-strong: #ff945a;
   --color-cta-soft: rgba(255, 122, 47, 0.22);
+  --color-cta-contrast: #07101a;
   --color-info: #4ade80;
   --color-success: #4ade80;
   --color-danger: #f87171;
@@ -346,6 +348,12 @@ select {
   background-color: var(--color-accent-soft);
 }
 
+.interactive-card:active {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  transform: scale(0.99);
+}
+
 /* 모바일에서 hover 의존을 줄이기 위한 항상 보이는 강조 변형 */
 @media (hover: none) {
   .hud-panel-clickable {
@@ -353,6 +361,11 @@ select {
   }
 
   .interactive-card {
+    border-color: var(--color-border-strong);
+  }
+
+  .interactive-card:hover {
+    background-color: inherit;
     border-color: var(--color-border-strong);
   }
 }
