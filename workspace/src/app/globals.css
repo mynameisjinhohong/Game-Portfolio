@@ -67,7 +67,7 @@ h6 {
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  color: var(--color-text-white);
+  color: var(--color-text-primary);
 }
 
 h1 {

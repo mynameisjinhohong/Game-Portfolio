@@ -1,6 +1,6 @@
 # 디자인 토큰 기준안
 
-**기준 컨셉:** A-04 — Game HUD 감성 다크 테마  
+**기준 컨셉:** A-04 — 밝은 Soft Cream 배경의 Game HUD 감성 테마  
 **토큰 파일:** `workspace/src/styles/tokens.css`  
 **로딩 위치:** `workspace/src/app/layout.tsx`, `workspace/src/app/globals.css`
 
@@ -21,35 +21,35 @@
 
 | 토큰 | 값 | 용도 |
 |------|----|------|
-| `--color-bg-base` | `#0b1622` | 페이지 최상위 배경 |
-| `--color-bg-surface` | `#112030` | 카드·패널 배경 |
-| `--color-bg-panel` | `rgba(10,25,45,0.85)` | 반투명 HUD 패널 |
-| `--color-bg-tab` | `#070f1a` | 탭 바 배경 |
-| `--color-bg-input` | `rgba(255,255,255,0.04)` | 인풋·버튼 기본 배경 |
+| `--color-bg-base` | `#FDFCF7` | 페이지 최상위 배경 (Soft Cream) |
+| `--color-bg-surface` | `#F4F0EB` | 카드·패널 배경 |
+| `--color-bg-panel` | `rgba(244, 240, 235, 0.85)` | 반투명 HUD 패널 |
+| `--color-bg-tab` | `#E9E3DB` | 탭 바 배경 |
+| `--color-bg-input` | `rgba(0, 0, 0, 0.04)` | 인풋·버튼 기본 배경 |
 
 ### 텍스트 (Text)
 
 | 토큰 | 값 | 용도 |
 |------|----|------|
-| `--color-text-primary` | `#cde8f5` | 본문, 기본 레이블 |
-| `--color-text-muted` | `#6a94b0` | 보조 텍스트, 플레이스홀더 |
-| `--color-text-white` | `#ffffff` | 이름·강조 텍스트 |
+| `--color-text-primary` | `#36454F` | 본문, 기본 레이블 (Graphite) |
+| `--color-text-muted` | `#6C7B8A` | 보조 텍스트, 플레이스홀더 |
+| `--color-text-white` | `#ffffff` | 이름·강조 텍스트 (다크 컨텐츠용) |
 | `--color-text-inverse` | `#000000` | 밝은 배경 위 텍스트 (CTA 버튼 내) |
 
 ### 강조 (Accent)
 
 | 토큰 | 값 | 용도 |
 |------|----|------|
-| `--color-accent-primary` | `#00c8ff` | HUD 포인트, 링크, 포커스 링 |
-| `--color-accent-secondary` | `#f4a23a` | 서브 강조, 경고 |
-| `--color-accent-cta` | `#f4845a` | CTA 버튼 (`START CHAT` 등) |
-| `--color-accent-success` | `#2ecc71` | 온라인 상태, 완료 |
+| `--color-accent-primary` | `#00c8ff` | HUD 포인트, 링크, 포커스 링 (Teal-Cyan) |
+| `--color-accent-secondary` | `#f4a23a` | 서브 강조, 경고 (Amber) |
+| `--color-accent-cta` | `#f4845a` | CTA 버튼 (`START CHAT` 등) (Orange) |
+| `--color-accent-success` | `#2ecc71` | 온라인 상태, 완료 (Green) |
 
 ### 테두리 (Border)
 
 | 토큰 | 값 | 용도 |
 |------|----|------|
-| `--color-border-default` | `#1e3a50` | 패널·카드 테두리 |
+| `--color-border-default` | `#D3CDC7` | 패널·카드 테두리 |
 | `--color-border-accent` | `var(--color-accent-primary)` | 포커스·호버 테두리 |
 
 ---

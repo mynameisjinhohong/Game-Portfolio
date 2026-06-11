@@ -1,27 +1,27 @@
 /* ===== Design Tokens — HUD Game Portfolio ===== */
-/* A-04 컨셉 기준: Game HUD 감성 다크 테마 */
+/* A-04 컨셉 기준: 밝은 Soft Cream 배경의 Game HUD 감성 테마 */
 
 :root {
   /* ── Color: Background ── */
-  --color-bg-base: #0b1622;
-  --color-bg-surface: #112030;
-  --color-bg-panel: rgba(10, 25, 45, 0.85);
-  --color-bg-tab: #070f1a;
-  --color-bg-input: rgba(255, 255, 255, 0.04);
-  --color-bg-hover: rgba(255, 255, 255, 0.04);
+  --color-bg-base: #FDFCF7; /* Soft Cream */
+  --color-bg-surface: #F4F0EB; /* Slightly darker cream */
+  --color-bg-panel: rgba(244, 240, 235, 0.85); /* Translucent cream */
+  --color-bg-tab: #E9E3DB; /* Darker cream for tabs */
+  --color-bg-input: rgba(0, 0, 0, 0.04); /* Light transparent dark for input */
+  --color-bg-hover: rgba(0, 0, 0, 0.04); /* Light transparent dark for hover */
 
   /* ── Color: Border ── */
-  --color-border-default: #1e3a50;
+  --color-border-default: #D3CDC7; /* Light grey brown for borders */
   --color-border-accent: var(--color-accent-primary);
 
   /* ── Color: Text ── */
-  --color-text-primary: #cde8f5;
-  --color-text-muted: #6a94b0;
+  --color-text-primary: #36454F; /* Graphite */
+  --color-text-muted: #6C7B8A; /* Muted dark grey */
   --color-text-inverse: #000000;
   --color-text-white: #ffffff;
 
   /* ── Color: Accent ── */
-  --color-accent-primary: #00c8ff;   /* teal-cyan: HUD 강조, 링크, 포커스 */
+  --color-accent-primary: #00c8ff;   /* teal-cyan: HUD 강조, 링크, 포커스 (게임 블루와 유사) */
   --color-accent-secondary: #f4a23a; /* amber: 서브 강조 */
   --color-accent-cta: #f4845a;       /* orange: CTA 버튼 */
   --color-accent-success: #2ecc71;   /* green: 온라인 상태, 완료 */
