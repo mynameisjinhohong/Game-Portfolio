@@ -1,0 +1,118 @@
+/* ===== Design Tokens — HUD Game Portfolio ===== */
+/* A-04 컨셉 기준: 밝은 Soft Cream 배경의 Game HUD 감성 테마 */
+
+:root {
+  /* ── Color: Background ── */
+  --color-bg-base: #FDFCF7; /* Soft Cream */
+  --color-bg-surface: #F4F0EB; /* Slightly darker cream */
+  --color-bg-panel: rgba(244, 240, 235, 0.85); /* Translucent cream */
+  --color-bg-tab: #E9E3DB; /* Darker cream for tabs */
+  --color-bg-input: rgba(0, 0, 0, 0.04); /* Light transparent dark for input */
+  --color-bg-hover: rgba(0, 0, 0, 0.04); /* Light transparent dark for hover */
+
+  /* ── Color: Border ── */
+  --color-border-default: #D3CDC7; /* Light grey brown for borders */
+  --color-border-accent: var(--color-accent-primary);
+
+  /* ── Color: Text ── */
+  --color-text-primary: #36454F; /* Graphite */
+  --color-text-muted: #6C7B8A; /* Muted dark grey */
+  --color-text-inverse: #000000;
+  --color-text-white: #ffffff;
+
+  /* ── Color: Accent ── */
+  --color-accent-primary: #00c8ff;   /* teal-cyan: HUD 강조, 링크, 포커스 (게임 블루와 유사) */
+  --color-accent-secondary: #f4a23a; /* amber: 서브 강조 */
+  --color-accent-cta: #f4845a;       /* orange: CTA 버튼 */
+  --color-accent-success: #2ecc71;   /* green: 온라인 상태, 완료 */
+
+  /* ── Color: Semantic Shorthand ── */
+  --color-primary: var(--color-accent-primary);
+  --color-secondary: var(--color-accent-secondary);
+  --color-danger: #e05c5c;
+  --color-warning: var(--color-accent-secondary);
+  --color-success: var(--color-accent-success);
+
+  /* ── Shadow / Glow ── */
+  --shadow-glow-primary: 0 0 12px rgba(0, 200, 255, 0.25);
+  --shadow-glow-cta: 0 0 16px rgba(244, 132, 90, 0.35);
+  --shadow-glow-cta-hover: 0 0 24px rgba(244, 132, 90, 0.5);
+
+  /* ── Radius ── */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* ── Spacing (4px base grid) ── */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+
+  /* ── Typography: Font Families ── */
+  /* next/font이 주입하는 CSS 변수 활용; 폴백은 시스템 폰트 */
+  --font-sans: var(--font-inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  --font-heading: var(--font-rajdhani, 'Inter', sans-serif);
+  --font-mono: var(--font-jetbrains-mono, 'Fira Code', 'Consolas', monospace);
+
+  /* ── Typography: Font Sizes ── */
+  --text-xs:   0.68rem;   /* 10.9px  — 레이블, 배지 */
+  --text-sm:   0.75rem;   /* 12px    — 보조 텍스트 */
+  --text-base: 0.875rem;  /* 14px    — 기본 UI 텍스트 */
+  --text-md:   1rem;      /* 16px    — 본문 */
+  --text-lg:   1.125rem;  /* 18px    — 서브 헤딩 */
+  --text-xl:   1.25rem;   /* 20px    — 헤딩 */
+  --text-2xl:  1.5rem;    /* 24px    — 섹션 타이틀 */
+  --text-3xl:  2rem;      /* 32px    — 히어로 타이틀 */
+
+  /* ── Typography: Font Weights ── */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+
+  /* ── Typography: Line Heights ── */
+  --leading-tight:  1.3;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* ── Typography: Letter Spacing ── */
+  --tracking-tight:  -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+  --tracking-widest:  0.12em;
+
+  /* ── Transitions ── */
+  --transition-fast:   0.12s ease;
+  --transition-normal: 0.18s ease;
+  --transition-slow:   0.3s ease;
+
+  /* ── Z-Index ── */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-modal:   1000;
+  --z-toast:   2000;
+
+  /* ── HUD Shorthand Aliases ── */
+  --hud-bg:       var(--color-bg-base);
+  --hud-surface:  var(--color-bg-surface);
+  --hud-border:   var(--color-border-default);
+  --hud-accent:   var(--color-accent-primary);
+  --hud-accent2:  var(--color-accent-secondary);
+  --hud-green:    var(--color-accent-success);
+  --hud-text:     var(--color-text-primary);
+  --hud-muted:    var(--color-text-muted);
+  --hud-panel-bg: var(--color-bg-panel);
+  --hud-corner:   var(--radius-md);
+  --hud-glow:     var(--shadow-glow-primary);
+  --hud-orange:   var(--color-accent-cta);
+  --transition:   var(--transition-normal);
+}
