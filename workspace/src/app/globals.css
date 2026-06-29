@@ -1,3 +1,5 @@
+@import '../styles/tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -85,6 +87,21 @@
   --tracking-widest: 0.12em;
 
   --transition: 0.18s ease;
+
+  /* ── 레거시 HUD 호환 별칭 (GP-44 tokens.css 기준명을 GP-43 테마 토큰에 매핑) ──
+     컴포넌트는 GP-43 테마 토큰(--color-bg / --color-text / --color-accent ...)을
+     사용하지만, tokens.css 기준명을 참조하는 잔여 스타일과의 호환을 위해 유지한다. */
+  --color-hud-bg: var(--color-bg);
+  --color-hud-panel: var(--color-panel);
+  --color-hud-surface: var(--color-panel-soft);
+  --color-hud-border: var(--color-border);
+  --color-hud-teal: var(--color-accent);
+  --color-hud-accent: var(--color-accent);
+  --color-hud-orange: var(--color-cta);
+  --color-hud-green: var(--color-success);
+  --color-hud-text: var(--color-text);
+  --color-hud-muted: var(--color-text-muted);
+  --color-hud-heading: var(--color-text);
 }
 
 :root.dark,
@@ -157,7 +174,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-sans);
   font-size: var(--text-base);
-  font-weight: var(--weight-normal);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -174,7 +191,7 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
@@ -231,8 +248,8 @@ a {
   color: var(--color-accent);
   text-decoration: none;
   transition:
-    color var(--transition),
-    opacity var(--transition);
+    color var(--transition-normal),
+    opacity var(--transition-normal);
 }
 
 a:hover {
