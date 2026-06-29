@@ -21,7 +21,7 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
   return (
     <div
       ref={scrollRef}
-      className="flex-1 overflow-y-auto min-h-0 px-4 py-4 flex flex-col gap-3"
+      className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-3 py-4 sm:px-4"
       aria-label="대화 내용"
       aria-live="polite"
     >
@@ -31,50 +31,54 @@ export function ChatbotMessagePanel({ messages }: ChatbotMessagePanelProps) {
           role="status"
           aria-label="대화 시작 안내"
         >
-          <div className="w-14 h-14 bg-hud-teal/20 border-2 border-hud-teal/50 rounded-full flex items-center justify-center shadow-[0_0_16px_rgba(0,201,167,0.2)]">
-            <span className="text-2xl">🤖</span>
+          <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent/50 bg-accent-soft shadow-[0_0_16px_var(--color-accent-soft)]">
+            <span className="text-2xl" aria-hidden="true">
+              🤖
+            </span>
           </div>
-          <div className="bg-hud-bg border border-hud-border rounded-lg px-4 py-3 w-full max-w-[320px]">
-            <p className="text-sm text-hud-text leading-relaxed">
-              Hello! 👋
+          <div className="w-full max-w-[320px] rounded-lg border border-border bg-bg-sunken px-4 py-3">
+            <p className="text-sm leading-relaxed text-content">
+              안녕하세요! 👋
               <br />
-              I&apos;m Jinho&apos;s Portfolio Bot.
+              홍진호 포트폴리오 봇입니다.
               <br />
-              What would you like to know?
+              어떤 내용을 먼저 볼까요?
             </p>
           </div>
-          <p className="text-xs text-hud-text-dim">
+          <p className="text-xs text-content-dim">
             아래 견본 질문을 누르거나 직접 메시지를 입력해 보세요.
           </p>
         </div>
       ) : (
-        messages.map((msg) => (
-          <div
-            key={msg.id}
-            className={`flex gap-2 items-start ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}
-          >
+        messages.map((msg) => {
+          const isUser = msg.role === 'user';
+          return (
             <div
-              className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center border text-xs ${
-                msg.role === 'user'
-                  ? 'bg-hud-orange/20 border-hud-orange/40 text-hud-orange'
-                  : 'bg-hud-teal/20 border-hud-teal/40 text-hud-teal'
-              }`}
+              key={msg.id}
+              className={`flex items-start gap-2 ${isUser ? 'flex-row-reverse' : ''}`}
             >
-              {msg.role === 'user' ? 'U' : '🤖'}
+              <div
+                className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border text-xs ${
+                  isUser
+                    ? 'border-cta/40 bg-cta-soft text-cta'
+                    : 'border-accent/40 bg-accent-soft text-accent'
+                }`}
+                aria-hidden="true"
+              >
+                {isUser ? 'U' : '🤖'}
+              </div>
+              <div
+                className={`max-w-[calc(100%-2.25rem)] rounded-lg border px-3 py-2 sm:max-w-[min(80%,26rem)] ${
+                  isUser ? 'border-cta/30 bg-cta-soft' : 'border-border bg-bg-sunken'
+                }`}
+              >
+                <p className="whitespace-pre-line text-sm leading-relaxed text-content">
+                  {msg.content}
+                </p>
+              </div>
             </div>
-            <div
-              className={`rounded-lg px-3 py-2 max-w-[80%] sm:max-w-[260px] border ${
-                msg.role === 'user'
-                  ? 'bg-hud-orange/10 border-hud-orange/30'
-                  : 'bg-hud-bg border-hud-border'
-              }`}
-            >
-              <p className="text-sm text-hud-text leading-relaxed whitespace-pre-line">
-                {msg.content}
-              </p>
-            </div>
-          </div>
-        ))
+          );
+        })
       )}
     </div>
   );

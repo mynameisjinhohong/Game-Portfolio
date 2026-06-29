@@ -1,6 +1,7 @@
 'use client';
 
 import { CharacterPanel } from './CharacterPanel';
+import { ChatbotHeader } from './ChatbotHeader';
 import { ChatbotPanel } from './ChatbotPanel';
 import { FeaturedGamesPanel } from './FeaturedGamesPanel';
 
@@ -9,43 +10,47 @@ export function ChatbotSection() {
     <section
       id="chatbot"
       aria-label="AI 챗봇 섹션"
-      className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 py-6 md:py-10"
+      className="mx-auto w-full max-w-[1600px] px-4 py-6 sm:px-6 md:py-10"
     >
       {/*
         모바일: 1열로 챗봇이 최상단, 그 아래에 캐릭터/게임 패널이 스크롤로 노출.
         lg 이상: 3열로 화면 폭에 비례해 패널 너비가 늘어난다.
       */}
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(220px,1fr)_minmax(0,2.4fr)_minmax(220px,1fr)] gap-4 lg:gap-6 items-stretch">
+      <div className="grid grid-cols-1 items-stretch gap-4 xl:grid-cols-[minmax(240px,1fr)_minmax(0,2.3fr)_minmax(240px,1fr)] xl:gap-6">
         {/* 왼쪽: 캐릭터 패널 (모바일에서는 챗봇 아래로 이동) */}
-        <div className="order-2 lg:order-1">
+        <div className="order-2 xl:order-1">
           <CharacterPanel />
         </div>
 
         {/* 중앙: 챗봇 패널 */}
-        <div className="order-1 lg:order-2 flex flex-col gap-4">
+        <div className="order-1 flex flex-col gap-4 xl:order-2">
+          <ChatbotHeader />
           <ChatbotPanel />
 
-          <div className="flex justify-center">
+          <div className="mt-1 flex justify-center">
             <button
               type="button"
-              className="flex items-center justify-center gap-2.5 w-full sm:w-auto min-h-[48px] px-8 py-3 rounded-full font-semibold text-base text-white tracking-wide transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-hud-orange/60"
+              className="flex min-h-12 w-full items-center justify-center gap-2.5 rounded-full px-5 py-3 text-sm font-semibold tracking-[0.08em] text-[var(--color-cta-contrast)] transition-all duration-150 hover:-translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-cta/60 sm:w-auto sm:px-8 sm:text-base"
               style={{
-                background: 'linear-gradient(135deg, #FF7A2F 0%, #FF9A5A 100%)',
-                boxShadow: '0 4px 20px rgba(255,122,47,0.40)',
+                background:
+                  'linear-gradient(135deg, var(--color-cta) 0%, var(--color-cta-strong) 100%)',
+                boxShadow: 'var(--shadow-cta)',
               }}
               onClick={() => {
                 const input = document.querySelector<HTMLInputElement>('#chatbot-input');
                 if (input) input.focus();
               }}
             >
-              <span className="text-lg">💬</span>
-              Start Chat
+              <span aria-hidden="true" className="text-lg">
+                💬
+              </span>
+              대화 시작하기
             </button>
           </div>
         </div>
 
         {/* 오른쪽: 게임 패널 (모바일에서는 챗봇 아래로 이동) */}
-        <div className="order-3">
+        <div className="order-3 xl:order-3">
           <FeaturedGamesPanel />
         </div>
       </div>

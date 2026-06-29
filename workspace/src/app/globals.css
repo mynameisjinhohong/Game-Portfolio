@@ -4,26 +4,145 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== A-04 HUD / Game Portfolio — Global Tokens & Base Styles ===== */
-
+/*
+ * 라이트 모드 — PROJECT_DIRECTION의 A-04 기본 팔레트(soft cream / teal / game-blue / orange accent / graphite)
+ * 다크 모드 — 기존 HUD 분위기를 유지하면서 토큰화
+ *
+ * 모드 전환은 `<html>`에 `dark` 클래스가 붙는지 여부로 결정한다.
+ * ThemeProvider(workspace/src/lib/theme/ThemeProvider.tsx)가 prefers-color-scheme과
+ * localStorage('portfolio-theme') 값을 보고 클래스를 토글한다.
+ * 새 색상이 필요하면 `--color-*` 토큰을 추가하고 tailwind.config.ts와 함께 갱신한다.
+ */
 :root {
-  /* 레거시 호환 (점진적 토큰 마이그레이션 중) */
-  --color-hud-bg: var(--color-bg-base);
-  --color-hud-panel: var(--color-bg-surface);
-  --color-hud-surface: var(--color-bg-surface);
-  --color-hud-border: var(--color-border-default);
-  --color-hud-teal: var(--color-accent-primary);
-  --color-hud-accent: var(--color-accent-primary);
-  --color-hud-orange: var(--color-accent-cta);
-  --color-hud-green: var(--color-accent-success);
-  --color-hud-text: var(--color-text-primary);
-  --color-hud-muted: var(--color-text-muted);
-  --color-hud-heading: var(--color-text-white);
+  color-scheme: light;
 
-  /* ── Selection / focus tokens ── */
+  --color-bg: #faf7f2;
+  --color-bg-elevated: #ffffff;
+  --color-bg-sunken: #f0ece3;
+  --color-panel: #ffffff;
+  --color-panel-soft: #f5f0e6;
+  --color-border: #e2d8c6;
+  --color-border-strong: #b9a98a;
+
+  --color-text: #2d3142;
+  --color-text-dim: #6c6f80;
+  --color-text-muted: #8b8b95;
+
+  --color-accent: #2a9d8f;
+  --color-accent-strong: #1f7268;
+  --color-accent-soft: rgba(42, 157, 143, 0.12);
+  --color-cta: #f4a261;
+  --color-cta-strong: #d8753a;
+  --color-cta-soft: rgba(244, 162, 97, 0.18);
+  --color-cta-contrast: #2d3142;
+  --color-info: #4a90d9;
+  --color-success: #2f9d6b;
+  --color-danger: #e63946;
+  --color-heart: #e76f51;
+  --color-heart-soft: rgba(231, 111, 81, 0.38);
+  --color-avatar-skin: #f4c68a;
+  --color-avatar-eye: #2d3142;
+  --color-avatar-hair: #6c4a2f;
+  --color-avatar-shirt: #4a90d9;
+  --color-avatar-pants: #2d3142;
+
+  --shadow-panel: 0 4px 16px rgba(45, 49, 66, 0.08);
+  --shadow-cta: 0 4px 18px rgba(244, 162, 97, 0.32);
+
+  /* ── 선택/포커스 토큰 ── */
+  --color-selection-bg: rgba(42, 157, 143, 0.22);
+  --color-selection-fg: #2d3142;
+  --color-focus-ring: var(--color-accent);
+
+  /* ── Typography tokens ──
+     `--font-sans`, `--font-mono` 은 layout.tsx 의 next/font 가
+     <html> 인라인 스타일로 동일 이름 변수를 주입해 덮어쓴다.
+     아래 값은 next/font 로딩 실패 시의 폴백 역할을 한다. */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  --text-xs: clamp(0.65rem, 0.8vw, 0.75rem);
+  --text-sm: clamp(0.75rem, 1vw, 0.875rem);
+  --text-base: clamp(0.875rem, 1.1vw, 1rem);
+  --text-md: clamp(1rem, 1.3vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.6vw, 1.375rem);
+  --text-xl: clamp(1.375rem, 2vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 2.8vw, 2.25rem);
+  --text-3xl: clamp(2rem, 3.5vw, 3rem);
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.25;
+  --leading-snug: 1.4;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+  --tracking-widest: 0.12em;
+
+  --transition: 0.18s ease;
+
+  /* ── 레거시 HUD 호환 별칭 (GP-44 tokens.css 기준명을 GP-43 테마 토큰에 매핑) ──
+     컴포넌트는 GP-43 테마 토큰(--color-bg / --color-text / --color-accent ...)을
+     사용하지만, tokens.css 기준명을 참조하는 잔여 스타일과의 호환을 위해 유지한다. */
+  --color-hud-bg: var(--color-bg);
+  --color-hud-panel: var(--color-panel);
+  --color-hud-surface: var(--color-panel-soft);
+  --color-hud-border: var(--color-border);
+  --color-hud-teal: var(--color-accent);
+  --color-hud-accent: var(--color-accent);
+  --color-hud-orange: var(--color-cta);
+  --color-hud-green: var(--color-success);
+  --color-hud-text: var(--color-text);
+  --color-hud-muted: var(--color-text-muted);
+  --color-hud-heading: var(--color-text);
+}
+
+:root.dark,
+.dark {
+  color-scheme: dark;
+
+  --color-bg: #0b1622;
+  --color-bg-elevated: #0e1f30;
+  --color-bg-sunken: #07101a;
+  --color-panel: #0e1f30;
+  --color-panel-soft: #122739;
+  --color-border: #1a3a50;
+  --color-border-strong: #265a78;
+
+  --color-text: #c8e6ef;
+  --color-text-dim: #7d99a8;
+  --color-text-muted: #5a7a8a;
+
+  --color-accent: #00c9a7;
+  --color-accent-strong: #00b39a;
+  --color-accent-soft: rgba(0, 201, 167, 0.16);
+  --color-cta: #ff7a2f;
+  --color-cta-strong: #ff945a;
+  --color-cta-soft: rgba(255, 122, 47, 0.22);
+  --color-cta-contrast: #07101a;
+  --color-info: #4ade80;
+  --color-success: #4ade80;
+  --color-danger: #f87171;
+  --color-heart: #ff9f7a;
+  --color-heart-soft: rgba(255, 159, 122, 0.34);
+  --color-avatar-skin: #f0c28f;
+  --color-avatar-eye: #d8eef5;
+  --color-avatar-hair: #8f6543;
+  --color-avatar-shirt: #2a9d8f;
+  --color-avatar-pants: #133246;
+
+  --shadow-panel: 0 6px 22px rgba(0, 0, 0, 0.45);
+  --shadow-cta: 0 6px 24px rgba(255, 122, 47, 0.42);
+
   --color-selection-bg: rgba(0, 200, 255, 0.25);
-  --color-selection-fg: var(--color-text-white);
-  --color-focus-ring: var(--color-accent-primary);
+  --color-selection-fg: #ffffff;
 }
 
 /* ── Reset / Normalize ── */
@@ -49,15 +168,19 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+html,
 body {
-  background-color: var(--color-bg-base);
-  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   font-family: var(--font-sans);
   font-size: var(--text-base);
   font-weight: var(--weight-regular);
   line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
 }
 
 /* ── Typography base ── */
@@ -72,7 +195,7 @@ h6 {
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  color: var(--color-text-primary);
+  color: var(--color-text);
 }
 
 h1 {
@@ -104,7 +227,7 @@ h6 {
 p {
   margin: 0;
   line-height: var(--leading-normal);
-  color: var(--color-text-primary);
+  color: var(--color-text);
 }
 
 small {
@@ -122,7 +245,7 @@ samp {
 
 /* ── Links ── */
 a {
-  color: var(--color-accent-primary);
+  color: var(--color-accent);
   text-decoration: none;
   transition:
     color var(--transition-normal),
@@ -171,11 +294,20 @@ select {
   font-size: inherit;
 }
 
-/* HUD 패널 공통 테두리 스타일 */
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    transition: none;
+  }
+}
+
+/* 공통 HUD 카드 — 라이트/다크 양쪽에서 동작 */
 .hud-panel {
-  background-color: var(--color-hud-panel);
-  border: 1px solid var(--color-hud-border);
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
   position: relative;
+  box-shadow: var(--shadow-panel);
+  overflow: clip;
 }
 
 .hud-panel::before,
@@ -184,7 +316,7 @@ select {
   position: absolute;
   width: 10px;
   height: 10px;
-  border-color: var(--color-hud-teal);
+  border-color: var(--color-accent);
   border-style: solid;
   z-index: 1;
 }
@@ -213,4 +345,45 @@ select {
 
 .skill-bar-fill {
   animation: fillBar 1s ease-out forwards;
+}
+
+/* 픽셀 아트 SVG */
+.pixelated {
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+}
+
+.interactive-card {
+  transition:
+    border-color var(--transition),
+    background-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.interactive-card:is(:hover, :focus-visible) {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+}
+
+.interactive-card:active {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  transform: scale(0.99);
+}
+
+/* 모바일에서 hover 의존을 줄이기 위한 항상 보이는 강조 변형 */
+@media (hover: none) {
+  .hud-panel-clickable {
+    border-color: var(--color-border-strong);
+  }
+
+  .interactive-card {
+    border-color: var(--color-border-strong);
+  }
+
+  .interactive-card:hover {
+    background-color: inherit;
+    border-color: var(--color-border-strong);
+  }
 }
