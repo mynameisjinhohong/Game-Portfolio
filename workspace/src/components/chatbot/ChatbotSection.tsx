@@ -44,7 +44,7 @@ export function ChatbotSection() {
               <span aria-hidden="true" className="text-lg">
                 💬
               </span>
-              Start Chat
+              대화 시작하기
             </button>
           </div>
         </div>

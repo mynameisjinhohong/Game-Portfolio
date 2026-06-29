@@ -7,17 +7,17 @@ import { ChatbotSampleQuestions } from './ChatbotSampleQuestions';
 import { ChatbotInputArea } from './ChatbotInputArea';
 
 const SAMPLE_QUESTIONS: SampleQuestion[] = [
-  { id: 'q1', text: 'Tell me about your games', icon: '🎮' },
-  { id: 'q2', text: 'What tech do you use?', icon: '💻' },
-  { id: 'q3', text: 'About you', icon: '👤' },
+  { id: 'q1', text: '만든 게임을 소개해 주세요', icon: '🎮' },
+  { id: 'q2', text: '어떤 기술을 사용하나요?', icon: '💻' },
+  { id: 'q3', text: '홍진호는 어떤 사람인가요?', icon: '👤' },
 ];
 
 const BOT_REPLIES: Record<string, string> = {
-  'Tell me about your games':
+  '만든 게임을 소개해 주세요':
     '수학의 제왕, 강한 토끼만이 살아남는다, 판다러쉬처럼 실제로 만든 게임들을 중심으로 작업 역할과 배운 점을 소개할 수 있어요. 🎮',
-  'What tech do you use?':
+  '어떤 기술을 사용하나요?':
     '주요 작업 스택은 Unity, C#, Git이고 프로젝트에 따라 Blender 같은 아트 툴과 협업 도구도 함께 사용했습니다. 💻',
-  'About you':
+  '홍진호는 어떤 사람인가요?':
     '홍진호는 플레이어가 탐색하고 반응하게 되는 시스템 중심 경험을 만드는 게임 개발자입니다. 👤',
 };
 

@@ -1,9 +1,9 @@
 'use client';
 
 const SKILLS = [
-  { label: 'Creativity', value: 85 },
-  { label: 'Problem Solving', value: 78 },
-  { label: 'Teamwork', value: 72 },
+  { label: '창의력', value: 85 },
+  { label: '문제 해결', value: 78 },
+  { label: '협업', value: 72 },
 ];
 
 export function CharacterPanel() {
@@ -52,9 +52,9 @@ export function CharacterPanel() {
 
       {/* 이름 및 역할 */}
       <div className="text-center">
-        <p className="text-base font-semibold leading-tight text-content">Hong Jinho</p>
+        <p className="text-base font-semibold leading-tight text-content">홍진호</p>
         <span className="mt-1 inline-flex min-h-8 items-center rounded border border-cta/40 px-2 py-0.5 font-mono text-xs text-cta">
-          Game Developer
+          게임 개발자
         </span>
       </div>
 
@@ -82,7 +82,7 @@ export function CharacterPanel() {
 
       {/* 한 줄 소개 */}
       <p className="mt-auto text-balance font-mono text-[10px] leading-relaxed text-content-dim">
-        I build playful experiences and systems that players love to explore.
+        플레이어가 탐색하고 싶어지는 경쾌한 경험과 시스템을 만듭니다.
       </p>
     </div>
   );

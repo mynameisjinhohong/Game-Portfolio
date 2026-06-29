@@ -22,7 +22,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       <span aria-hidden="true" className="text-sm leading-none">
         {isDark ? '☾' : '☀'}
       </span>
-      <span>{isDark ? 'Dark' : 'Light'}</span>
+      <span>{isDark ? '다크' : '라이트'}</span>
     </button>
   );
 }

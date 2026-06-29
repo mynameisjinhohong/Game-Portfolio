@@ -7,10 +7,10 @@ const TECH_ICONS = ['Unity', 'C#', 'Photon', 'Blender', 'Git', 'Xcode'];
 export function FeaturedGamesPanel() {
   return (
     <div className="flex h-full flex-col gap-4 lg:grid lg:grid-cols-2 xl:flex">
-      {/* Featured Games */}
+      {/* 대표 게임 */}
       <div className="hud-panel flex-1 rounded p-4 sm:p-5">
         <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent">
-          Featured Games
+          대표 게임
         </p>
         <ul className="flex flex-col gap-2">
           {FEATURED_GAMES.map((game) => (
@@ -50,10 +50,10 @@ export function FeaturedGamesPanel() {
         </ul>
       </div>
 
-      {/* Tech Stack */}
+      {/* 기술 스택 */}
       <div className="hud-panel rounded p-4 sm:p-5">
         <p className="mb-3 font-mono text-[10px] uppercase tracking-widest text-accent">
-          Tech Stack
+          기술 스택
         </p>
         <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           {TECH_ICONS.map((icon) => (
